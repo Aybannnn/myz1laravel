@@ -17,11 +17,12 @@ use App\Http\Controllers\CustomAuthController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/login',[CustomAuthController::class,'login'])->middleware('alreadyLoggedIn');
-Route::get('/registration',[CustomAuthController::class,'registration'])->middleware('alreadyLoggedIn');
+Route::get('/login',[CustomAuthController::class,'login']);
+Route::get('/registration',[CustomAuthController::class,'registration']);
 Route::post('/register-user', [CustomAuthController::class, 'registerUser'])->name('register-user');
 Route::post('/login-user', [CustomAuthController::class, 'loginUser'])->name('login-user');
 Route::get('/user-homepage', [CustomAuthController::class, 'userHomepage'])->middleware('isLoggedIn');
+Route::get('/admin-homepage', [CustomAuthController::class, 'adminHomepage'])->middleware('isLoggedIn');
 Route::get('/logout', [CustomAuthController::class, 'logout']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

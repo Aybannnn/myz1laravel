@@ -48,7 +48,13 @@ class CustomAuthController extends Controller
             // if(Hash::check($request->password,$user->passwrd));    If the password is HASHED in the database, use this for checking
             {
                 $request->Session()->put('loginId', $user->id);
-                return redirect('user-homepage');
+
+                if ($user->usertype == 'a') 
+                {
+                    return redirect('admin-homepage');
+                } elseif ($user->usertype == 'u') {
+                    return redirect('user-homepage');
+                }
             } else {
                 return back()->with('fail', 'This Password in Incorrect');
             }
@@ -64,6 +70,15 @@ class CustomAuthController extends Controller
             $data = User::where('id','=', Session::get('loginId'))->first();
         }
         return view ('user.userhomepage', compact('data'));
+    }
+    public function adminHomepage()
+    {
+        $data = array();
+        if(Session::has('loginId'))
+        {
+            $data = User::where('id', '=', Session::get('loginId'))->first();
+        }
+        return view ('admin.adminhomepage', compact('data'));
     }
     public function logout()
     {
