@@ -25,4 +25,6 @@ Route::get('/user-homepage', [CustomAuthController::class, 'userHomepage'])->mid
 Route::get('/admin-homepage', [CustomAuthController::class, 'adminHomepage'])->middleware('isLoggedIn');
 Route::get('/logout', [CustomAuthController::class, 'logout']);
 
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
