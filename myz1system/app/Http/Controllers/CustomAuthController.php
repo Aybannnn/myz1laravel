@@ -56,10 +56,10 @@ class CustomAuthController extends Controller
                     return redirect('user-homepage');
                 }
             } else {
-                return back()->with('fail', 'This Password in Incorrect');
+                return back()->with('fail', 'Incorrect Password. Please Check Credentials');
             }
         } else {
-            return back()->with('fail', 'This Email is Incorrect.');
+            return back()->with('fail', 'Email Incorrect. Please Check Credentials');
         }
     }
     public function userHomepage()

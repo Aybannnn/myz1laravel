@@ -3,6 +3,30 @@ body{
     background-color: #F6F7FA;
     font-family: 'K2D';
 }
+center{
+    margin-bottom: 6rem;
+}
+/*------custom-scroll-bar - from w3schools.com------------------*/
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 12px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
 .container-fluid{
     padding-top: 2rem;
     background-color: #076026;
@@ -19,9 +43,9 @@ td{
     text-align: center;
 }
 .header-text{
-    font-weight: 600;
+    font-weight: 900;
     color: white;
-    font-size: 30px;
+    font-size: 36px;
     letter-spacing: 1px;
     margin-bottom: 10px;
 }
@@ -38,16 +62,15 @@ td{
     text-align: left;
     padding-top: 20px;
 }
+.form-group{
+    margin-bottom: 0.8rem;
+}
 .hover-link1{
     font-weight: bold;
 }
 .hover-link1:hover{
     opacity: 0.8;
     transition: 0.5s;
-}.login-btn{
-    /*margin-top: 15px;*/
-    margin-bottom: 15px;
-    width: 100%;
 }
 .input-text{
     border: 1px solid #e9ecef;
@@ -77,8 +100,10 @@ td{
     font-family: 'K2D';
 }
 .errormsg{
-    color: red;
-    margin-bottom: 1rem;
+    color: rgb(220,53,69);
+    font-size: 14px;
+    margin-top: 1.8rem;
+    margin-bottom: -1rem;
     font-weight: 700;
 }
 .btn{
@@ -86,12 +111,30 @@ td{
     width: auto;
     border: solid black;
     border-width: 1px;
+    color: black;
+    margin-top: 1rem;
 }
 .btn:hover{
     background-color: #5d8f4e;
     border: solid  white;
     border-width: 1px;
     color: white;
+}
+h5{
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+}
+.sublink{
+    margin-bottom: 2rem;
+}
+.sublink a{
+    font-style: bold;
+    font-size: 20px;
+    text-decoration: underline;
+    font-weight: 600;
+    color: #ffffff;
 }
 .ellipse{
     position: absolute;
