@@ -71,6 +71,15 @@ class CustomAuthController extends Controller
         }
         return view ('user.userhomepage', compact('data'));
     }
+    public function userBooking()
+    {
+        $data = array();
+        if(Session::has('loginId'))
+        {
+            $data = User::where('id','=', Session::get('loginId'))->first();
+        }
+        return view ('user.userbooking', compact('data'));
+    }
     public function adminHomepage()
     {
         $data = array();

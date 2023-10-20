@@ -45,11 +45,13 @@ main .row .col{
     border-width: 2px;
 }
 main .row .col a{
-    font-size: 3rem;
+    font-size: 1.4rem;
+    font-weight: 700;
     text-decoration: none;
     color: #16381f;
     width: 100%;
     justify-content: center;
+    text-align: center;
     display: flex;
 }
 main .row .col:hover{
@@ -75,9 +77,50 @@ main .overlay2 .overlay3 a{
     text-decoration: none;
     color: black;
 }
+main .overlay2 .overlay3 .content-banner{
+    background-color: #43855A80;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+main .overlay2 .overlay3 .content-banner h2{
+    font-size: 26px;
+    font-style: italic;
+    padding: 1rem;
+}
 
-
-grid-item-one { grid-area: image; }
+.grid-container{
+    display: grid;
+    grid-template-columns: 25% 75%;
+    width: 80%;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5rem;
+}
+.grid-container .grid1 .grid-img{
+    background-color: white;
+    height: 160px;
+    border-style: solid solid none solid;
+    border-width: 5px;
+}
+.grid-container .grid2{
+    background-color: #43855a4c;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    border-radius: 0 20px 20px 0;
+}
+.grid-container .grid3{
+    border-style: none solid solid solid;
+    border-width: 5px;
+}
+.grid-container .grid3 h2{
+    text-align: center;
+    padding: 1rem;
+    font-weight: 800;
+    font-size: 24px;
+}
+/* grid-item-one { grid-area: image; }
 grid-item-two { grid-area: equipment-description; }
 
 main .equipment-contents .row2 .col2{
@@ -103,11 +146,13 @@ main .equipment-contents .row2 .col2{
     font-size: 24px;
     font-weight: bold;
     padding: 1rem;
+    text-align: center;
 }
 .grid-item-one .row3{
     border-color: black;
     border-style: solid solid solid solid;
     border-width: 5px;
+    
 }
 .grid-item-two{
     background-color: #43855a4c;
@@ -116,6 +161,9 @@ main .equipment-contents .row2 .col2{
     padding-left: 2rem;
     padding-top: 1rem;
 }
+.grid-item-two li{
+    list-style-type: circle;
+} */
 
 
 /*RIGHT PAGE*/

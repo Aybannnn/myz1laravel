@@ -57,7 +57,7 @@
             <div class="sidebar close">
                 <ul class="nav-links">
                     <li>
-                        <a href="../user/user-homepage.php" class="active">
+                        <a href="user-homepage" class="active">
                             <span class="material-icons-sharp">
                                 home
                             </span>
@@ -65,7 +65,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../user/user-booking.php">
+                        <a href="user-booking">
                             <span class="material-icons-sharp">
                                 add_circle
                             </span>
