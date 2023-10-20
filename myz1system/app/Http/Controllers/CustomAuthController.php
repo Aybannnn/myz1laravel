@@ -89,6 +89,10 @@ class CustomAuthController extends Controller
         }
         return view ('admin.adminhomepage', compact('data'));
     }
+    public function adminPost()
+    {
+        return view ('admin.adminpostannouncement');
+    }
     public function logout()
     {
         if(Session::has('loginId'))

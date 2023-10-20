@@ -144,7 +144,16 @@
                 </div>
             </div>
             <div class="featured-list">
-                <h2>Featured</h2>
+                <div class="featured-list-header">
+                    <h2>Featured</h2>
+                    <a href="admin-post">
+                        <button class="btn">Add Announcement
+                        <span class="material-icons-sharp">
+                            add
+                        </span>
+                        </button>
+                    </a>
+                </div>
                 <div class="row">
                     <div class="col">
                         <div class="featured-img"></div>

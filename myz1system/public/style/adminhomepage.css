@@ -95,6 +95,21 @@ main .homepage-container .side2 h5{
 main .featured-list{
     margin-top: 5rem;
 }
+main .featured-list button{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    font-size: 16px;
+    font-weight: 800;
+}
+main .featured-list-header{
+    display: flex;
+    justify-content: space-between;
+}
+main .featured-list-header a{
+    text-decoration: none;
+    color: black;
+}
 main .featured-list .row{
     padding: 2rem;
     margin-top: 1rem;

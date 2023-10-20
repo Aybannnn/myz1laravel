@@ -24,6 +24,7 @@ Route::post('/login-user', [CustomAuthController::class, 'loginUser'])->name('lo
 Route::get('/user-homepage', [CustomAuthController::class, 'userHomepage'])->middleware('isLoggedIn');
 Route::get('/user-booking', [CustomAuthController::class, 'userBooking']);
 Route::get('/admin-homepage', [CustomAuthController::class, 'adminHomepage'])->middleware('isLoggedIn');
+Route::get('/admin-post', [CustomAuthController::class, 'adminPost']);
 Route::get('/logout', [CustomAuthController::class, 'logout']);
 
 
