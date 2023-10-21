@@ -22,9 +22,10 @@ Route::get('/registration',[CustomAuthController::class,'registration']);
 Route::post('/register-user', [CustomAuthController::class, 'registerUser'])->name('register-user');
 Route::post('/login-user', [CustomAuthController::class, 'loginUser'])->name('login-user');
 Route::get('/user-homepage', [CustomAuthController::class, 'userHomepage'])->middleware('isLoggedIn');
-Route::get('/user-booking', [CustomAuthController::class, 'userBooking']);
+Route::get('/user-booking', [CustomAuthController::class, 'userBooking'])->middleware('isLoggedIn');
 Route::get('/admin-homepage', [CustomAuthController::class, 'adminHomepage'])->middleware('isLoggedIn');
 Route::get('/admin-post', [CustomAuthController::class, 'adminPost']);
+Route::get('/admin-notification', [CustomAuthController::class, 'adminNotification']);
 Route::get('/logout', [CustomAuthController::class, 'logout']);
 
 

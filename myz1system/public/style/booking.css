@@ -120,52 +120,6 @@ main .overlay2 .overlay3 .content-banner h2{
     font-weight: 800;
     font-size: 24px;
 }
-/* grid-item-one { grid-area: image; }
-grid-item-two { grid-area: equipment-description; }
-
-main .equipment-contents .row2 .col2{
-    display: grid;
-    grid-template-areas: 
-        'image equipment-description';
-    cursor: pointer;
-    gap: 10px;
-    padding: 10px;
-    width: 80%;
-    margin: auto;
-    margin-top: 1.5rem;
-    border-radius: 20px;
-}
-.grid-item-one .row3 .col3-img{
-    background-color: white;
-    display: flex;
-    width: auto;
-    height: 140px;
-    padding-left: 12rem;
-}
-.grid-item-one .row3 .col3 p{
-    font-size: 24px;
-    font-weight: bold;
-    padding: 1rem;
-    text-align: center;
-}
-.grid-item-one .row3{
-    border-color: black;
-    border-style: solid solid solid solid;
-    border-width: 5px;
-    
-}
-.grid-item-two{
-    background-color: #43855a4c;
-    margin-left: -1rem;
-    padding-right: 1.5rem;
-    padding-left: 2rem;
-    padding-top: 1rem;
-}
-.grid-item-two li{
-    list-style-type: circle;
-} */
-
-
 /*RIGHT PAGE*/
 .right-section{
     margin-top: 1.4rem;
@@ -179,68 +133,21 @@ main .equipment-contents .row2 .col2{
 .right-section .nav button{
     display: none;
 }
-.right-section .reminders{
+.right-section .searchbooking .search span{
+    position: relative;
+    top: 36px;
+    left: 10px;
+}
+.right-section .searchbooking .search .form-control{
+    border-color: black;
+    border-width: 2px;
+    border-radius: 30px;
+}
+.right-section button{
     margin-top: 2rem;
+    background-color: #f4fcd2;
+    font-size: 32px;
 }
-.right-section .reminders .header{
+/* .right-section .searchbooking{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.8rem;
-}
-.right-section .reminders .header span{
-    padding: 10px;
-    box-shadow: var(--box-shadow);
-    background-color: white;
-    border-radius: 50%;
-}
-.right-section .reminders .notification{
-    background-color: white;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.7rem;
-    padding: 1.4rem var(--card-padding);
-    border-radius: var(--border-radius-2);
-    box-shadow: var(--box-shadow);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-.right-section .reminders .notification:hover{
-    box-shadow: none;
-}
-.right-section .reminders .notification .content{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0;
-    width: 100%;
-}
-.right-section .reminders .notification .icon{
-    padding: 0.6rem;
-    color: white;
-    background-color: #1B9C85;
-    border-radius: 20%;
-    display: flex;
-}
-.right-section .reminders .notification.deactive .icon{
-    background-color: red;
-}
-.right-section .reminders .add-reminder{
-    background-color: white;
-    border: 2px dashed #6C9BCF;
-    color: #6C9BCF;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-.right-section .reminders .add-reminder:hover{
-    background-color: #6C9BCF;
-    color: white;
-}
-.right-section .reminders .add-reminder div{
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-}
+} */

@@ -1,3 +1,17 @@
+@php
+    session_start();
+
+    if(isset($_SESSION["user"])){
+        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='p'){
+            header("location: login");
+        }else{
+            $useremail=$_SESSION["user"];
+        }
+
+    }else{
+        header("location: login");
+    }
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,11 +108,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#divOne">
+                        <a href="logout">
                             <span class="material-icons-sharp">
-                                login
+                                logout
                             </span>
-                            <h3>Login</h3>
+                            <h3>Logout</h3>
                         </a>
                     </li>
                 </ul>
@@ -295,67 +309,19 @@
                 </button>
             </div>
             <!-- End of Nav -->
-
-            <div class="user-profile">
-                <div class="logo">
-                </div>
-            </div>
-
-            <div class="reminders">
-                <div class="header">
-                    <h2>Reminders</h2>
-                    <span class="material-icons-sharp">
-                        notifications_none
-                    </span>
-                </div>
-
-                <div class="notification">
-                    <div class="icon">
+            <div class="searchbooking">
+                <tr>
+                    <td>
+                        <div class="search">
                         <span class="material-icons-sharp">
-                            volume_up
+                        search
                         </span>
-                    </div>
-                    <div class="content">
-                        <div class="info">
-                            <h3>Workshop</h3>
-                            <small class="text_muted">
-                                08:00 AM - 12:00 PM
-                            </small>
+                            <input type="text" class="form-control" name="search" value="{{old('password')}}">
                         </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
-
-                <div class="notification deactive">
-                    <div class="icon">
-                        <span class="material-icons-sharp">
-                            edit
-                        </span>
-                    </div>
-                    <div class="content">
-                        <div class="info">
-                            <h3>Workshop</h3>
-                            <small class="text_muted">
-                                08:00 AM - 12:00 PM
-                            </small>
-                        </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
-
-                <div class="notification add-reminder">
-                    <div>
-                        <span class="material-icons-sharp">
-                            add
-                        </span>
-                        <h3>Add Reminder</h3>
-                    </div>
-                </div>
+                    </td>
+                </tr>
             </div>
+            <button class='btn d-grid gap-2 mx-auto'>BOOK NOW</button>
         </div>
     </div>
 

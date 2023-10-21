@@ -93,6 +93,15 @@ class CustomAuthController extends Controller
     {
         return view ('admin.adminpostannouncement');
     }
+    public function adminNotification()
+    {
+        $data = array();
+        if(Session::has('loginId'))
+        {
+            $data = User::where('id', '=', Session::get('loginId'))->first();
+        }
+        return view ('admin.adminnotification', compact('data'));
+    }
     public function logout()
     {
         if(Session::has('loginId'))
