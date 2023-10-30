@@ -55,11 +55,22 @@ main .bookingform .containerform-fluid h6{
 .containerform-fluid{
     margin: 1rem;
 }
-/*RIGHT PAGE*/
-.right-section{
-    margin-top: 1.4rem;
-    margin-right: 1rem;
+/* .col-2{
+    border: solid black 1px;
+} */
+.col-2 .summarybox{
+    border: solid black 1px;
+    background-color: #43855A33;
 }
+.col-2 .summarybox h5{
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    padding-top: 0.2rem;
+}
+.col-1 span{
+    font-size: 16px;
+}
+
 .right-section .nav{
     display: flex;
     justify-content: end;
@@ -68,31 +79,3 @@ main .bookingform .containerform-fluid h6{
 .right-section .nav button{
     display: none;
 }
-.right-section .searchbooking .search span{
-    position: relative;
-    top: 36px;
-    left: 88%;
-}
-.right-section .searchbooking .search .form-control{
-    border-color: black;
-    border-width: 2px;
-    border-radius: 30px;
-}
-.right-section a{
-    text-decoration: none;
-    color: black;
-}
-.right-section button{
-    margin-top: 2rem;
-    background-color: #f4fcd2;
-    font-size: 32px;
-    border: solid black;
-}
-.right-section button:hover{
-    background-color: #808b51;
-    border: solid black;
-    color: white;
-}
-/* .right-section .searchbooking{
-    display: flex;
-} */

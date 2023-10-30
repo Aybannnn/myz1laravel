@@ -132,7 +132,7 @@
                 </h1>
             </div>
             <div class="bookingform">
-                <form action="#">
+                <form action="#" method="POST" id='add_form'>
                     @csrf
                     <div class="containerform-fluid">
                         <div class="row">
@@ -169,6 +169,79 @@
                                 <input type="text" class="form-control">
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col">
+                            <h6>Production/Event Title</h6>
+                            <input type="text" class="form-control">
+                            </div>
+                            <div class="col">
+                            <h6>Expected Running Time</h6>
+                            <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div id="add_item">
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6>Specific Type of ETC Rental Request</h6>
+                                    <input type="text" name="rental_name[]" class="form-control">
+                                </div>
+                                <div class="col-1">
+                                <h6>Hours</h6>
+                                <input type="text" class="form-control">
+                                </div>
+                                <div class="col-2">
+                                <h6>Rate</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <h6>Quantity</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <h6>Rental Fee</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                                <div class="col-1 d-grid">
+                                    <h6>Add</h6>
+                                    <button type="button" class="btn btn-success add_button" id="add_button" name="add_button">
+                                    <span class="material-icons-sharp">
+                                    add
+                                    </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-4">
+                                </div>
+                                <div class="col-1">
+                                </div>
+                                <div class="col-2">
+                                    <div class="summarybox" style="margin-top: 1.7rem; background-color: #F4FCD2;">
+                                        <h5 style="font-style: Italic; display: flex; justify-content:center;">TOTAL</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <h6>Quantity</h6>
+                                    <div class="summarybox" style="background-color: #F4FCD2;">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <h6>Rental Fee</h6>
+                                    <div class="summarybox" style="background-color: #F4FCD2;">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                                <div class="col-1 d-grid">
+                                </div>
+                            </div>
                     </div>
                 </form>
             </div>
@@ -185,67 +258,6 @@
                 </button>
             </div>
             <!-- End of Nav -->
-
-            <div class="user-profile">
-                <div class="logo">
-                </div>
-            </div>
-
-            <div class="reminders">
-                <div class="header">
-                    <h2>Reminders</h2>
-                    <span class="material-icons-sharp">
-                        notifications_none
-                    </span>
-                </div>
-
-                <div class="notification">
-                    <div class="icon">
-                        <span class="material-icons-sharp">
-                            volume_up
-                        </span>
-                    </div>
-                    <div class="content">
-                        <div class="info">
-                            <h3>Workshop</h3>
-                            <small class="text_muted">
-                                08:00 AM - 12:00 PM
-                            </small>
-                        </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
-
-                <div class="notification deactive">
-                    <div class="icon">
-                        <span class="material-icons-sharp">
-                            edit
-                        </span>
-                    </div>
-                    <div class="content">
-                        <div class="info">
-                            <h3>Workshop</h3>
-                            <small class="text_muted">
-                                08:00 AM - 12:00 PM
-                            </small>
-                        </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
-
-                <div class="notification add-reminder">
-                    <div>
-                        <span class="material-icons-sharp">
-                            add
-                        </span>
-                        <h3>Add Reminder</h3>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     
@@ -254,7 +266,56 @@
     <img src="{{asset('images/zonefooter.png')}}">
 </div>
 <!--FOOTER-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".add_button").click(function(e){
+            e.preventDefault();
+            $("#add_item").append(`<div class="row">
+                                <div class="col-4">
+                                    <h6>Specific Type of ETC Rental Request</h6>
+                                    <input type="text" name="rental_name[]" class="form-control">
+                                </div>
+                                <div class="col-1">
+                                <h6>Hours</h6>
+                                <input type="text" class="form-control">
+                                </div>
+                                <div class="col-2">
+                                <h6>Rate</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <h6>Quantity</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <h6>Rental Fee</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                                <div class="col-1 d-grid">
+                                    <h6>Remove</h6>
+                                    <button type="button" class="btn btn-danger remove_button" id="remove_button" name="remove_button">
+                                    <span class="material-icons-sharp">
+                                    delete
+                                    </span>
+                                    </button>
+                                </div>
+                            </div>`);
+        })
 
+        $(document).on('click', '.remove_button', function(e){
+            e.preventDefault();
+            let row_item = $(this).parent().parent();
+            $(row_item).remove();
+        });
+    });
+</script>
 <script src="script/homepage.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
