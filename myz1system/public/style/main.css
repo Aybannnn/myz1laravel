@@ -224,7 +224,7 @@ aside .one {
 @media screen and (max-width: 1025px) {
     .container-fluid{
         width: 100%;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
         padding: 0 var(--padding-1);
     }
     aside{

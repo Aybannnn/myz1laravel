@@ -80,6 +80,10 @@ class CustomAuthController extends Controller
         }
         return view ('user.userbooking', compact('data'));
     }
+    public function userBookingForm()
+    {
+        return view ('user.bookingform');
+    }
     public function adminHomepage()
     {
         $data = array();

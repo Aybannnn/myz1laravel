@@ -136,17 +136,27 @@ main .overlay2 .overlay3 .content-banner h2{
 .right-section .searchbooking .search span{
     position: relative;
     top: 36px;
-    left: 10px;
+    left: 88%;
 }
 .right-section .searchbooking .search .form-control{
     border-color: black;
     border-width: 2px;
     border-radius: 30px;
 }
+.right-section a{
+    text-decoration: none;
+    color: black;
+}
 .right-section button{
     margin-top: 2rem;
     background-color: #f4fcd2;
     font-size: 32px;
+    border: solid black;
+}
+.right-section button:hover{
+    background-color: #808b51;
+    border: solid black;
+    color: white;
 }
 /* .right-section .searchbooking{
     display: flex;
