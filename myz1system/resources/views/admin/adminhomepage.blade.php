@@ -139,8 +139,22 @@
                 <div class="side2">
                     <div class="header-home">
                         <h5>Notification</h5>
-                        <button class="btn">View All</button>
+                        <a href="admin-notification"><button class="btn">View All</button></a>
                     </div>
+                    <table>
+                        <div class="col">
+                            <div class="row">
+                                @foreach($notification as $notification)
+                                <div class="notification-solo" style="margin-bottom: 1.6rem; margin-left: 2rem; display: flex;">
+                                <span class="material-icons-sharp" style="color: green;">
+                                    calendar_today
+                                </span>
+                                <h4 style="margin-left: 1rem;">New booking for {{$notification->servicename}} from {{$notification->departmentname}}</h4>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </table>
                 </div>
             </div>
             <div class="featured-list">

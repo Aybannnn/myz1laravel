@@ -329,7 +329,7 @@
                                 </div>
                             </div>
                             <div class="col" style="border-right: solid black 1px; border-left: solid black 1px;">
-                            <h2 style="display: flex; justify-content: center; border-bottom: solid black 1px; padding-top: 1rem; padding-bottom: 1rem;">Approved By: (Department/Unit/Head)</h2>
+                            <h2 style="display: flex; justify-content: center; border-bottom: solid black 1px; padding-top: 1rem; padding-bottom: 1rem;">Approved By: </h2>
                                 <div class="requestinfo" style="background-color: #43855A33; padding: 6rem; margin-bottom: 1rem;">
                                     <h3 style="display: flex; justify-content: center; font-size: 24px; font-weight: 900;">
                                         Name

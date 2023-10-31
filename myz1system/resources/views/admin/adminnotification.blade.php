@@ -132,12 +132,16 @@
             </div>
             <div class="notification-holder">
                 <h2>Pending Request</h2>
-                <div class="notification-solo">
-                <span class="material-icons-sharp">
-                    calendar_today
-                </span>
-                <h3>HII</h3>
-                </div>
+                <table>
+                    @foreach($notification as $notification)
+                    <div class="notification-solo" style="margin-bottom: 1.6rem; margin-left: 1rem;">
+                    <span class="material-icons-sharp" style="color: green;">
+                        calendar_today
+                    </span>
+                    <h4>New booking for {{$notification->servicename}} from {{$notification->departmentname}}</h4>
+                    </div>
+                    @endforeach
+                </table>
             </div>
         </main>
         <!-- End of Main Content -->
@@ -152,67 +156,6 @@
                 </button>
             </div>
             <!-- End of Nav -->
-
-            <div class="user-profile">
-                <div class="logo">
-                </div>
-            </div>
-
-            <div class="reminders">
-                <div class="header">
-                    <h2>Reminders</h2>
-                    <span class="material-icons-sharp">
-                        notifications_none
-                    </span>
-                </div>
-
-                <div class="notification">
-                    <div class="icon">
-                        <span class="material-icons-sharp">
-                            volume_up
-                        </span>
-                    </div>
-                    <div class="content">
-                        <div class="info">
-                            <h3>Workshop</h3>
-                            <small class="text_muted">
-                                08:00 AM - 12:00 PM
-                            </small>
-                        </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
-
-                <div class="notification deactive">
-                    <div class="icon">
-                        <span class="material-icons-sharp">
-                            edit
-                        </span>
-                    </div>
-                    <div class="content">
-                        <div class="info">
-                            <h3>Workshop</h3>
-                            <small class="text_muted">
-                                08:00 AM - 12:00 PM
-                            </small>
-                        </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
-
-                <div class="notification add-reminder">
-                    <div>
-                        <span class="material-icons-sharp">
-                            add
-                        </span>
-                        <h3>Add Reminder</h3>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 <!--FOOTER-->

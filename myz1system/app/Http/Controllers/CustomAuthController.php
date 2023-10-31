@@ -84,28 +84,6 @@ class CustomAuthController extends Controller
     {
         return view ('user.bookingform');
     }
-    public function adminHomepage()
-    {
-        $data = array();
-        if(Session::has('loginId'))
-        {
-            $data = User::where('id', '=', Session::get('loginId'))->first();
-        }
-        return view ('admin.adminhomepage', compact('data'));
-    }
-    public function adminPost()
-    {
-        return view ('admin.adminpostannouncement');
-    }
-    public function adminNotification()
-    {
-        $data = array();
-        if(Session::has('loginId'))
-        {
-            $data = User::where('id', '=', Session::get('loginId'))->first();
-        }
-        return view ('admin.adminnotification', compact('data'));
-    }
     public function logout()
     {
         if(Session::has('loginId'))
