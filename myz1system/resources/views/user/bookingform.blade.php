@@ -218,30 +218,166 @@
                             </div>
                         </div>
                         <div class="row">
-                                <div class="col-4">
-                                </div>
-                                <div class="col-1">
-                                </div>
-                                <div class="col-2">
-                                    <div class="summarybox" style="margin-top: 1.7rem; background-color: #F4FCD2;">
-                                        <h5 style="font-style: Italic; display: flex; justify-content:center;">TOTAL</h5>
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                <h6>Quantity</h6>
-                                    <div class="summarybox" style="background-color: #F4FCD2;">
-                                        <h5>0.00</h5>
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                <h6>Rental Fee</h6>
-                                    <div class="summarybox" style="background-color: #F4FCD2;">
-                                        <h5>0.00</h5>
-                                    </div>
-                                </div>
-                                <div class="col-1 d-grid">
+                            <div class="col-4">
+                            </div>
+                            <div class="col-1">
+                            </div>
+                            <div class="col-2">
+                                <div class="summarybox" style="margin-top: 1.7rem; background-color: #F4FCD2;">
+                                    <h5 style="font-style: Italic; display: flex; justify-content:center;">TOTAL</h5>
                                 </div>
                             </div>
+                            <div class="col-2">
+                            <h6>Quantity</h6>
+                                <div class="summarybox" style="background-color: #F4FCD2;">
+                                    <h5>0.00</h5>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                            <h6>Rental Fee</h6>
+                                <div class="summarybox" style="background-color: #F4FCD2;">
+                                    <h5>0.00</h5>
+                                </div>
+                            </div>
+                            <div class="col-1 d-grid">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 form-check">
+                                <h6 style="padding: 1rem; display: flex; justify-content: center; background-color: #F4FCD2; border: solid black 1px; margin-top: 1rem;">ETC SERVICES POLICY</h6>
+                                <div class="policybox">
+                                    <input class="form-check-input" required type="checkbox" value="" style="padding: 1rem; margin-left: 1rem; margin-top: 1rem; margin-right: 1rem; background-color: #43855A; border: solid black 2px;"><p style="margin-left: 4rem; padding-top: 1rem; padding-bottom: 1rem; padding-right: 1rem;">By clicking the checkbox, the undersigned have read and agreed to the ETC SERVICE REQUEST AND RENTAL POLICY</p></input>
+                                    <span style="display: flex; justify-content: center;"><p><a href="#">Link sa Policy</a></p></span>
+                                </div>
+                            </div>
+                            <div class="col-6" style="margin-right: -2rem;">
+                                <h6 style="margin-top: 1rem; background-color: #F4FCD2; border: solid black 1px; padding: 1rem;">Lasallian Partner Discount</h6>
+                                <h6 style="margin-top: -0.5rem; background-color: #F4FCD2; border: solid black 1px; padding: 1rem;">TOTAL</h6>
+                            </div>
+                            <div class="col-2">
+                                <h6 style="margin-top: 1rem; background-color: #F4FCD2; border: solid black 1px; padding: 1rem;">20%</h6>
+                                <h6 style="margin-top: -0.5rem; background-color: #F4FCD2; border: solid black 1px; padding: 1rem;">₱14,625.75</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                            <h6>Date to be Borrowed</h6>
+                            <input type="text" class="form-control">
+                            </div>
+                            <div class="col-2">
+                            <h6>Time</h6>
+                            <input type="text" class="form-control">
+                            </div>
+                            <div class="col">
+                            <h6>Date to be Returned</h6>
+                            <input type="text" class="form-control">
+                            </div>
+                            <div class="col-2">
+                            <h6>Time</h6>
+                            <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <table class="table table-bordered" style="margin-top: 1rem;">
+                            <thead>
+                                <tr style="border: solid black 1px;">
+                                    <th colspan="4" scope="col" style="background-color: #43855A80">ACCOUNTING DETAILS</th>
+                                </tr>
+                            </thead>
+                            <thead>
+                                <tr style="border: solid black 1px;">
+                                    <th scope="col">Department/Unit/Fund</th>
+                                    <th scope="col">Budget Reference</th>
+                                    <th scope="col">Amount to be Charged</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="add_contributer">
+                                <tr>
+                                    <td style="background-color: #43855A33; border: solid black 1px;">
+                                        <input type="text" class="form-control" style="background-color: transparent; border: none;">
+                                    </td>
+                                    <td  style="background-color: #43855A33; border: solid black 1px;">
+                                        <input type="text" class="form-control" style="background-color: transparent; border: none;">
+                                    </td>
+                                    <td  style="background-color: #43855A33; border: solid black 1px;">
+                                    <input type="text" class="form-control" style="background-color: transparent; border: none;">
+                                    </td>
+                                    <td class="d-grid" style="border: solid black 1px;">
+                                        <button type="button" class="btn btn-success add_contributer_button">
+                                        <span class="material-icons-sharp" style="font-size: 14px;">
+                                        add
+                                        </span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <thead>
+                                <tr>
+                                    <td colspan="2" scope="col"><h2 style="display: flex; justify-content: right;">Total</h2></td>
+                                    <td><h2>₱14,625.75</h2></td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div class="row" style="border-bottom: solid black 1px;">
+                            <div class="col">
+                            <h2 style="display: flex; justify-content: center; border-bottom: solid black 1px; padding-top: 1rem; padding-bottom: 1rem;">Requested By: </h2>
+                                <div class="requestinfo" style="background-color: #43855A33; padding: 6rem; margin-bottom: 1rem;">
+                                    <h3 style="display: flex; justify-content: center; font-size: 24px; font-weight: 900;">
+                                        Name
+                                    </h3>
+                                    <p style="display: flex; justify-content: center;">Position</p>
+                                </div>
+                            </div>
+                            <div class="col" style="border-right: solid black 1px; border-left: solid black 1px;">
+                            <h2 style="display: flex; justify-content: center; border-bottom: solid black 1px; padding-top: 1rem; padding-bottom: 1rem;">Approved By: (Department/Unit/Head)</h2>
+                                <div class="requestinfo" style="background-color: #43855A33; padding: 6rem; margin-bottom: 1rem;">
+                                    <h3 style="display: flex; justify-content: center; font-size: 24px; font-weight: 900;">
+                                        Name
+                                    </h3>
+                                    <p style="display: flex; justify-content: center;">Position</p>
+                                </div>
+                            </div>
+                            <div class="col">
+                            <h2 style="display: flex; justify-content: center; border-bottom: solid black 1px; padding-top: 1rem; padding-bottom: 1rem;">Budget Verified By: </h2>
+                                <div class="requestinfo" style="background-color: #43855A33; padding: 6rem; margin-bottom: 1rem;">
+                                    <h3 style="display: flex; justify-content: center; font-size: 24px; font-weight: 900;">
+                                        Name
+                                    </h3>
+                                    <p style="display: flex; justify-content: center;">Position</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin: 2rem;">
+                            <div class="col-4">
+                                <h6>Released by</h6>
+                                <input type="text" class="form-control">
+                                <h6>Received by</h6>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="col-2" style="border-right: solid black 1px;">
+                                <h6>Date</h6>
+                                <input type="text" class="form-control">
+                                <h6>Date</h6>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="col-4">
+                                <h6>Returned by</h6>
+                                <input type="text" class="form-control">
+                                <h6>Received by</h6>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="col-2">
+                                <h6>Date</h6>
+                                <input type="text" class="form-control">
+                                <h6>Date</h6>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col d-grid">
+                            <button class="btn" style="font-size: 24px; background-color: #F4FCD2; margin-top: 1rem; margin-bottom: 1rem; padding: 1rem; border: solid black 1px;">Book Now</button>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -315,6 +451,36 @@
             $(row_item).remove();
         });
     });
+
+    $(document).ready(function(){
+        $(".add_contributer_button").click(function(e){
+            e.preventDefault();
+            $("#add_contributer").append(`<tr>
+                                    <td style="background-color: #43855A33; border: solid black 1px;">
+                                        <input type="text" class="form-control" style="background-color: transparent; border: none;">
+                                    </td>
+                                    <td  style="background-color: #43855A33; border: solid black 1px;">
+                                        <input type="text" class="form-control" style="background-color: transparent; border: none;">
+                                    </td>
+                                    <td  style="background-color: #43855A33; border: solid black 1px;">
+                                    <input type="text" class="form-control" style="background-color: transparent; border: none;">
+                                    </td>
+                                    <td class="d-grid" style="border: solid black 1px;">
+                                        <button type="button" class="btn btn-danger remove_contributer_button">
+                                        <span class="material-icons-sharp" style="font-size: 14px;">
+                                        delete
+                                        </span>
+                                        </button>
+                                    </td>
+                                </tr>`);
+        })
+
+        $(document).on('click', '.remove_contributer_button', function(e){
+            e.preventDefault();
+            let row_item = $(this).parent().parent();
+            $(row_item).remove();
+        });
+    });re
 </script>
 <script src="script/homepage.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
