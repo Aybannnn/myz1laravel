@@ -68,26 +68,27 @@ class CustomAuthController extends Controller
     }
     public function userHomepage()
     {
-        $data = array();
-        if(Session::has('loginId'))
-        {
-            $data = User::where('id','=', Session::get('loginId'))->first();
-        }
-        return view ('user.userhomepage', compact('data'));
-    }
-    public function userBooking()
-    {
         $maincategory = Category::all();
-        $subcategory = SubCategory::all();
-        $inclusion = Inclusion::all();
-        $indivcategorySub1 = IndividualItem::where('sub_id', '=', '1')->get();
 
         $data = array();
         if(Session::has('loginId'))
         {
             $data = User::where('id','=', Session::get('loginId'))->first();
         }
-        return view ('user.userbooking', compact('data', 'maincategory', 'subcategory', 'indivcategorySub1', 'inclusion'));
+        return view ('user.userhomepage', compact('data', 'maincategory'));
+    }
+    public function categoryDetails($id)
+    {
+        $category = Category::find($id);
+        $subcategory = SubCategory::where('main_id', '=', $id)->get();
+        
+
+        return view ('user.category_details', compact('category', 'subcategory'));
+    }
+    public function categoryServices($id)
+    {
+        
+        return view ('user.category_services');
     }
     public function userBookingForm()
     {

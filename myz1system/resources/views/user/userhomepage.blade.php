@@ -65,15 +65,16 @@
                         </a>
                     </li>
                     <li>
-                        <a href="user-booking">
+                        <a href="booking-form">
                             <span class="material-icons-sharp">
                                 add_circle
                             </span>
                             <h3>Add Booking</h3>
                         </a>
                         <ul class="sub-menu">
-                            <li><a href="#">Equipment</a></li>
-                            <li><a href="#">Services</a></li>
+                            @foreach($maincategory as $main)
+                            <li><a href="{{url('category_details', $main->id)}}">{{$main->main_category}}</a></li>
+                            @endforeach
                         </ul>
                     </li>
                     <li>
