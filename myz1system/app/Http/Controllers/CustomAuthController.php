@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Category;
+use App\Models\SubCategory;
+use App\Models\IndividualItem;
+use App\Models\Inclusion;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -73,12 +77,17 @@ class CustomAuthController extends Controller
     }
     public function userBooking()
     {
+        $maincategory = Category::all();
+        $subcategory = SubCategory::all();
+        $inclusion = Inclusion::all();
+        $indivcategorySub1 = IndividualItem::where('sub_id', '=', '1')->get();
+
         $data = array();
         if(Session::has('loginId'))
         {
             $data = User::where('id','=', Session::get('loginId'))->first();
         }
-        return view ('user.userbooking', compact('data'));
+        return view ('user.userbooking', compact('data', 'maincategory', 'subcategory', 'indivcategorySub1', 'inclusion'));
     }
     public function userBookingForm()
     {

@@ -146,47 +146,33 @@
                     <div class="content-banner">
                         <h2>EdTech & Multimedia Technical Support</h2>
                     </div>
-                    <div class="equipment-contents">
-                        <a href="#">
-                            <div class="grid-container">
-                                <div class="grid1">
-                                    <div class="grid-img"></div>
+
+                    @foreach($indivcategorySub1 as $subCategory)
+                        <div class="equipment-contents">
+                            <a href="#">
+                                <div class="grid-container">
+                                    <div class="grid1">
+                                        <div class="grid-img"></div>
+                                    </div>
+
+                                    @foreach($inclusion as $inc)
+                                        <div class="grid2">
+                                            <span class="material-icons-sharp">
+                                                radio_button_unchecked
+                                            </span>
+                                            <h2>{{ $inc->inclusions }}</h2>
+                                        </div>
+                                    @endforeach
+
+                                    <div class="grid3">
+                                        <h2>{{ $subCategory->service }}</h2>
+                                    </div>
                                 </div>
-                                <div class="grid2">
-                                    
-                                </div>
-                                <div class="grid3">
-                                    <h2>EdTech & Multimedia Concerns</h2>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="equipment-contents">
-                        <div class="grid-container">
-                            <div class="grid1">
-                                <div class="grid-img"></div>
-                            </div>
-                            <div class="grid2">
-                                
-                            </div>
-                            <div class="grid3">
-                                <h2>Borrowing Multimedia Equipment</h2>
-                            </div>
+                            </a>
                         </div>
-                    </div>
-                    <div class="equipment-contents">
-                        <div class="grid-container">
-                            <div class="grid1">
-                                <div class="grid-img"></div>
-                            </div>
-                            <div class="grid2">
-                                
-                            </div>
-                            <div class="grid3">
-                                <h2>HyFlex Setup</h2>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+
+
                 </div>
                 <!--SERVICES-->
                 <div class="overlay3" id="services">
