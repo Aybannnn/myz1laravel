@@ -79,20 +79,36 @@ class CustomAuthController extends Controller
     }
     public function categoryDetails($id)
     {
+        $maincategory = Category::all();
         $category = Category::find($id);
         $subcategory = SubCategory::where('main_id', '=', $id)->get();
         
 
-        return view ('user.category_details', compact('category', 'subcategory'));
+        return view ('user.category_details', compact('category', 'maincategory', 'subcategory'));
     }
     public function categoryServices($id)
     {
-        
-        return view ('user.category_services');
+        $maincategory = Category::all();
+        $category = Category::where('id', '=', $id)->first();
+        $subcategory = SubCategory::find($id);
+        $indivitems = IndividualItem::where('sub_id', '=', $id)->get();
+
+        return view ('user.category_services', compact('category', 'maincategory', 'subcategory', 'indivitems'));
+    }
+    public function inclusionDetails($id)
+    {
+        $maincategory = Category::all();
+        $indivitems = IndividualItem::find($id);
+        $indivprice = IndividualItem::where('sub_id', '=', $id)->get();
+        $inclusion = Inclusion::where('item_id', '=', $id)->get();
+
+        return view ('user.inclusion_details', compact('maincategory', 'indivitems', 'indivprice', 'inclusion'));
     }
     public function userBookingForm()
     {
-        return view ('user.bookingform');
+        $maincategory = Category::all();
+
+        return view ('user.bookingform', compact('maincategory'));
     }
     public function logout()
     {

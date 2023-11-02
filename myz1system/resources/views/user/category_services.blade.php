@@ -20,10 +20,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style/booking.css">
+    <link rel="stylesheet" href="../style/categoryservice.css">
     <link rel="stylesheet" href="../style/main.css">
     <link rel="stylesheet" href="../style/animation.css">
-    <title>myZ1 Booking</title>
+    <title>{{$subcategory->main_service}}</title>
 </head>
 <style>
     main{
@@ -67,15 +67,16 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{url('user-booking')}}" class="active">
+                        <a href="{{url('booking-form')}}" class="active">
                             <span class="material-icons-sharp">
                                 add_circle
                             </span>
                             <h3>Add Booking</h3>
                         </a>
                         <ul class="sub-menu">
-                            <li><a href="#">Equipment</a></li>
-                            <li><a href="#">Services</a></li>
+                            @foreach($maincategory as $main)
+                            <li><a href="{{url('category_details', $main->id)}}">{{$main->main_category}}</a></li>
+                            @endforeach
                         </ul>
                     </li>
                     <li>
@@ -123,25 +124,22 @@
         <!--MIDDLE CONTENT-->
         <main>
             <div class="announcement-bg"></div>
-                <h1><span>BOOKING</span></h1>
-                <div class="booking-landing" style="margin-top: 6rem;">
-                    <p>ABOUT ETC BOOKING EQUIPMENT CHU CHU CHU</p>
-                </div>
+                <h1><span>{{$subcategory->main_service}}</span></h1>
             <div class="categories" style="margin-top: 6rem;">
-                <h2>Categories</h2>
+                <!-- <h2>{{$subcategory->main_service}}</h2> -->
                 <div class="row">
-                    
+                    @foreach($indivitems as $indiv)
                     <div class="col">
                         <div class="featured-img"></div>
                         <div class="title"style="margin-top: 2rem;">
-                            <h5 style="text-align: center;">Hi</h5>
-                            <p style="text-align: center;">September 00, 2023</p>
+                            <h5 style="text-align: center;">{{$indiv->service}}</h5>
                         </div>
-                        <a href="#">
+                        <a href="{{url('inclusion_details', $indiv->id)}}">
                             <button class="btn btn-success" style="margin-bottom: 1rem; font-size: 14px;">View More Information</button>
                         </a>
+                        <p style="text-align: center;">{{$indiv->additional_info}}</p>
                     </div>
-                    
+                    @endforeach
                 </div>
             </div>
         </main>

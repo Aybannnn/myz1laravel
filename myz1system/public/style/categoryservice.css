@@ -26,16 +26,14 @@ main .categories .row .col{
     display: flex;
     flex-direction: column;
     align-items: center;
-    cursor: pointer;
 }
 main .categories .row .col .featured-img{
     position: relative;
     top: 1rem;
-    width: 200px;
-    height: 50px;
+    width: 250px;
+    height: 100px;
     background-color: #d9d9d9;
     border-radius: 10px;
-    box-shadow: 4px 4px 10px #000000bf;
 }
 main h1{
     margin-left: -2rem;
@@ -45,11 +43,19 @@ main .row .col:nth-child(odd){
     border-radius: 10px;
     box-shadow: 4px 4px 4px #00000040;
 }
+main .row .col:nth-child(odd) h5{
+    padding-bottom: 0.4rem;
+    border-bottom: solid black 1px;
+}
 main .row .col:nth-child(even){
     background-color: #16392087;
     border-radius: 10px;
     box-shadow: 4px 4px 4px #00000040;
     color: white;
+}
+main .row .col:nth-child(even) h5{
+    padding-bottom: 0.4rem;
+    border-bottom: solid white 1px;
 }
 main .row .col:nth-child(odd) button{
     background-color: white;

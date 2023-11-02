@@ -20,10 +20,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style/bookingsubcategory.css">
+    <link rel="stylesheet" href="../style/inclusions.css">
     <link rel="stylesheet" href="../style/main.css">
     <link rel="stylesheet" href="../style/animation.css">
-    <title>{{$category->main_category}}</title>
+    <title>{{$indivitems->service}}</title>
 </head>
 <style>
     main{
@@ -67,7 +67,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{url('user-booking')}}" class="active">
+                        <a href="{{url('booking-form')}}" class="active">
                             <span class="material-icons-sharp">
                                 add_circle
                             </span>
@@ -124,24 +124,37 @@
         <!--MIDDLE CONTENT-->
         <main>
             <div class="announcement-bg"></div>
-                <h1><span>{{$category->main_category}}</span></h1>
-            <div class="booking-landing" style="margin-top: 6rem;">
-                <p>ABOUT ETC BOOKING EQUIPMENT CHU CHU CHU</p>
-            </div>
+                <h1><span>{{$indivitems->service}}</span></h1>
             <div class="categories" style="margin-top: 6rem;">
-                <h2>Categories</h2>
+                <h2></h2>
                 <div class="row">
-                    @foreach($subcategory as $sub)
-                    <div class="col">
-                        <div class="featured-img"></div>
-                        <div class="title"style="margin-top: 2rem;">
-                            <h3 style="text-align: center;">{{$sub->main_service}}</h3>
-                        </div>
-                        <a href="{{url('category_services', $sub->id)}}">
-                            <button class="btn btn-success" style="margin-bottom: 1rem; font-size: 14px;">View More Information</button>
-                        </a>
+                    <div class="col" style="background-color: #43855A80; border-radius: 10px;">
+                        <h2 style="padding: 1rem; font-weight: 900;">Inclusions</h2>
+                        @foreach($inclusion as $inclusion)
+                        <h4 style="margin-left: 4rem;">
+                            <span class="material-icons-sharp" style="font-size: 18px;">
+                            radio_button_unchecked
+                            </span><p style="display: inline-block; margin-left: 0.6rem;">{{$inclusion->inclusions}}</p>
+                        </h4>
+                        @endforeach
                     </div>
-                    @endforeach
+                    <div class="row">
+                    <h2 style="padding: 1rem; font-weight: 900; margin-top: 1rem;">Service Fee</h2>
+                        <div class="col">
+                            <h2 style="display: flex; justify-content: left;">Regular</h2>
+                            <h6 style="display: flex; justify-content: left; border-bottom: solid black 1px; padding-bottom: 1rem; font-style: italic;">(Normal Price)</h6>
+                            <div class="requestinfo" style="background-color: #43855A33; padding: 2rem;">
+                                <h2>{{$indivitems->regular}}</h2>
+                            </div>
+                        </div>
+                        <div class="col" style="border-left: solid black 1px; padding-bottom: 2rem;">
+                            <h2 style="display: flex; justify-content: left;">Lasallian Partner</h2>
+                            <h6 style="display: flex; justify-content: left; border-bottom: solid black 1px; padding-bottom: 1rem; font-style: italic;">(25% Discount)</h6>
+                            <div class="requestinfo" style="background-color: #43855A33; padding: 2rem;">
+                                <h2>{{$indivitems->lasallian_partner}}</h2>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

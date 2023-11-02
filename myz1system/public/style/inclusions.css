@@ -1,0 +1,69 @@
+/*CENTER PAGE*/
+main{
+    margin-top: 1.4rem;
+    margin-left: 1.8rem;
+    background-color: #16392033;
+    padding-left: 2rem;
+    padding-top: 2rem;
+    padding-right: 2rem;
+    border-radius: 0px 17px 17px 0px;
+    margin-bottom: 0.5rem;
+}
+main h1 span{
+    background-color: white;
+    position: relative;
+    top: 0.8rem;
+    padding-top: 1.9rem;
+    padding-bottom: 1.9rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 0px 30px 100px 0px;
+    border-color: #16381f;
+    border-style: solid solid none none;
+    border-width: 0.8rem;
+}
+main h1{
+    margin-left: -2rem;
+}
+
+/*RIGHT PAGE*/
+.right-section{
+    margin-top: 1.4rem;
+    margin-right: 1rem;
+}
+.right-section .nav{
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+}
+.right-section .nav button{
+    display: none;
+}
+.right-section .searchbooking .search span{
+    position: relative;
+    top: 36px;
+    left: 88%;
+}
+.right-section .searchbooking .search .form-control{
+    border-color: black;
+    border-width: 2px;
+    border-radius: 30px;
+}
+.right-section a{
+    text-decoration: none;
+    color: black;
+}
+.right-section button{
+    margin-top: 2rem;
+    background-color: #f4fcd2;
+    font-size: 32px;
+    border: solid black;
+}
+.right-section button:hover{
+    background-color: #808b51;
+    border: solid black;
+    color: white;
+}
+/* .right-section .searchbooking{
+    display: flex;
+} */
