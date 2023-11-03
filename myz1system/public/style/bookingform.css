@@ -49,6 +49,25 @@ main .bookingform{
 main .bookingform .containerform-fluid h6{
     font-weight: 900;
 }
+main .bookingform .containerform-fluid .add_item_hidden{
+    display: none;
+}
+#load-more{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    padding:13px 30px;
+    border:1px solid #334;
+    color:#334;
+    font-size: 16px;
+    background-color: #43855A33;
+    cursor: pointer;
+}
+#load-more:hover{
+    background-color: green;
+    border-color: white;
+    color:#fff;
+}
 .form-control{
     background-color: #43855A33;
 }

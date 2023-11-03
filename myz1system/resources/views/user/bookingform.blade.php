@@ -180,13 +180,13 @@
                             <input type="text" class="form-control">
                             </div>
                         </div>
-                        <div id="add_item">
+                        <div class="add_item">
                             <div class="row">
                                 <div class="col-4">
                                     <h6>Specific Type of ETC Rental Request</h6>
                                     <input type="text" name="rental_name[]" class="form-control">
                                 </div>
-                                <div class="col-1">
+                                <div class="col-2">
                                 <h6>Hours</h6>
                                 <input type="text" class="form-control">
                                 </div>
@@ -208,20 +208,132 @@
                                         <h5>0.00</h5>
                                     </div>
                                 </div>
-                                <div class="col-1 d-grid">
-                                    <h6>Add</h6>
-                                    <button type="button" class="btn btn-success add_button" id="add_button" name="add_button">
-                                    <span class="material-icons-sharp">
-                                    add
-                                    </span>
-                                    </button>
+                            </div>
+                        </div>
+                        <div class="add_item_hidden">
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6>Specific Type of ETC Rental Request</h6>
+                                    <input type="text" name="rental_name[]" class="form-control">
+                                </div>
+                                <div class="col-2">
+                                <h6>Hours</h6>
+                                <input type="text" class="form-control">
+                                </div>
+                                <div class="col-2">
+                                <h6>Rate</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <h6>Quantity</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <h6>Rental Fee</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add_item_hidden">
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6>Specific Type of ETC Rental Request</h6>
+                                    <input type="text" name="rental_name[]" class="form-control">
+                                </div>
+                                <div class="col-2">
+                                <h6>Hours</h6>
+                                <input type="text" class="form-control">
+                                </div>
+                                <div class="col-2">
+                                <h6>Rate</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <h6>Quantity</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <h6>Rental Fee</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add_item_hidden">
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6>Specific Type of ETC Rental Request</h6>
+                                    <input type="text" name="rental_name[]" class="form-control">
+                                </div>
+                                <div class="col-2">
+                                <h6>Hours</h6>
+                                <input type="text" class="form-control">
+                                </div>
+                                <div class="col-2">
+                                <h6>Rate</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <h6>Quantity</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <h6>Rental Fee</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add_item_hidden">
+                            <div class="row">
+                                <div class="col-4">
+                                    <h6>Specific Type of ETC Rental Request</h6>
+                                    <input type="text" name="rental_name[]" class="form-control">
+                                </div>
+                                <div class="col-2">
+                                <h6>Hours</h6>
+                                <input type="text" class="form-control">
+                                </div>
+                                <div class="col-2">
+                                <h6>Rate</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <h6>Quantity</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <h6>Rental Fee</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-4">
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                             </div>
                             <div class="col-2">
                                 <div class="summarybox" style="margin-top: 1.7rem; background-color: #F4FCD2;">
@@ -243,6 +355,7 @@
                             <div class="col-1 d-grid">
                             </div>
                         </div>
+                        <div id="load-more">Add More Equipment</div>
                         <div class="row">
                             <div class="col-4 form-check">
                                 <h6 style="padding: 1rem; display: flex; justify-content: center; background-color: #F4FCD2; border: solid black 1px; margin-top: 1rem;">ETC SERVICES POLICY</h6>
@@ -289,7 +402,6 @@
                                     <th scope="col">Department/Unit/Fund</th>
                                     <th scope="col">Budget Reference</th>
                                     <th scope="col">Amount to be Charged</th>
-                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody id="add_contributer">
@@ -303,12 +415,27 @@
                                     <td  style="background-color: #43855A33; border: solid black 1px;">
                                     <input type="text" class="form-control" style="background-color: transparent; border: none;">
                                     </td>
-                                    <td class="d-grid" style="border: solid black 1px;">
-                                        <button type="button" class="btn btn-success add_contributer_button">
-                                        <span class="material-icons-sharp" style="font-size: 14px;">
-                                        add
-                                        </span>
-                                        </button>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: #43855A33; border: solid black 1px;">
+                                        <input type="text" class="form-control" style="background-color: transparent; border: none;">
+                                    </td>
+                                    <td  style="background-color: #43855A33; border: solid black 1px;">
+                                        <input type="text" class="form-control" style="background-color: transparent; border: none;">
+                                    </td>
+                                    <td  style="background-color: #43855A33; border: solid black 1px;">
+                                    <input type="text" class="form-control" style="background-color: transparent; border: none;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color: #43855A33; border: solid black 1px;">
+                                        <input type="text" class="form-control" style="background-color: transparent; border: none;">
+                                    </td>
+                                    <td  style="background-color: #43855A33; border: solid black 1px;">
+                                        <input type="text" class="form-control" style="background-color: transparent; border: none;">
+                                    </td>
+                                    <td  style="background-color: #43855A33; border: solid black 1px;">
+                                    <input type="text" class="form-control" style="background-color: transparent; border: none;">
                                     </td>
                                 </tr>
                             </tbody>
@@ -481,7 +608,23 @@
             let row_item = $(this).parent().parent();
             $(row_item).remove();
         });
-    });re
+    });
+
+let loadMoreBtn = document.querySelector('#load-more');
+let currentItem = 0;
+
+loadMoreBtn.onclick = () =>{
+    let boxes = [...document.querySelectorAll('main .bookingform .containerform-fluid .add_item_hidden')];
+    for (var i = currentItem; i < currentItem + 1; i++){
+        boxes[i].style.display = 'block';
+    }
+    currentItem += 1;
+
+    if(currentItem >= boxes.length){
+        loadMoreBtn.style.display = 'none';
+    }
+}
+
 </script>
 <script src="script/homepage.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
