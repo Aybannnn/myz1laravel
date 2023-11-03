@@ -20,9 +20,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style/bookingsubcategory.css">
-    <link rel="stylesheet" href="../style/main.css">
-    <link rel="stylesheet" href="../style/animation.css">
+    <link href="https://cdn.jsdelivr.net/npm/swiper@11.0.3/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('style/bookingsubcategory.css')}}">
+    <link rel="stylesheet" href="{{asset('style/main.css')}}">
+    <link rel="stylesheet" href="{{asset('style/animation.css')}}">
     <title>{{$category->main_category}}</title>
 </head>
 <style>
@@ -47,7 +48,7 @@
         <aside>
             <div class="toggle">
                 <div class="logo">
-                    <img src="images/images/zone-grn-2-1 (2).png">
+                    
                 </div>
                 <div class="close" id="close-btn">
                     <span class="material-icons-sharp">
@@ -67,7 +68,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{url('user-booking')}}" class="active">
+                        <a href="{{url('booking-form')}}" class="active">
                             <span class="material-icons-sharp">
                                 add_circle
                             </span>
@@ -142,7 +143,7 @@
                         </a>
                     </div>
                     @endforeach
-                </div>
+                </div> 
             </div>
         </main>
         <!-- End of Main Content -->
@@ -169,7 +170,7 @@
                     </td>
                 </tr>
             </div>
-            <a href="booking-form">
+            <a href="{{url('booking-form')}}">
             <button class='btn d-grid gap-2 mx-auto'>BOOK NOW</button>
             </a>
         </div>
@@ -180,6 +181,37 @@
     <img src="{{asset('images/zonefooter.png')}}">
 </div>
 <!--FOOTER-->
-<script src="script/booking.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11.0.3/swiper-bundle.min.js"></script>
+<script src="{{asset('script/owl.carousel.min.js')}}"></script>
+<!-- <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      centeredSlides: false,
+      slidesPerGroupSkip: 1,
+      grabCursor: true,
+      keyboard: {
+        enabled: true,
+      },
+      breakpoints: {
+        769: {
+          slidesPerView: 2,
+          slidesPerGroup: 2,
+        },
+      },
+      scrollbar: {
+        el: ".swiper-scrollbar",
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+  </script> -->
+<!-- <script src="script/booking.js"></script> -->
 </body>
 </html>

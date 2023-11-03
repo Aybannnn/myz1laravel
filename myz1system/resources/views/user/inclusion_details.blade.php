@@ -182,7 +182,7 @@
                     </td>
                 </tr>
             </div>
-            <a href="booking-form">
+            <a href="{{url('booking-form')}}">
             <button class='btn d-grid gap-2 mx-auto'>BOOK NOW</button>
             </a>
         </div>

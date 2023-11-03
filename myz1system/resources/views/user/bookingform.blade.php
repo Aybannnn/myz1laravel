@@ -125,7 +125,7 @@
                 <h1>
                     
                     <span>
-                    <a href="user-booking" style="text-decoration: none; color: black;">
+                    <a href="{{url()->previous()}}" style="text-decoration: none; color: black;">
                     <div class="material-icons-sharp" style="margin-right: 2rem; border-right: solid black 0.2rem; padding-right: 1rem">
                     arrow_back
                     </div></a>
