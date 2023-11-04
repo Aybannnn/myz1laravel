@@ -133,14 +133,86 @@
             <div class="notification-holder">
                 <h2>Pending Request</h2>
                 <table>
-                    @foreach($notification as $notification)
-                    <div class="notification-solo" style="margin-bottom: 1.6rem; margin-left: 1rem;">
-                    <span class="material-icons-sharp" style="color: green;">
-                        calendar_today
-                    </span>
-                    <h4>New booking for {{$notification->servicename}} from {{$notification->departmentname}}</h4>
+                    <div class="row">
+                        <div class="col">
+                        @foreach($notificationPending as $notificationP)
+                            <div class="notification-solo" style="margin-bottom: 0.6rem; margin-left: 2rem; display: flex; padding-right: 4rem;">
+                                <span class="material-icons-sharp" style="color: green; font-size: 32px;">pending_actions</span>
+                                <h4 style="margin-left: 1rem;">New booking for
+                                    @if ($notificationP->rental_name1) 
+                                        <span style="color: #076026; border-bottom: solid black 1px">{{$notificationP->rental_name1}}</span>
+                                    @endif
+                                    @if ($notificationP->rental_name2)
+                                        @if ($notificationP->rental_name1), @endif
+                                        <span style="color: #076026; border-bottom: solid black 1px">{{$notificationP->rental_name2}}</span>
+                                    @endif
+                                    @if ($notificationP->rental_name3)
+                                        @if ($notificationP->rental_name1 || $notificationP->rental_name2), @endif
+                                        <span style="color: #076026; border-bottom: solid black 1px">{{$notificationP->rental_name3}}</span>
+                                    @endif
+                                    @if ($notificationP->rental_name4)
+                                        @if ($notificationP->rental_name1 || $notificationP->rental_name2 || $notificationP->rental_name3), @endif
+                                        <span style="color: #076026; border-bottom: solid black 1px">{{$notificationP->rental_name4}}</span>
+                                    @endif
+                                    @if ($notificationP->rental_name5)
+                                        @if ($notificationP->rental_name1 || $notificationP->rental_name2 || $notificationP->rental_name3 || $notificationP->rental_name4), @endif
+                                        <span style="color: #076026; border-bottom: solid black 1px">{{$notificationP->rental_name5}}</span>
+                                    @endif
+                                    from {{$notificationP->requesting_office}}
+                                </h4>
+                            </div>
+                            <div class="button-holder" style="padding-left: 5.2rem; padding-bottom: 2rem;">
+                                <a href="#" class="btn btn-primary">View Request</a>
+                                <a href="{{url('accept_request', $notificationP->id)}}" class="btn btn-success" style="margin-left: 1rem;">Accept Request</a>
+                                <a href="{{url('delete_request', $notificationP->id)}}" class="btn btn-danger" style="margin-left: 1rem;">Reject Request</a>
+                            </div>
+                        @endforeach
+                        </div>
                     </div>
-                    @endforeach
+                </table>
+            </div>
+            <div class="notification-holder">
+                <h2>Active Request</h2>
+                <table>
+                    <div class="row">
+                        <div class="col">
+                        @foreach($notificationActive as $notificationA)
+                            <div class="notification-solo" style="margin-bottom: 0.6rem; margin-left: 2rem; display: flex; padding-right: 4rem;">
+                                <span class="material-icons-sharp" style="color: green; font-size: 32px;">calendar_today</span>
+                                <h4 style="margin-left: 1rem;">New booking for
+                                    @if ($notificationA->rental_name1) 
+                                        <span style="color: #076026; border-bottom: solid black 1px">{{$notificationA->rental_name1}}</span>
+                                    @endif
+                                    @if ($notificationA->rental_name2)
+                                        @if ($notificationA->rental_name1), @endif
+                                        <span style="color: #076026; border-bottom: solid black 1px">{{$notificationA->rental_name2}}</span>
+                                    @endif
+                                    @if ($notificationA->rental_name3)
+                                        @if ($notificationA->rental_name1 || $notificationA->rental_name2), @endif
+                                        <span style="color: #076026; border-bottom: solid black 1px">{{$notificationA->rental_name3}}</span>
+                                    @endif
+                                    @if ($notificationA->rental_name4)
+                                        @if ($notificationA->rental_name1 || $notificationA->rental_name2 || $notificationA->rental_name3), @endif
+                                        <span style="color: #076026; border-bottom: solid black 1px">{{$notificationA->rental_name4}}</span>
+                                    @endif
+                                    @if ($notificationA->rental_name5)
+                                        @if ($notificationA->rental_name1 || $notificationA->rental_name2 || $notificationA->rental_name3 || $notificationA->rental_name4), @endif
+                                        <span style="color: #076026; border-bottom: solid black 1px">{{$notificationA->rental_name5}}</span>
+                                    @endif
+                                    from {{$notificationA->requesting_office}}
+                                </h4>
+                            </div>
+                            <div class="button-holder" style="padding-left: 5.2rem; padding-bottom: 2rem;">
+                                <button class="btn btn-primary">View Request</button>
+                                <button class="btn btn-success" style="margin-left: 1rem;">Edit Request</button>
+                                <a href="{{url('deact_request', $notificationA->id)}}" class="btn btn-warning" style="margin-left: 1rem;">Deactivate Request</a>
+                                <a href="{{url('delete_request', $notificationA->id)}}" class="btn btn-danger" style="margin-left: 1rem;"><span class="material-icons-sharp" style="font-size: 18px;">
+                                delete
+                                </span></a>
+                            </div>
+                        @endforeach
+                        </div>
+                    </div>
                 </table>
             </div>
         </main>

@@ -30,7 +30,10 @@ Route::post('/register-request', [CustomAuthController::class, 'registerRequest'
 Route::get('/booking-form', [CustomAuthController::class, 'userBookingForm'])->middleware('isLoggedIn');
 Route::get('/admin-homepage', [AdminController::class, 'adminHomepage'])->middleware('isLoggedIn');
 Route::get('/admin-post', [AdminController::class, 'adminPost']);
-Route::get('/admin-notification', [AdminController::class, 'adminNotification']);
+Route::get('/admin-notification', [AdminController::class, 'adminNotification'])->middleware('isLoggedIn');
+Route::get('/delete_request/{id}', [AdminController::class, 'deleteRequest'])->middleware('isLoggedIn');
+Route::get('/accept_request/{id}', [AdminController::class, 'acceptRequest'])->middleware('isLoggedIn');
+Route::get('/deact_request/{id}', [AdminController::class, 'deactRequest'])->middleware('isLoggedIn');
 Route::get('/logout', [CustomAuthController::class, 'logout']);
 
 

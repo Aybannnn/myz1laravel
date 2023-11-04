@@ -145,11 +145,30 @@
                         <div class="col">
                             <div class="row">
                                 @foreach($notification as $notification)
-                                <div class="notification-solo" style="margin-bottom: 1.6rem; margin-left: 2rem; display: flex;">
-                                <span class="material-icons-sharp" style="color: green;">
-                                    calendar_today
-                                </span>
-                                <h4 style="margin-left: 1rem;">New booking for {{$notification->servicename}} from {{$notification->departmentname}}</h4>
+                                <div class="notification-solo" style="margin-bottom: 1.6rem; margin-left: 2rem; display: flex; padding-right: 4rem;">
+                                    <span class="material-icons-sharp" style="color: green;">calendar_today</span>
+                                    <h4 style="margin-left: 1rem;">New booking for
+                                        @if ($notification->rental_name1) 
+                                            <span style="color: #076026; border-bottom: solid black 1px">{{$notification->rental_name1}}</span>
+                                        @endif
+                                        @if ($notification->rental_name2)
+                                            @if ($notification->rental_name1), @endif
+                                            <span style="color: #076026; border-bottom: solid black 1px">{{$notification->rental_name2}}</span>
+                                        @endif
+                                        @if ($notification->rental_name3)
+                                            @if ($notification->rental_name1 || $notification->rental_name2), @endif
+                                            <span style="color: #076026; border-bottom: solid black 1px">{{$notification->rental_name3}}</span>
+                                        @endif
+                                        @if ($notification->rental_name4)
+                                            @if ($notification->rental_name1 || $notification->rental_name2 || $notification->rental_name3), @endif
+                                            <span style="color: #076026; border-bottom: solid black 1px">{{$notification->rental_name4}}</span>
+                                        @endif
+                                        @if ($notification->rental_name5)
+                                            @if ($notification->rental_name1 || $notification->rental_name2 || $notification->rental_name3 || $notification->rental_name4), @endif
+                                            <span style="color: #076026; border-bottom: solid black 1px">{{$notification->rental_name5}}</span>
+                                        @endif
+                                        from {{$notification->requesting_office}}
+                                    </h4>
                                 </div>
                                 @endforeach
                             </div>

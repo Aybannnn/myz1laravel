@@ -148,6 +148,7 @@ class CustomAuthController extends Controller
         $bookingRequest->rental_name4_hours = $request->rental_name4_hours;
         $bookingRequest->rental_name5 = $request->rental_name5;
         $bookingRequest->rental_name5_hours = $request->rental_name5_hours;
+        $bookingRequest->booking_status = 'pending';
         $res = $bookingRequest->save();
         if ($res) {
             return back()->with('success', 'Your booking have been placed Successfully!');
