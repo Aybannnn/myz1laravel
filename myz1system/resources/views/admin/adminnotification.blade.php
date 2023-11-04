@@ -162,7 +162,7 @@
                                 </h4>
                             </div>
                             <div class="button-holder" style="padding-left: 5.2rem; padding-bottom: 2rem;">
-                                <a href="#" class="btn btn-primary">View Request</a>
+                                <a href="{{url('view_request', $notificationP->id)}}" class="btn btn-primary">View Request</a>
                                 <a href="{{url('accept_request', $notificationP->id)}}" class="btn btn-success" style="margin-left: 1rem;">Accept Request</a>
                                 <a href="{{url('delete_request', $notificationP->id)}}" class="btn btn-danger" style="margin-left: 1rem;">Reject Request</a>
                             </div>
@@ -203,8 +203,7 @@
                                 </h4>
                             </div>
                             <div class="button-holder" style="padding-left: 5.2rem; padding-bottom: 2rem;">
-                                <button class="btn btn-primary">View Request</button>
-                                <button class="btn btn-success" style="margin-left: 1rem;">Edit Request</button>
+                                <a href="{{url('update_request', $notificationA->id)}}" class="btn btn-primary">View and Edit Request</a>
                                 <a href="{{url('deact_request', $notificationA->id)}}" class="btn btn-warning" style="margin-left: 1rem;">Deactivate Request</a>
                                 <a href="{{url('delete_request', $notificationA->id)}}" class="btn btn-danger" style="margin-left: 1rem;"><span class="material-icons-sharp" style="font-size: 18px;">
                                 delete

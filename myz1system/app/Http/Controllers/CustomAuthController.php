@@ -107,12 +107,24 @@ class CustomAuthController extends Controller
     }
     public function userBookingForm()
     {
+        $data = array();
+        if(Session::has('loginId'))
+        {
+            $data = User::where('id', '=', Session::get('loginId'))->first();
+        }
+
         $maincategory = Category::all();
 
-        return view ('user.bookingform', compact('maincategory'));
+        return view ('user.bookingform', compact('data', 'maincategory'));
     }
     public function registerRequest(Request $request)
     {
+        $data = array();
+        if(Session::has('loginId'))
+        {
+        $userId = Session::get('loginId');
+        
+
         $request->validate([
             'requesting_office' => 'required',
             'contact_person' => 'required',
@@ -132,6 +144,7 @@ class CustomAuthController extends Controller
             'rental_name5_hours' => 'sometimes',
         ]);
         $bookingRequest = new BookingRequest(); // Keep the model instance name as 'Request'
+        $bookingRequest->user_id = $userId;
         $bookingRequest->requesting_office = $request->requesting_office;
         $bookingRequest->contact_person = $request->contact_person;
         $bookingRequest->contact_person_no = $request->contact_person_no;
@@ -155,6 +168,7 @@ class CustomAuthController extends Controller
         } else {
             return back()->with('fail', 'Something went wrong, Please try again.');
         }
+    }
     }
     public function logout()
     {

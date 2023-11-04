@@ -57,7 +57,7 @@
             <div class="sidebar close">
                 <ul class="nav-links">
                     <li>
-                        <a href="user-homepage">
+                        <a href="admin-homepage">
                             <span class="material-icons-sharp">
                                 home
                             </span>
@@ -65,16 +65,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="user-booking"  class="active">
+                        <a href="admin-notification" class="active">
                             <span class="material-icons-sharp">
-                                add_circle
+                                notifications
                             </span>
-                            <h3>Add Booking</h3>
+                            <h3>Notification</h3>
                         </a>
                         <ul class="sub-menu">
-                            @foreach($maincategory as $main)
-                            <li><a href="{{url('category_details', $main->id)}}">{{$main->main_category}}</a></li>
-                            @endforeach
+                            <li><a href="#">Equipment</a></li>
+                            <li><a href="#">Services</a></li>
                         </ul>
                     </li>
                     <li>
@@ -129,87 +128,67 @@
                     <div class="material-icons-sharp" style="margin-right: 2rem; border-right: solid black 0.2rem; padding-right: 1rem">
                     arrow_back
                     </div></a>
-                    ETC Laboratory and Equipment Rental Form</span>
+                    Pending Request</span>
                 </h1>
             </div>
             <div class="bookingform">
-                <form action="{{route('register-request')}}" method="post">
+                <form action="{{url('update-request', $notificationActive->id)}}" method="post">
                     @csrf
                     <div class="containerform-fluid">
                         <div class="row">
                             <div class="col-8">
-                                @if(Session::has('success'))
-                                <div class="alert alert-success">{{Session::get('success')}}</div>
-                                @endif
-                                @if(Session::has('fail'))
-                                <div class="errormsg">{{Session::get('fail')}}</div>
-                                @endif
+                            <h6>ETC Services Request #</h6>
+                            <input disabled type="text" class="form-control" placeholder="{{$notificationActive->id}}">
                             </div>
-                            <div class="col">
-                            <h6>User Id</h6>
-                            <input disabled type="text" class="form-control" name="user_id" value="{{$data->id}}" disabled></div>
+                            <div class="col"></div>
                             <div class="col">
                             <h6>Request Date</h6>
-                            <input disabled type="text" class="form-control" placeholder="<?php 
-                                date_default_timezone_set('Asia/Kolkata');
-                                $today = date('m/d/y');
-                                echo $today;
-                                ?>">
+                            <input disabled type="text" class="form-control" placeholder="{{$notificationActive->created_at}}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <div class="form-group">
                                 <h6>Requesting Office/Unit</h6>
-                                <input type="text" class="form-control" name="requesting_office" value="{{old('requesting_office')}}">
-                                <span class="errormsg">@error('requesting_office') {{$message}} @enderror</span>
-                                </div>
+                                <input type="text" class="form-control" name="requesting_office" value="{{$notificationActive->requesting_office}}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <h6>Contact Person</h6>
-                                <input type="text" class="form-control" name="contact_person" value="{{old('contact_person')}}">
-                                <span class="errormsg">@error('contact_person') {{$message}} @enderror</span>
+                                <input type="text" class="form-control" name="contact_person" value="{{$notificationActive->contact_person}}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <h6>Contact Person's #</h6>
-                                <input type="text" class="form-control" name="contact_person_no" value="{{old('contact_person_no')}}">
-                                <span class="errormsg">@error('contact_person_no') {{$message}} @enderror</span>
+                                <input type="text" class="form-control" name="contact_person_no" value="{{$notificationActive->contact_person_no}}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <h6>Contact Person's Email</h6>
-                                <input type="text" class="form-control" name="contact_person_email" value="{{old('contact_person_email')}}">
-                                <span class="errormsg">@error('contact_person_email') {{$message}} @enderror</span>
+                                <input type="text" class="form-control" name="contact_person_email" value="{{$notificationActive->contact_person_email}}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <h6>Production/Event Title</h6>
-                                <input type="text" class="form-control" name="production_title" value="{{old('production_title')}}">
-                                <span class="errormsg">@error('production_title') {{$message}} @enderror</span>
+                                <input type="text" class="form-control" name="production_title" value="{{$notificationActive->production_title}}">
                             </div>
                             <div class="col">
                                 <h6>Expected Running Time</h6>
-                                <input type="text" class="form-control" name="running_time" value="{{old('running_time')}}">
-                                <span class="errormsg">@error('running_time') {{$message}} @enderror</span>
+                                <input type="text" class="form-control" name="running_time" value="{{$notificationActive->running_time}}">
                             </div>
                         </div>
                         <div class="add_item">
                             <div class="row">
                                 <div class="col-4">
                                     <h6>Specific Type of ETC Rental Request</h6>
-                                    <input type="text" class="form-control" name="rental_name1" value="{{old('rental_name1')}}">
-                                    <span class="errormsg">@error('rental_name1') {{$message}} @enderror</span>
+                                    <input type="text" class="form-control" name="rental_name1" value="{{$notificationActive->rental_name1}}">
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                    <input type="text" class="form-control" name="rental_name1_hours" value="{{old('rental_name1_hours')}}">
-                                    <span class="errormsg">@error('rental_name1_hours') {{$message}} @enderror</span>
+                                    <input type="text" class="form-control" name="rental_name1_hours" value="{{$notificationActive->rental_name1_hours}}">
                                 </div>
                                 <div class="col-2">
                                 <h6>Rate</h6>
@@ -231,17 +210,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="add_item_hidden">
+                        <div class="add_item">
                             <div class="row">
                                 <div class="col-4">
                                     <h6>Specific Type of ETC Rental Request</h6>
-                                    <input type="text" class="form-control" name="rental_name2" value="{{old('rental_name2')}}">
-                                    <span class="errormsg">@error('rental_name2') {{$message}} @enderror</span>
+                                    <input type="text" class="form-control" name="rental_name2" value="{{$notificationActive->rental_name2}}">
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                    <input type="text" class="form-control" name="rental_name2_hours" value="{{old('rental_name2_hours')}}">
-                                    <span class="errormsg">@error('rental_name2_hours') {{$message}} @enderror</span>
+                                    <input type="text" class="form-control" name="rental_name2_hours" value="{{$notificationActive->rental_name2_hours}}">
                                 </div>
                                 <div class="col-2">
                                 <h6>Rate</h6>
@@ -263,17 +240,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="add_item_hidden">
+                        <div class="add_item">
                             <div class="row">
                             <div class="col-4">
                                 <h6>Specific Type of ETC Rental Request</h6>
-                                    <input type="text" class="form-control" name="rental_name3" value="{{old('rental_name3')}}">
-                                    <span class="errormsg">@error('rental_name3') {{$message}} @enderror</span>
+                                    <input type="text" class="form-control" name="rental_name3" value="{{$notificationActive->rental_name3}}">
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                    <input type="text" class="form-control" name="rental_name3_hours" value="{{old('rental_name3_hours')}}">
-                                    <span class="errormsg">@error('rental_name3_hours') {{$message}} @enderror</span>
+                                    <input type="text" class="form-control" name="rental_name3_hours" value="{{$notificationActive->rental_name3_hour}}">
                                 </div>
                                 <div class="col-2">
                                 <h6>Rate</h6>
@@ -295,17 +270,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="add_item_hidden">
+                        <div class="add_item">
                             <div class="row">
                                 <div class="col-4">
                                 <h6>Specific Type of ETC Rental Request</h6>
-                                    <input type="text" class="form-control" name="rental_name4" value="{{old('rental_name4')}}">
-                                    <span class="errormsg">@error('rental_name4') {{$message}} @enderror</span>
+                                    <input type="text" class="form-control" name="rental_name4" value="{{$notificationActive->rental_name4}}">
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                    <input type="text" class="form-control" name="rental_name4_hours" value="{{old('rental_name4_hours')}}">
-                                    <span class="errormsg">@error('rental_name4_hours') {{$message}} @enderror</span>
+                                    <input type="text" class="form-control" name="rental_name4_hours" value="{{$notificationActive->rental_name4_hour}}">
                                 </div>
                                 <div class="col-2">
                                 <h6>Rate</h6>
@@ -327,17 +300,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="add_item_hidden">
+                        <div class="add_item">
                             <div class="row">
                             <div class="col-4">
                                 <h6>Specific Type of ETC Rental Request</h6>
-                                    <input type="text" class="form-control" name="rental_name5" value="{{old('rental_name5')}}">
-                                    <span class="errormsg">@error('rental_name5') {{$message}} @enderror</span>
+                                    <input type="text" class="form-control" name="rental_name5" value="{{$notificationActive->rental_name5}}">
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                    <input type="text" class="form-control" name="rental_name5_hours" value="{{old('rental_name5_hours')}}">
-                                    <span class="errormsg">@error('rental_name5_hours') {{$message}} @enderror</span>
+                                    <input type="text" class="form-control" name="rental_name5_hours" value="{{$notificationActive->rental_name5_hour}}">
                                 </div>
                                 <div class="col-2">
                                 <h6>Rate</h6>
@@ -384,7 +355,6 @@
                             <div class="col-1 d-grid">
                             </div>
                         </div>
-                        <div id="load-more">Add More Equipment</div>
                         <!-- <div class="row">
                             <div class="col-4 form-check">
                                 <h6 style="padding: 1rem; display: flex; justify-content: center; background-color: #F4FCD2; border: solid black 1px; margin-top: 1rem;">ETC SERVICES POLICY</h6>
@@ -531,8 +501,15 @@
                             </div>
                         </div> -->
                         <div class="row">
+                        </div>
+                        <div class="row">
                             <div class="col d-grid">
-                            <button class="btn" type="submit" style="font-size: 24px; background-color: #F4FCD2; margin-top: 1rem; margin-bottom: 1rem; padding: 1rem; border: solid black 1px;">Book Now</button>
+                            <button class="btn" type="submit" style="font-size: 24px; background-color: #F4FCD2; margin-top: 1rem; margin-bottom: 1rem; padding: 1rem; border: solid black 1px;">Update and Save Changes</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col d-grid">
+                            <a href="{{url('admin-notification')}}" class="btn" style="font-size: 24px; background-color: #F4FCD2; margin-bottom: 1rem; padding: 1rem; border: solid black 1px;">Cancel and Dont Save Changes</a>
                             </div>
                         </div>
                     </div>
@@ -560,101 +537,6 @@
 </div>
 <!--FOOTER-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $(".add_button").click(function(e){
-            e.preventDefault();
-            $("#add_item").append(`<div class="row">
-                                <div class="col-4">
-                                    <h6>Specific Type of ETC Rental Request</h6>
-                                    <input type="text" name="rental_name[]" class="form-control">
-                                </div>
-                                <div class="col-1">
-                                <h6>Hours</h6>
-                                <input type="text" class="form-control">
-                                </div>
-                                <div class="col-2">
-                                <h6>Rate</h6>
-                                    <div class="summarybox">
-                                        <h5>0.00</h5>
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                <h6>Quantity</h6>
-                                    <div class="summarybox">
-                                        <h5>0.00</h5>
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                <h6>Rental Fee</h6>
-                                    <div class="summarybox">
-                                        <h5>0.00</h5>
-                                    </div>
-                                </div>
-                                <div class="col-1 d-grid">
-                                    <h6>Remove</h6>
-                                    <button type="button" class="btn btn-danger remove_button" id="remove_button" name="remove_button">
-                                    <span class="material-icons-sharp">
-                                    delete
-                                    </span>
-                                    </button>
-                                </div>
-                            </div>`);
-        })
-
-        $(document).on('click', '.remove_button', function(e){
-            e.preventDefault();
-            let row_item = $(this).parent().parent();
-            $(row_item).remove();
-        });
-    });
-
-    $(document).ready(function(){
-        $(".add_contributer_button").click(function(e){
-            e.preventDefault();
-            $("#add_contributer").append(`<tr>
-                                    <td style="background-color: #43855A33; border: solid black 1px;">
-                                        <input type="text" class="form-control" style="background-color: transparent; border: none;">
-                                    </td>
-                                    <td  style="background-color: #43855A33; border: solid black 1px;">
-                                        <input type="text" class="form-control" style="background-color: transparent; border: none;">
-                                    </td>
-                                    <td  style="background-color: #43855A33; border: solid black 1px;">
-                                    <input type="text" class="form-control" style="background-color: transparent; border: none;">
-                                    </td>
-                                    <td class="d-grid" style="border: solid black 1px;">
-                                        <button type="button" class="btn btn-danger remove_contributer_button">
-                                        <span class="material-icons-sharp" style="font-size: 14px;">
-                                        delete
-                                        </span>
-                                        </button>
-                                    </td>
-                                </tr>`);
-        })
-
-        $(document).on('click', '.remove_contributer_button', function(e){
-            e.preventDefault();
-            let row_item = $(this).parent().parent();
-            $(row_item).remove();
-        });
-    });
-
-let loadMoreBtn = document.querySelector('#load-more');
-let currentItem = 0;
-
-loadMoreBtn.onclick = () =>{
-    let boxes = [...document.querySelectorAll('main .bookingform .containerform-fluid .add_item_hidden')];
-    for (var i = currentItem; i < currentItem + 1; i++){
-        boxes[i].style.display = 'block';
-    }
-    currentItem += 1;
-
-    if(currentItem >= boxes.length){
-        loadMoreBtn.style.display = 'none';
-    }
-}
-
-</script>
 <script src="script/homepage.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
