@@ -26,6 +26,7 @@ Route::get('/user-homepage', [CustomAuthController::class, 'userHomepage'])->mid
 Route::get('/category_details/{id}', [CustomAuthController::class, 'categoryDetails'])->middleware('isLoggedIn');
 Route::get('/category_services/{id}', [CustomAuthController::class, 'categoryServices'])->middleware('isLoggedIn');
 Route::get('/inclusion_details/{id}', [CustomAuthController::class, 'inclusionDetails'])->middleware('isLoggedIn');
+Route::post('/register-request', [CustomAuthController::class, 'registerRequest'])->name('register-request');
 Route::get('/booking-form', [CustomAuthController::class, 'userBookingForm'])->middleware('isLoggedIn');
 Route::get('/admin-homepage', [AdminController::class, 'adminHomepage'])->middleware('isLoggedIn');
 Route::get('/admin-post', [AdminController::class, 'adminPost']);

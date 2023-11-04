@@ -68,6 +68,13 @@ main .bookingform .containerform-fluid .add_item_hidden{
     border-color: white;
     color:#fff;
 }
+.errormsg{
+    color: rgb(220,53,69);
+    font-size: 14px;
+    margin-top: 1.8rem;
+    margin-bottom: -1rem;
+    font-weight: 700;
+}
 .form-control{
     background-color: #43855A33;
 }

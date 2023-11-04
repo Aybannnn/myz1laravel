@@ -133,62 +133,81 @@
                 </h1>
             </div>
             <div class="bookingform">
-                <form action="#" method="POST" id='add_form'>
+                <form action="{{route('register-request')}}" method="post">
                     @csrf
                     <div class="containerform-fluid">
                         <div class="row">
-                            <div class="col">
-                            <h6>ETC Services Request #</h6>
-                            <input type="text" class="form-control">
+                            <div class="col-8">
+                                @if(Session::has('success'))
+                                <div class="alert alert-success">{{Session::get('success')}}</div>
+                                @endif
+                                @if(Session::has('fail'))
+                                <div class="errormsg">{{Session::get('fail')}}</div>
+                                @endif
                             </div>
+                            <div class="col"></div>
                             <div class="col">
                             <h6>Request Date</h6>
-                            <input type="text" class="form-control">
+                            <input disabled type="text" class="form-control" placeholder="<?php 
+                                date_default_timezone_set('Asia/Kolkata');
+                                $today = date('m/d/y');
+                                echo $today;
+                                ?>">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
+                                <div class="form-group">
                                 <h6>Requesting Office/Unit</h6>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="requesting_office" value="{{old('requesting_office')}}">
+                                <span class="errormsg">@error('requesting_office') {{$message}} @enderror</span>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <h6>Contact Person</h6>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="contact_person" value="{{old('contact_person')}}">
+                                <span class="errormsg">@error('contact_person') {{$message}} @enderror</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <h6>Contact Peron's #</h6>
-                                <input type="text" class="form-control">
+                                <h6>Contact Person's #</h6>
+                                <input type="text" class="form-control" name="contact_person_no" value="{{old('contact_person_no')}}">
+                                <span class="errormsg">@error('contact_person_no') {{$message}} @enderror</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <h6>Contact Peron's Email</h6>
-                                <input type="text" class="form-control">
+                                <h6>Contact Person's Email</h6>
+                                <input type="text" class="form-control" name="contact_person_email" value="{{old('contact_person_email')}}">
+                                <span class="errormsg">@error('contact_person_email') {{$message}} @enderror</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                            <h6>Production/Event Title</h6>
-                            <input type="text" class="form-control">
+                                <h6>Production/Event Title</h6>
+                                <input type="text" class="form-control" name="production_title" value="{{old('production_title')}}">
+                                <span class="errormsg">@error('production_title') {{$message}} @enderror</span>
                             </div>
                             <div class="col">
-                            <h6>Expected Running Time</h6>
-                            <input type="text" class="form-control">
+                                <h6>Expected Running Time</h6>
+                                <input type="text" class="form-control" name="running_time" value="{{old('running_time')}}">
+                                <span class="errormsg">@error('running_time') {{$message}} @enderror</span>
                             </div>
                         </div>
                         <div class="add_item">
                             <div class="row">
                                 <div class="col-4">
                                     <h6>Specific Type of ETC Rental Request</h6>
-                                    <input type="text" name="rental_name[]" class="form-control">
+                                    <input type="text" class="form-control" name="rental_name1" value="{{old('rental_name1')}}">
+                                    <span class="errormsg">@error('rental_name1') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="rental_name1_hours" value="{{old('rental_name1_hours')}}">
+                                    <span class="errormsg">@error('rental_name1_hours') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Rate</h6>
@@ -214,11 +233,45 @@
                             <div class="row">
                                 <div class="col-4">
                                     <h6>Specific Type of ETC Rental Request</h6>
-                                    <input type="text" name="rental_name[]" class="form-control">
+                                    <input type="text" class="form-control" name="rental_name2" value="{{old('rental_name2')}}">
+                                    <span class="errormsg">@error('rental_name2') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="rental_name2_hours" value="{{old('rental_name2_hours')}}">
+                                    <span class="errormsg">@error('rental_name2_hours') {{$message}} @enderror</span>
+                                </div>
+                                <div class="col-2">
+                                <h6>Rate</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <h6>Quantity</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                <h6>Rental Fee</h6>
+                                    <div class="summarybox">
+                                        <h5>0.00</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add_item_hidden">
+                            <div class="row">
+                            <div class="col-4">
+                                <h6>Specific Type of ETC Rental Request</h6>
+                                    <input type="text" class="form-control" name="rental_name3" value="{{old('rental_name3')}}">
+                                    <span class="errormsg">@error('rental_name3') {{$message}} @enderror</span>
+                                </div>
+                                <div class="col-2">
+                                <h6>Hours</h6>
+                                    <input type="text" class="form-control" name="rental_name3_hours" value="{{old('rental_name3_hours')}}">
+                                    <span class="errormsg">@error('rental_name3_hours') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Rate</h6>
@@ -243,12 +296,14 @@
                         <div class="add_item_hidden">
                             <div class="row">
                                 <div class="col-4">
-                                    <h6>Specific Type of ETC Rental Request</h6>
-                                    <input type="text" name="rental_name[]" class="form-control">
+                                <h6>Specific Type of ETC Rental Request</h6>
+                                    <input type="text" class="form-control" name="rental_name4" value="{{old('rental_name4')}}">
+                                    <span class="errormsg">@error('rental_name4') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="rental_name4_hours" value="{{old('rental_name4_hours')}}">
+                                    <span class="errormsg">@error('rental_name4_hours') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Rate</h6>
@@ -272,43 +327,15 @@
                         </div>
                         <div class="add_item_hidden">
                             <div class="row">
-                                <div class="col-4">
-                                    <h6>Specific Type of ETC Rental Request</h6>
-                                    <input type="text" name="rental_name[]" class="form-control">
+                            <div class="col-4">
+                                <h6>Specific Type of ETC Rental Request</h6>
+                                    <input type="text" class="form-control" name="rental_name5" value="{{old('rental_name5')}}">
+                                    <span class="errormsg">@error('rental_name5') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                <input type="text" class="form-control">
-                                </div>
-                                <div class="col-2">
-                                <h6>Rate</h6>
-                                    <div class="summarybox">
-                                        <h5>0.00</h5>
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                <h6>Quantity</h6>
-                                    <div class="summarybox">
-                                        <h5>0.00</h5>
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                <h6>Rental Fee</h6>
-                                    <div class="summarybox">
-                                        <h5>0.00</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="add_item_hidden">
-                            <div class="row">
-                                <div class="col-4">
-                                    <h6>Specific Type of ETC Rental Request</h6>
-                                    <input type="text" name="rental_name[]" class="form-control">
-                                </div>
-                                <div class="col-2">
-                                <h6>Hours</h6>
-                                <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="rental_name5_hours" value="{{old('rental_name5_hours')}}">
+                                    <span class="errormsg">@error('rental_name5_hours') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Rate</h6>
@@ -356,7 +383,7 @@
                             </div>
                         </div>
                         <div id="load-more">Add More Equipment</div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-4 form-check">
                                 <h6 style="padding: 1rem; display: flex; justify-content: center; background-color: #F4FCD2; border: solid black 1px; margin-top: 1rem;">ETC SERVICES POLICY</h6>
                                 <div class="policybox">
@@ -500,10 +527,10 @@
                                 <h6>Date</h6>
                                 <input type="text" class="form-control">
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row">
                             <div class="col d-grid">
-                            <button class="btn" style="font-size: 24px; background-color: #F4FCD2; margin-top: 1rem; margin-bottom: 1rem; padding: 1rem; border: solid black 1px;">Book Now</button>
+                            <button class="btn" type="submit" style="font-size: 24px; background-color: #F4FCD2; margin-top: 1rem; margin-bottom: 1rem; padding: 1rem; border: solid black 1px;">Book Now</button>
                             </div>
                         </div>
                     </div>

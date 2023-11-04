@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\IndividualItem;
 use App\Models\Inclusion;
+use App\Models\BookingRequest;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -109,6 +110,50 @@ class CustomAuthController extends Controller
         $maincategory = Category::all();
 
         return view ('user.bookingform', compact('maincategory'));
+    }
+    public function registerRequest(Request $request)
+    {
+        $request->validate([
+            'requesting_office' => 'required',
+            'contact_person' => 'required',
+            'contact_person_no' => 'required|max:11',
+            'contact_person_email' => 'required',
+            'production_title' => 'required',
+            'running_time' => 'required',
+            'rental_name1' => 'required',
+            'rental_name1_hours' => 'required',
+            'rental_name2' => 'sometimes',
+            'rental_name2_hours' => 'sometimes',
+            'rental_name3' => 'sometimes',
+            'rental_name3_hours' => 'sometimes',
+            'rental_name4' => 'sometimes',
+            'rental_name4_hours' => 'sometimes',
+            'rental_name5' => 'sometimes',
+            'rental_name5_hours' => 'sometimes',
+        ]);
+        $bookingRequest = new BookingRequest(); // Keep the model instance name as 'Request'
+        $bookingRequest->requesting_office = $request->requesting_office;
+        $bookingRequest->contact_person = $request->contact_person;
+        $bookingRequest->contact_person_no = $request->contact_person_no;
+        $bookingRequest->contact_person_email = $request->contact_person_email;
+        $bookingRequest->production_title = $request->production_title;
+        $bookingRequest->running_time = $request->running_time;
+        $bookingRequest->rental_name1 = $request->rental_name1;
+        $bookingRequest->rental_name1_hours = $request->rental_name1_hours;
+        $bookingRequest->rental_name2 = $request->rental_name2;
+        $bookingRequest->rental_name2_hours = $request->rental_name2_hours;
+        $bookingRequest->rental_name3 = $request->rental_name3;
+        $bookingRequest->rental_name3_hours = $request->rental_name3_hours;
+        $bookingRequest->rental_name4 = $request->rental_name4;
+        $bookingRequest->rental_name4_hours = $request->rental_name4_hours;
+        $bookingRequest->rental_name5 = $request->rental_name5;
+        $bookingRequest->rental_name5_hours = $request->rental_name5_hours;
+        $res = $bookingRequest->save();
+        if ($res) {
+            return back()->with('success', 'Your booking have been placed Successfully!');
+        } else {
+            return back()->with('fail', 'Something went wrong, Please try again.');
+        }
     }
     public function logout()
     {
