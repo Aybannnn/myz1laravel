@@ -37,6 +37,7 @@ Route::get('/accept_request/{id}', [AdminController::class, 'acceptRequest'])->m
 Route::get('/update_request/{id}', [AdminController::class, 'updateRequest'])->middleware('isLoggedIn');
 Route::post('/update-request/{id}', [AdminController::class, 'updateRequestConfirmation'])->middleware('isLoggedIn');
 Route::get('/deact_request/{id}', [AdminController::class, 'deactRequest'])->middleware('isLoggedIn');
+Route::get('/create-report', [CustomAuthController::class, 'userCreateReport'])->middleware('isLoggedIn');
 Route::get('/logout', [CustomAuthController::class, 'logout']);
 
 

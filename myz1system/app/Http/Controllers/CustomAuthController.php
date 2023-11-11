@@ -170,6 +170,12 @@ class CustomAuthController extends Controller
         }
     }
     }
+    public function userCreateReport()
+    {
+        $maincategory = Category::all();
+
+        return view('user.usercreate_report', compact('maincategory'));
+    }
     public function logout()
     {
         if(Session::has('loginId'))
