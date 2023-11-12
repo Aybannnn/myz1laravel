@@ -20,8 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{url('style/homepage.css')}}">
-    <link rel="stylesheet" href="{{url('style/responsive.css')}}">
+    <link rel="stylesheet" href="{{url('style/createreport.css')}}">
     <link rel="stylesheet" href="{{url('style/main.css')}}">
     <link rel="stylesheet" href="{{url('style/animation.css')}}">
     <title>myZ1 Homepage</title>
@@ -121,7 +120,69 @@
 
         <!--MIDDLE CONTENT-->
         <main>
-            
+            <div class="reportheader" style="margin-left: -2rem;">
+                <h1>
+                    <span>
+                    <a href="{{url()->previous()}}" style="text-decoration: none; color: black;">
+                    <div class="material-icons-sharp" style="margin-right: 2rem; border-right: solid black 0.2rem; padding-right: 1rem">
+                    arrow_back
+                    </div></a>
+                    ETC Report Form</span>
+                </h1>
+            </div>
+            <div class="reportform">
+                <form action="#" method="post">
+                    @csrf
+                    <div class="containerform-fluid">
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col-4">
+                                <h6>Report Date</h6>
+                                <input disabled type="text" class="form-control" placeholder="<?php 
+                                date_default_timezone_set('Asia/Kolkata');
+                                $today = date('m/d/y');
+                                echo $today;
+                                ?>">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h6>EDM Services Request #</h6>
+                                <input type="text" class="form-control" name="edm_request" value="{{old('edm_request')}}">
+                                <span class="errormsg">@error('edm_request') {{$message}} @enderror</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h6>Client's Office/Unit</h6>
+                                <input type="text" class="form-control" name="client_office" value="{{old('client_office')}}">
+                                <span class="errormsg">@error('edm_request') {{$message}} @enderror</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h6>Returned By</h6>
+                                <input type="text" class="form-control" name="returned_by" value="{{old('returned_by')}}">
+                                <span class="errormsg">@error('edm_request') {{$message}} @enderror</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h6>Contact Number</h6>
+                                <input type="text" class="form-control" name="contact_number" value="{{old('contact_number')}}">
+                                <span class="errormsg">@error('edm_request') {{$message}} @enderror</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h6>Email</h6>
+                                <input type="text" class="form-control" name="email" value="{{old('email')}}">
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </main>
         <!-- End of Main Content -->
 
@@ -135,67 +196,6 @@
                 </button>
             </div>
             <!-- End of Nav -->
-
-            <div class="user-profile">
-                <div class="logo">
-                </div>
-            </div>
-
-            <div class="reminders">
-                <div class="header">
-                    <h2>Reminders</h2>
-                    <span class="material-icons-sharp">
-                        notifications_none
-                    </span>
-                </div>
-
-                <div class="notification">
-                    <div class="icon">
-                        <span class="material-icons-sharp">
-                            volume_up
-                        </span>
-                    </div>
-                    <div class="content">
-                        <div class="info">
-                            <h3>Workshop</h3>
-                            <small class="text_muted">
-                                08:00 AM - 12:00 PM
-                            </small>
-                        </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
-
-                <div class="notification deactive">
-                    <div class="icon">
-                        <span class="material-icons-sharp">
-                            edit
-                        </span>
-                    </div>
-                    <div class="content">
-                        <div class="info">
-                            <h3>Workshop</h3>
-                            <small class="text_muted">
-                                08:00 AM - 12:00 PM
-                            </small>
-                        </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
-
-                <div class="notification add-reminder">
-                    <div>
-                        <span class="material-icons-sharp">
-                            add
-                        </span>
-                        <h3>Add Reminder</h3>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 <!--FOOTER-->

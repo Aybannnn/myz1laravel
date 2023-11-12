@@ -21,7 +21,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{url('style/bookingform.css')}}">
-    <link rel="stylesheet" href="{{url('style/responsive.css')}}">
     <link rel="stylesheet" href="{{url('style/main.css')}}">
     <link rel="stylesheet" href="{{url('style/animation.css')}}">
     <title>Booking Form</title>
@@ -209,12 +208,12 @@
                                         <option>{{$items->service}}</option>
                                         @endforeach
                                     </select>
-                                    <span class="errormsg">@error('rental_name1') {{$message}} @enderror</span>
+                                    <span class="errormsg">@error('rental_name1') Please select an available equipment/service @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
                                     <input type="time" class="form-control" name="rental_name1_hours" value="{{old('rental_name1_hours')}}">
-                                    <span class="errormsg">@error('rental_name1_hours') {{$message}} @enderror</span>
+                                    <span class="errormsg">@error('rental_name1_hours') This field is required @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Rate</h6>
