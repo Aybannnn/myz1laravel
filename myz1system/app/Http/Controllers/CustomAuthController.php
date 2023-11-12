@@ -114,8 +114,10 @@ class CustomAuthController extends Controller
         }
 
         $maincategory = Category::all();
+        $category = Category::all();
+        $indivitems = IndividualItem::all();
 
-        return view ('user.bookingform', compact('data', 'maincategory'));
+        return view ('user.bookingform', compact('data', 'maincategory', 'indivitems', 'category'));
     }
     public function registerRequest(Request $request)
     {
@@ -175,6 +177,18 @@ class CustomAuthController extends Controller
         $maincategory = Category::all();
 
         return view('user.usercreate_report', compact('maincategory'));
+    }
+    public function userQuestion()
+    {
+        $maincategory = Category::all();
+
+        return view('user.userquestion', compact('maincategory'));
+    }
+    public function userFeedback()
+    {
+        $maincategory = Category::all();
+
+        return view('user.userfeedback', compact('maincategory'));
     }
     public function logout()
     {

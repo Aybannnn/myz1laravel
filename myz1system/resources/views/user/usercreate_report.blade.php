@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{url('style/main.css')}}">
     <link rel="stylesheet" href="{{url('style/animation.css')}}">
     <title>myZ1 Homepage</title>
+    <link rel="icon" type="image/x-icon" href="{{asset('images/logo-no-bg.png')}}">
 </head>
 <style>
     main{
@@ -57,7 +58,7 @@
             <div class="sidebar close">
                 <ul class="nav-links">
                     <li>
-                        <a href="user-homepage" class="active">
+                        <a href="user-homepage">
                             <span class="material-icons-sharp">
                                 home
                             </span>
@@ -65,7 +66,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="booking-form">
+                        <a href="add-booking">
                             <span class="material-icons-sharp">
                                 add_circle
                             </span>
@@ -78,20 +79,19 @@
                         </ul>
                     </li>
                     <li>
-                        <a style="cursor: pointer;">
+                        <a href="create-report">
                             <span class="material-icons-sharp">
                                 report
                             </span>
-                            <h3>Report</h3>
+                            <h3>Create Report</h3>
                         </a>
                         <ul class="sub-menu">
-                            <li><a href="create-report">Create Report</a></li>
                             <li><a href="#">Track Report</a></li>
                             <li><a href="#">View Status</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="frequently-asked-questions">
                             <span class="material-icons-sharp">
                                 question_answer
                             </span>
@@ -99,7 +99,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="feedback">
                             <span class="material-icons-sharp">
                                 feedback
                             </span>

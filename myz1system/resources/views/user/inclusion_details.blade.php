@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="../style/main.css">
     <link rel="stylesheet" href="../style/animation.css">
     <title>{{$indivitems->service}}</title>
+    <link rel="icon" type="image/x-icon" href="{{asset('images/logo-no-bg.png')}}">
 </head>
 <style>
     main{
@@ -67,7 +68,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{url('booking-form')}}" class="active">
+                        <a href="{{url('add-booking')}}" class="active">
                             <span class="material-icons-sharp">
                                 add_circle
                             </span>
@@ -80,20 +81,19 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('create-report')}}">
                             <span class="material-icons-sharp">
                                 report
                             </span>
-                            <h3>Report</h3>
+                            <h3>Create Report</h3>
                         </a>
                         <ul class="sub-menu">
-                            <li><a href="create.html">Create Report</a></li>
                             <li><a href="#">Track Report</a></li>
                             <li><a href="#">View Status</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('frequently-asked-questions')}}">
                             <span class="material-icons-sharp">
                                 question_answer
                             </span>
@@ -101,7 +101,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('feedback')}}">
                             <span class="material-icons-sharp">
                                 feedback
                             </span>
@@ -109,7 +109,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="logout">
+                        <a href="{{url('logout')}}">
                             <span class="material-icons-sharp">
                                 logout
                             </span>

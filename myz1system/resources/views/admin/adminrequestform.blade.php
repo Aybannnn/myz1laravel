@@ -137,13 +137,16 @@
                     <div class="containerform-fluid">
                         <div class="row">
                             <div class="col-8">
-                            <h6>ETC Services Request #</h6>
-                            <input disabled type="text" class="form-control" placeholder="{{$notificationPending->id}}">
+                                <h6>ETC Services Request #</h6>
+                                <input disabled type="text" class="form-control" placeholder="{{$notificationPending->id}}">
                             </div>
-                            <div class="col"></div>
                             <div class="col">
-                            <h6>Request Date</h6>
-                            <input disabled type="text" class="form-control" placeholder="{{$notificationPending->created_at}}">
+                                <h6>ID of Sender</h6>
+                                <input disabled type="text" class="form-control" placeholder="{{$notificationPending->user_id}}">
+                            </div>
+                            <div class="col">
+                                <h6>Request Date</h6>
+                                <input disabled type="text" class="form-control" placeholder="{{$notificationPending->created_at}}">
                             </div>
                         </div>
                         <div class="row">

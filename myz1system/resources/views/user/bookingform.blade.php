@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{url('style/main.css')}}">
     <link rel="stylesheet" href="{{url('style/animation.css')}}">
     <title>Booking Form</title>
+    <link rel="icon" type="image/x-icon" href="{{asset('images/logo-no-bg.png')}}">
 </head>
 <style>
     main{
@@ -65,7 +66,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="user-booking"  class="active">
+                        <a href="add-booking" class="active">
                             <span class="material-icons-sharp">
                                 add_circle
                             </span>
@@ -78,20 +79,19 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="create-report">
                             <span class="material-icons-sharp">
                                 report
                             </span>
-                            <h3>Report</h3>
+                            <h3>Create Report</h3>
                         </a>
                         <ul class="sub-menu">
-                            <li><a href="create.html">Create Report</a></li>
                             <li><a href="#">Track Report</a></li>
                             <li><a href="#">View Status</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="frequently-asked-questions">
                             <span class="material-icons-sharp">
                                 question_answer
                             </span>
@@ -99,7 +99,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="feedback">
                             <span class="material-icons-sharp">
                                 feedback
                             </span>
@@ -195,7 +195,7 @@
                             </div>
                             <div class="col">
                                 <h6>Expected Running Time</h6>
-                                <input type="text" class="form-control" name="running_time" value="{{old('running_time')}}">
+                                <input type="date" class="form-control" name="running_time" value="{{old('running_time')}}">
                                 <span class="errormsg">@error('running_time') {{$message}} @enderror</span>
                             </div>
                         </div>
@@ -203,12 +203,17 @@
                             <div class="row">
                                 <div class="col-4">
                                     <h6>Specific Type of ETC Rental Request</h6>
-                                    <input type="text" class="form-control" name="rental_name1" value="{{old('rental_name1')}}">
+                                    <select class="form-control" name="rental_name1" value="{{old('rental_name1')}}">
+                                        <option disabled selected value> -- select an available equipment/service -- </option>
+                                        @foreach($indivitems as $items)
+                                        <option>{{$items->service}}</option>
+                                        @endforeach
+                                    </select>
                                     <span class="errormsg">@error('rental_name1') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                    <input type="text" class="form-control" name="rental_name1_hours" value="{{old('rental_name1_hours')}}">
+                                    <input type="time" class="form-control" name="rental_name1_hours" value="{{old('rental_name1_hours')}}">
                                     <span class="errormsg">@error('rental_name1_hours') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-2">
@@ -240,7 +245,7 @@
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                    <input type="text" class="form-control" name="rental_name2_hours" value="{{old('rental_name2_hours')}}">
+                                    <input type="time" class="form-control" name="rental_name2_hours" value="{{old('rental_name2_hours')}}">
                                     <span class="errormsg">@error('rental_name2_hours') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-2">
@@ -272,7 +277,7 @@
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                    <input type="text" class="form-control" name="rental_name3_hours" value="{{old('rental_name3_hours')}}">
+                                    <input type="time" class="form-control" name="rental_name3_hours" value="{{old('rental_name3_hours')}}">
                                     <span class="errormsg">@error('rental_name3_hours') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-2">
@@ -304,7 +309,7 @@
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                    <input type="text" class="form-control" name="rental_name4_hours" value="{{old('rental_name4_hours')}}">
+                                    <input type="time" class="form-control" name="rental_name4_hours" value="{{old('rental_name4_hours')}}">
                                     <span class="errormsg">@error('rental_name4_hours') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-2">
@@ -336,7 +341,7 @@
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                    <input type="text" class="form-control" name="rental_name5_hours" value="{{old('rental_name5_hours')}}">
+                                    <input type="time" class="form-control" name="rental_name5_hours" value="{{old('rental_name5_hours')}}">
                                     <span class="errormsg">@error('rental_name5_hours') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-2">

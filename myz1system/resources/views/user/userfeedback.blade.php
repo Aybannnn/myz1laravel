@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{url('style/responsive.css')}}">
     <link rel="stylesheet" href="{{url('style/main.css')}}">
     <link rel="stylesheet" href="{{url('style/animation.css')}}">
-    <title>myZ1 Homepage</title>
+    <title>Feedback</title>
     <link rel="icon" type="image/x-icon" href="{{asset('images/logo-no-bg.png')}}">
 </head>
 <style>
@@ -58,7 +58,7 @@
             <div class="sidebar close">
                 <ul class="nav-links">
                     <li>
-                        <a href="user-homepage" class="active">
+                        <a href="user-homepage">
                             <span class="material-icons-sharp">
                                 home
                             </span>
@@ -66,7 +66,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="add-booking">
+                        <a href="booking-form">
                             <span class="material-icons-sharp">
                                 add_circle
                             </span>
@@ -99,7 +99,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="feedback">
+                        <a href="feedback" class="active">
                             <span class="material-icons-sharp">
                                 feedback
                             </span>
@@ -121,76 +121,7 @@
 
         <!--MIDDLE CONTENT-->
         <main>
-            <div class="announcement-bg"></div>
-                <h1><span>ANNOUNCEMENTS</span></h1>
-            <!--FEATURED ANNOUNCEMENTS-->
-            <div class="featured-list">
-                <h2>Featured</h2>
-                <div class="row">
-                    <div class="col">
-                        <div class="featured-img"></div>
-                        <h5>Lorem Ipsum</h5>
-                        <p>September 00, 2023</p>
-                    </div>
-                    <div class="col">
-                        <div class="featured-img"></div>
-                        <h5>Lorem Ipsum</h5>
-                        <p>September 00, 2023</p>
-                    </div>
-                    <div class="col">
-                        <div class="featured-img"></div>
-                        <h5>Lorem Ipsum</h5>
-                        <p>September 00, 2023</p>
-                    </div>
-                    <div class="col">
-                        <div class="featured-img"></div>
-                        <h5>Lorem Ipsum</h5>
-                        <p>September 00, 2023</p>
-                    </div>
-                </div>
-            </div>
-            <!--RECENT ANNOUNCEMENTS-->
-            <div class="recent-announcement">
-                <h2>Recent</h2>
-                <h1>
-                    <?php 
-                        date_default_timezone_set('Asia/Kolkata');
-                        $today = date('F d, Y');
-                        echo $today;
-                    ?>
-                </h1>
-                <div class="row2">
-                    <div class="col2">
-                        <div class="grid-item-one"></div>
-                        <span class="grid-item-two">
-                            <h5>Lorem Ipsum <span class="material-icons-sharp">more_vert</span></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <h6>September 00, 2023</h6>
-                        </span>
-                    </div>
-                </div>
-                <div class="row2">
-                    <div class="col2">
-                        <div class="grid-item-one"></div>
-                        <span class="grid-item-two">
-                            <h5>Lorem Ipsum <span class="material-icons-sharp">more_vert</span></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <h6>September 00, 2023</h6>
-                        </span>
-                    </div>
-                </div>
-                <div class="row2">
-                    <div class="col2">
-                        <div class="grid-item-one"></div>
-                        <span class="grid-item-two">
-                            <h5>Lorem Ipsum <span class="material-icons-sharp">more_vert</span></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <h6>September 00, 2023</h6>
-                        </span>
-                    </div>
-                </div>
-                <a href="#">Show All</a>
-            </div>
+            
         </main>
         <!-- End of Main Content -->
 
@@ -264,28 +195,6 @@
                         <h3>Add Reminder</h3>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4" style="margin-top:20px;">
-                <h4>WELCOME</h4>
-                <hr>
-                <table class="table">
-                    <thead>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Action</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{$data->name}}</td>
-                            <td>{{$data->email}}</td>
-                            <td><a href="logout">Logout</a></td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
