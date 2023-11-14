@@ -78,7 +78,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="create-report">
+                        <a href="create-report" class="active">
                             <span class="material-icons-sharp">
                                 report
                             </span>
@@ -131,11 +131,20 @@
                 </h1>
             </div>
             <div class="reportform">
-                <form action="#" method="post">
+                <form action="{{route('register-report')}}" method="post">
                     @csrf
                     <div class="containerform-fluid">
                         <div class="row">
-                            <div class="col"></div>
+                            <div class="col">
+                                <div class="col-8">
+                                    @if(Session::has('success'))
+                                    <div class="alert alert-success">{{Session::get('success')}}</div>
+                                    @endif
+                                    @if(Session::has('fail'))
+                                    <div class="errormsg">{{Session::get('fail')}}</div>
+                                    @endif
+                                </div>
+                            </div>
                             <div class="col-4">
                                 <h6>Report Date</h6>
                                 <input disabled type="text" class="form-control" placeholder="<?php 
@@ -156,30 +165,31 @@
                             <div class="col">
                                 <h6>Client's Office/Unit</h6>
                                 <input type="text" class="form-control" name="client_office" value="{{old('client_office')}}">
-                                <span class="errormsg">@error('edm_request') {{$message}} @enderror</span>
+                                <span class="errormsg">@error('client_office') {{$message}} @enderror</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <h6>Returned By</h6>
                                 <input type="text" class="form-control" name="returned_by" value="{{old('returned_by')}}">
-                                <span class="errormsg">@error('edm_request') {{$message}} @enderror</span>
+                                <span class="errormsg">@error('returned_by') {{$message}} @enderror</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <h6>Contact Number</h6>
                                 <input type="text" class="form-control" name="contact_number" value="{{old('contact_number')}}">
-                                <span class="errormsg">@error('edm_request') {{$message}} @enderror</span>
+                                <span class="errormsg">@error('contact_number') {{$message}} @enderror</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <h6>Email</h6>
-                                <input type="text" class="form-control" name="email" value="{{old('email')}}">
+                                <input type="text" class="form-control" name="sender_email" value="{{old('sender_email')}}">
+                                <span class="errormsg">@error('sender_email') {{$message}} @enderror</span>
                             </div>
                         </div>
-                        <table class="table table-bordered" style="margin-top: 2rem; border: solid black 2px;">
+                        <!-- <table class="table table-bordered" style="margin-top: 2rem; border: solid black 2px;">
                             <thead style="text-align: center;">
                                 <tr>
                                     <th scope="col" class="col-1" style="background-color: #43855A33; padding-top: 1rem; padding-bottom: 1rem;">Type of Report</th>
@@ -355,7 +365,12 @@
                                     <th></th>
                                 </tr>
                             </tbody>
-                        </table>
+                        </table> -->
+                        <div class="row">
+                            <div class="col d-grid">
+                            <button class="btn" type="submit" style="font-size: 24px; background-color: #F4FCD2; margin-top: 1rem; margin-bottom: 1rem; padding: 1rem; border: solid black 1px;">Submit Report</button>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>

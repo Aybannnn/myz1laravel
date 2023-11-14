@@ -7,6 +7,7 @@ use App\Models\SubCategory;
 use App\Models\IndividualItem;
 use App\Models\Inclusion;
 use App\Models\BookingRequest;
+use App\Models\CreateReport;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -172,11 +173,46 @@ class CustomAuthController extends Controller
         }
     }
     }
+    public function registerReport(Request $request)
+    {
+        $data = array();
+        if(Session::has('loginId'))
+        {
+        $userId = Session::get('loginId');
+        
+        $request->validate([
+            'edm_request' => 'required',
+            'client_office' => 'required',
+            'returned_by' => 'required',
+            'contact_number' => 'required',
+            'sender_email' => 'required'
+        ]);
+        $reportRequest = new CreateReport();
+        $reportRequest->edm_request = $request->edm_request;
+        $reportRequest->client_office = $request->client_office;
+        $reportRequest->returned_by = $request->returned_by;
+        $reportRequest->contact_number = $request->contact_number;
+        $reportRequest->sender_email = $request->sender_email;
+        $reportRequest->report_status = 'Waiting for Approval';
+        $res = $reportRequest->save();
+        if ($res) {
+            return back()->with('success', 'Your booking have been placed Successfully!');
+        } else {
+            return back()->with('fail', 'Something went wrong, Please try again.');
+        }
+    }
+    }
     public function userCreateReport()
     {
         $maincategory = Category::all();
 
         return view('user.usercreate_report', compact('maincategory'));
+    }
+    public function userTrackReport()
+    {
+        $maincategory = Category::all();
+
+        return view('user.usertrackreport', compact('maincategory'));
     }
     public function userQuestion()
     {

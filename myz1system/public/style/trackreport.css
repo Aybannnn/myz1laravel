@@ -1,0 +1,66 @@
+.container-fluid{
+    display: grid;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 12rem auto !important;
+}
+
+/*CENTER PAGE*/
+main{
+    margin-top: 1.4rem;
+    margin-left: 1.8rem;
+    margin-right: 1.8rem;
+    background-color: #16392033;
+    padding-left: 2rem;
+    padding-top: 2rem;
+    padding-right: 2rem;
+    border-radius: 0px 17px 17px 0px;
+    margin-bottom: 0.5rem;
+}
+main h1 span{
+    background-color: white;
+    position: relative;
+    top: 0.8rem;
+    padding-top: 1.9rem;
+    padding-bottom: 1.9rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 0px 30px 100px 0px;
+    border-color: #16381f;
+    border-style: solid solid none none;
+    border-width: 0.8rem;
+}
+
+main .reportform{
+    margin-top: 2.5rem;
+    border: solid #163920 0.2rem;
+    background-color: white;
+    margin-top: 4rem;
+    margin-right: -2rem;
+    margin-left: -2rem;
+}
+main .reportform .containerform-fluid h6{
+    font-weight: 900;
+    margin-top: 0.8rem;
+}
+.form-control{
+    background-color: #43855A33;
+}
+.containerform-fluid{
+    margin: 1rem;
+}
+.errormsg{
+    color: rgb(220,53,69);
+    font-size: 14px;
+    margin-top: 1.8rem;
+    margin-bottom: -1rem;
+    font-weight: 700;
+}
+.right-section .nav{
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+}
+.right-section .nav button{
+    display: none;
+}

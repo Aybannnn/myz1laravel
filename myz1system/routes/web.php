@@ -27,8 +27,10 @@ Route::get('/category_details/{id}', [CustomAuthController::class, 'categoryDeta
 Route::get('/category_services/{id}', [CustomAuthController::class, 'categoryServices'])->middleware('isLoggedIn');
 Route::get('/inclusion_details/{id}', [CustomAuthController::class, 'inclusionDetails'])->middleware('isLoggedIn');
 Route::post('/register-request', [CustomAuthController::class, 'registerRequest'])->name('register-request');
+Route::post('/register-report', [CustomAuthController::class, 'registerReport'])->name('register-report');
 Route::get('/add-booking', [CustomAuthController::class, 'userBookingForm'])->middleware('isLoggedIn');
 Route::get('/create-report', [CustomAuthController::class, 'userCreateReport'])->middleware('isLoggedIn');
+Route::get('/track-report', [CustomAuthController::class, 'userTrackReport'])->middleware('isLoggedIn');
 Route::get('/frequently-asked-questions', [CustomAuthController::class, 'userQuestion'])->middleware('isLoggedIn');
 Route::get('/feedback', [CustomAuthController::class, 'userFeedback'])->middleware('isLoggedIn');
 Route::get('/logout', [CustomAuthController::class, 'logout']);

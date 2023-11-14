@@ -65,7 +65,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="admin-notification" class="active">
+                        <a href="admin-notification">
                             <span class="material-icons-sharp">
                                 notifications
                             </span>
@@ -75,6 +75,14 @@
                             <li><a href="#">Equipment</a></li>
                             <li><a href="#">Services</a></li>
                         </ul>
+                    </li>
+                    <li>
+                        <a href="admin-booking" class="active">
+                            <span class="material-icons-sharp">
+                                calendar_month
+                            </span>
+                            <h3>Booking</h3>
+                        </a>
                     </li>
                     <li>
                         <a href="#">
@@ -88,14 +96,6 @@
                             <li><a href="#">Track Report</a></li>
                             <li><a href="#">View Status</a></li>
                         </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="material-icons-sharp">
-                                question_answer
-                            </span>
-                            <h3>FAQ</h3>
-                        </a>
                     </li>
                     <li>
                         <a href="#">

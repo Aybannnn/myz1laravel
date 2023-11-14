@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('create_reports', function (Blueprint $table) {
             $table->id();
-            $table->string('');
+            $table->string('edm_request');
+            $table->string('client_office');
+            $table->string('returned_by');
+            $table->string('contact_number');
+            $table->string('sender_email');
             $table->timestamps();
         });
     }
