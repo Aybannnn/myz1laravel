@@ -20,8 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{url('style/adminnotification.css')}}">
-    <link rel="stylesheet" href="{{url('style/responsive.css')}}">
+    <link rel="stylesheet" href="{{url('style/adminbooking.css')}}">
     <link rel="stylesheet" href="{{url('style/main.css')}}">
     <link rel="stylesheet" href="{{url('style/animation.css')}}">
     <title>Admin Homepage</title>
@@ -65,7 +64,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="admin-notification" class="active">
+                        <a href="admin-notification">
                             <span class="material-icons-sharp">
                                 notifications
                             </span>
@@ -77,7 +76,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="admin-booking">
+                        <a href="admin-booking" class="active">
                             <span class="material-icons-sharp">
                                 calendar_month
                             </span>
@@ -120,10 +119,9 @@
 
         <!--MIDDLE CONTENT-->
         <main>
-            <!--FEATURED ANNOUNCEMENTS-->
             <div class="account-container">
                 <div class="grid1" style="margin-left: -2.2rem;">
-                    <h1 style="color: #163920; font-weight: 900;"><span style="background-color: white;">Notification</span></h1>
+                    <h1 style="color: #163920; font-weight: 900;"><span style="background-color: white; margin-right: 2rem; padding-right: 4rem;">Booking</span></h1>
                 </div>
                 <div class="grid4">
                     <div class="adminpicture"></div>
@@ -131,41 +129,41 @@
                 </div>
             </div>
             <div class="notification-holder">
-                <h2>Pending Request</h2>
+                <h2 style="padding-top: 1.6rem;">All Booking Request</h2>
                 <table>
                     <div class="row">
                         <div class="col">
-                        @foreach($notificationPending as $notificationP)
-                            <div class="notification-solo" style="margin-bottom: 0.6rem; margin-left: 2rem; display: flex; padding-right: 4rem;">
-                                <span class="material-icons-sharp" style="color: green; font-size: 32px;">pending_actions</span>
+                        @foreach($notificationActive as $notificationA)
+                        <a href="{{url('update_request', $notificationA->id)}}" style="text-decoration: none; color: black; margin-right: -2rem;">
+                            <div class="notification-solo" style="display: flex; padding: 2rem; background-color: #43855A33; border-radius: 10px;">
+                                <span class="material-icons-sharp" style="color: green; font-size: 32px;">calendar_today</span>
                                 <h4 style="margin-left: 1rem;">New booking for
-                                    @if ($notificationP->rental_name1) 
-                                        <span style="color: #076026; border-bottom: solid black 1px">{{$notificationP->rental_name1}}</span>
+                                    @if ($notificationA->rental_name1) 
+                                        <span style="color: #076026; border-bottom: solid black 2px">{{$notificationA->rental_name1}}</span>
                                     @endif
-                                    @if ($notificationP->rental_name2)
-                                        @if ($notificationP->rental_name1), @endif
-                                        <span style="color: #076026; border-bottom: solid black 1px">{{$notificationP->rental_name2}}</span>
+                                    @if ($notificationA->rental_name2)
+                                        @if ($notificationA->rental_name1), @endif
+                                        <span style="color: #076026; border-bottom: solid black 2px">{{$notificationA->rental_name2}}</span>
                                     @endif
-                                    @if ($notificationP->rental_name3)
-                                        @if ($notificationP->rental_name1 || $notificationP->rental_name2), @endif
-                                        <span style="color: #076026; border-bottom: solid black 1px">{{$notificationP->rental_name3}}</span>
+                                    @if ($notificationA->rental_name3)
+                                        @if ($notificationA->rental_name1 || $notificationA->rental_name2), @endif
+                                        <span style="color: #076026; border-bottom: solid black 2px">{{$notificationA->rental_name3}}</span>
                                     @endif
-                                    @if ($notificationP->rental_name4)
-                                        @if ($notificationP->rental_name1 || $notificationP->rental_name2 || $notificationP->rental_name3), @endif
-                                        <span style="color: #076026; border-bottom: solid black 1px">{{$notificationP->rental_name4}}</span>
+                                    @if ($notificationA->rental_name4)
+                                        @if ($notificationA->rental_name1 || $notificationA->rental_name2 || $notificationA->rental_name3), @endif
+                                        <span style="color: #076026; border-bottom: solid black 2px">{{$notificationA->rental_name4}}</span>
                                     @endif
-                                    @if ($notificationP->rental_name5)
-                                        @if ($notificationP->rental_name1 || $notificationP->rental_name2 || $notificationP->rental_name3 || $notificationP->rental_name4), @endif
-                                        <span style="color: #076026; border-bottom: solid black 1px">{{$notificationP->rental_name5}}</span>
+                                    @if ($notificationA->rental_name5)
+                                        @if ($notificationA->rental_name1 || $notificationA->rental_name2 || $notificationA->rental_name3 || $notificationA->rental_name4), @endif
+                                        <span style="color: #076026; border-bottom: solid black 2px">{{$notificationA->rental_name5}}</span>
                                     @endif
-                                    from {{$notificationP->requesting_office}}
+                                    from {{$notificationA->requesting_office}}
                                 </h4>
+                                <div class="status" style="margin-bottom: 1rem; background-color: #163920; margin-left: 1rem; padding-right: 0.7rem; border-radius: 10px;">
+                                <h4 style="color: white;">{{$notificationA->booking_status}}</h4>
+                                </div>
                             </div>
-                            <div class="button-holder" style="padding-left: 5.2rem; padding-bottom: 2rem;">
-                                <a href="{{url('view_request', $notificationP->id)}}" class="btn btn-primary">View Request</a>
-                                <a href="{{url('accept_request', $notificationP->id)}}" class="btn btn-success" style="margin-left: 1rem;">Accept Request</a>
-                                <a href="{{url('delete_request', $notificationP->id)}}" class="btn btn-danger" style="margin-left: 1rem;">Reject Request</a>
-                            </div>
+                        </a>
                         @endforeach
                         </div>
                     </div>
@@ -184,6 +182,67 @@
                 </button>
             </div>
             <!-- End of Nav -->
+
+            <div class="user-profile">
+                <div class="logo">
+                </div>
+            </div>
+
+            <div class="reminders">
+                <div class="header">
+                    <h2>Reminders</h2>
+                    <span class="material-icons-sharp">
+                        notifications_none
+                    </span>
+                </div>
+
+                <div class="notification">
+                    <div class="icon">
+                        <span class="material-icons-sharp">
+                            volume_up
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <h3>Workshop</h3>
+                            <small class="text_muted">
+                                08:00 AM - 12:00 PM
+                            </small>
+                        </div>
+                        <span class="material-icons-sharp">
+                            more_vert
+                        </span>
+                    </div>
+                </div>
+
+                <div class="notification deactive">
+                    <div class="icon">
+                        <span class="material-icons-sharp">
+                            edit
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <h3>Workshop</h3>
+                            <small class="text_muted">
+                                08:00 AM - 12:00 PM
+                            </small>
+                        </div>
+                        <span class="material-icons-sharp">
+                            more_vert
+                        </span>
+                    </div>
+                </div>
+
+                <div class="notification add-reminder">
+                    <div>
+                        <span class="material-icons-sharp">
+                            add
+                        </span>
+                        <h3>Add Reminder</h3>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 <!--FOOTER-->

@@ -14,7 +14,7 @@ class AdminController extends Controller
 {
     public function adminHomepage()
     {
-        $notification = BookingRequest::where('booking_status', '=', 'pending')->get();
+        $notification = BookingRequest::where('booking_status', '=', 'Pending')->get();
 
         $data = array();
         if(Session::has('loginId'))
@@ -29,8 +29,8 @@ class AdminController extends Controller
     }
     public function adminNotification()
     {
-        $notificationPending = BookingRequest::where('booking_status', '=', 'pending')->get();
-        $notificationActive = BookingRequest::where('booking_status', '=', 'accepted')->get();
+        $notificationPending = BookingRequest::where('booking_status', '=', 'Pending')->get();
+        $notificationActive = BookingRequest::where('booking_status', '=', 'Accepted')->get();
 
         $data = array();
         if(Session::has('loginId'))
@@ -71,6 +71,7 @@ class AdminController extends Controller
         $notificationActive->rental_name4_hours = $request->rental_name4_hours;
         $notificationActive->rental_name5 = $request->rental_name5;
         $notificationActive->rental_name5_hours = $request->rental_name5_hours;
+        $notificationActive->booking_status = 'Ready';
 
         $notificationActive -> save();
 
@@ -90,7 +91,7 @@ class AdminController extends Controller
     {
         $notificationPending = BookingRequest::find($id);
 
-        $notificationPending -> booking_status='accepted';
+        $notificationPending -> booking_status='Accepted';
 
         $notificationPending -> save();
 
@@ -100,10 +101,22 @@ class AdminController extends Controller
     {
         $notificationActive = BookingRequest::find($id);
 
-        $notificationActive -> booking_status='pending';
+        $notificationActive -> booking_status='Pending';
 
         $notificationActive -> save();
 
         return redirect()->back();
+    }
+    public function adminBooking()
+    {
+        $notificationActive = BookingRequest::whereIn('booking_status', ['Accepted', 'Ready'])->get();
+
+        $data = array();
+        if(Session::has('loginId'))
+        {
+            $data = User::where('id', '=', Session::get('loginId'))->first();
+        }
+
+        return view ('admin.adminbooking', compact('data', 'notificationActive'));
     }
 }

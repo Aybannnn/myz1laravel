@@ -1,13 +1,6 @@
-.container-fluid{
-    display: grid;
-    margin: 0 auto;
-    gap: 1.8rem;
-    grid-template-columns: 12rem auto !important;
-}
 /*CENTER PAGE*/
 main{
     margin-top: 1.4rem;
-    margin-right: 1rem;
     margin-left: 1.8rem;
     background-color: white;
     border: solid #076026;
@@ -59,25 +52,6 @@ main .grid4{
     flex-direction: row-reverse;
     gap: 1rem;
 }
-main .homepage-container{
-    display: grid;
-    grid-template-columns: 45% 55%;
-    margin-top: 2rem;
-}
-main .homepage-container .side2 .header-home{
-    display: flex;
-    justify-content: space-between;
-    margin: 2rem;
-}
-main .homepage-container .side2 .header-home button{
-    font-size: 18px;
-    color: #16381f;
-    background-color: #16381f4c;
-}
-main .homepage-container .side2 .header-home button:hover{
-    color: #fcfcfc;
-    background-color: #07170b4c;
-}
 main .notification-holder{
     background-color: #16381f4c;
     margin-top: 2rem;
@@ -95,6 +69,7 @@ main .notification-holder .notification-solo h4{
     margin-left: 0.6rem;
     
 }
+
 /*RIGHT PAGE*/
 .right-section{
     margin-top: 1.4rem;
@@ -108,4 +83,68 @@ main .notification-holder .notification-solo h4{
 .right-section .nav button{
     display: none;
 }
-
+.right-section .reminders{
+    margin-top: 2rem;
+}
+.right-section .reminders .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+}
+.right-section .reminders .header span{
+    padding: 10px;
+    box-shadow: var(--box-shadow);
+    background-color: white;
+    border-radius: 50%;
+}
+.right-section .reminders .notification{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.7rem;
+    padding: 1.4rem var(--card-padding);
+    border-radius: var(--border-radius-2);
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.right-section .reminders .notification:hover{
+    box-shadow: none;
+}
+.right-section .reminders .notification .content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+}
+.right-section .reminders .notification .icon{
+    padding: 0.6rem;
+    color: white;
+    background-color: #1B9C85;
+    border-radius: 20%;
+    display: flex;
+}
+.right-section .reminders .notification.deactive .icon{
+    background-color: red;
+}
+.right-section .reminders .add-reminder{
+    background-color: white;
+    border: 2px dashed #6C9BCF;
+    color: #6C9BCF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.right-section .reminders .add-reminder:hover{
+    background-color: #6C9BCF;
+    color: white;
+}
+.right-section .reminders .add-reminder div{
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}

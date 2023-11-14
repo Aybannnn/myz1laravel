@@ -9,6 +9,7 @@
 main{
     margin-top: 1.4rem;
     margin-left: 1.8rem;
+    margin-right: 1.8rem;
     background-color: #16392033;
     padding-left: 2rem;
     padding-top: 2rem;
@@ -54,4 +55,12 @@ main .reportform .containerform-fluid h6{
     margin-top: 1.8rem;
     margin-bottom: -1rem;
     font-weight: 700;
+}
+.right-section .nav{
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+}
+.right-section .nav button{
+    display: none;
 }

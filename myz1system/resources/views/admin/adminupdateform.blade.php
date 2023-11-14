@@ -504,12 +504,10 @@
                         </div>
                         <div class="row">
                             <div class="col d-grid">
-                            <button class="btn" type="submit" style="font-size: 24px; background-color: #F4FCD2; margin-top: 1rem; margin-bottom: 1rem; padding: 1rem; border: solid black 1px;">Update and Save Changes</button>
+                            <button class="btn" type="submit" style="font-size: 24px; background-color: #F4FCD2; margin-bottom: 1rem; padding: 1rem; border: solid black 1px;">Save Changes and Proceess Request</button>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col d-grid">
-                            <a href="{{url('admin-notification')}}" class="btn" style="font-size: 24px; background-color: #F4FCD2; margin-bottom: 1rem; padding: 1rem; border: solid black 1px;">Cancel and Dont Save Changes</a>
+                            <a href="{{url('admin-booking')}}" class="btn" style="font-size: 24px; background-color: #F4FCD2; margin-bottom: 1rem; padding: 1rem; border: solid black 1px;">Go Back and Dont Save Changes</a>
                             </div>
                         </div>
                     </div>

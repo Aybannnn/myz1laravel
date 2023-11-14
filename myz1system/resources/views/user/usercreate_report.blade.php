@@ -179,7 +179,183 @@
                                 <input type="text" class="form-control" name="email" value="{{old('email')}}">
                             </div>
                         </div>
-                        </div>
+                        <table class="table table-bordered" style="margin-top: 2rem; border: solid black 2px;">
+                            <thead style="text-align: center;">
+                                <tr>
+                                    <th scope="col" class="col-1" style="background-color: #43855A33; padding-top: 1rem; padding-bottom: 1rem;">Type of Report</th>
+                                    <th scope="col" class="col-1" style="background-color: #43855A33; padding-top: 1rem; padding-bottom: 1rem;">Item</th>
+                                    <th scope="col" class="col-1" style="background-color: #43855A33; padding-top: 1rem; padding-bottom: 1rem;">Rental Fee</th>
+                                    <th scope="col" class="col-1" style="background-color: #43855A33; padding-top: 1rem; padding-bottom: 1rem;">Equipment Full Price</th>
+                                    <th scope="col" class="col-1" style="background-color: #43855A33; padding-top: 1rem; padding-bottom: 1rem;">Penalty</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-bordered" style="margin-top: 2rem; border: solid black 2px;">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="col-4" style="background-color: #43855A33; padding-top: 1rem; padding-bottom: 1rem; text-align: center;">Total Full Price for Missing and Damaged Equipment</th>
+                                    <th scope="row" class="col-1" style="padding-top: 1rem; padding-bottom: 1rem;"></th>
+                                    <th scope="row" class="col-1" style="background-color: #43855A33; padding-top: 1rem; padding-bottom: 1rem; text-align: center;">Total Penalty</th>
+                                    <th scope="row" class="col-1" style="padding-top: 1rem; padding-bottom: 1rem;"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="col-4" style="background-color: #43855A80; padding-top: 1rem; padding-bottom: 1rem; text-align: center;">ACKNOWLEDGMENT OF THE PENALTY</th>
+                                    <th scope="row" class="col-1" colspan="2"style="background-color: #F4FCD2; padding-top: 1rem; padding-bottom: 1rem; text-align: center;">Grand Total</th>
+                                    <th scope="row" class="col-1" style="padding-top: 1rem; padding-bottom: 1rem;"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row" style="display: flex; justify-content: center; background-color: #fff; padding-top: 1rem; padding-bottom: 1rem;">
+                                    <input class="form-check-input" required type="checkbox" value="" style="padding: 1rem; margin-left: 1rem; margin-top: 1rem; background-color: #43855A; border: solid black 2px;">
+                                        <p style="margin-left: 2rem; padding-top: 1rem; padding-bottom: 1rem; padding-right: 1rem;">By clicking the checkbox, the undersigned have acknowledged and agreed to the penalties sanctioned by the ETC as stipulated in the agreed ETC SERVICE REQUEST AND RENTAL POLICY.</p>
+                                    </input>
+                                    </th>
+                                    <th scope="row" class="col-1" colspan="3"></th>
+                                </tr>
+                                <tr>
+                                    <th scope="row" style="display: flex; background-color: #fff; padding-top: 1rem; padding-bottom: 1rem;">
+                                        <input class="form-check-input" required type="checkbox" value="" style="padding: 1rem; margin-left: 1rem; margin-top: 1rem; background-color: #43855A; border: solid black 2px;">
+                                            <p style="margin-left: 2rem; padding-top: 1rem; padding-bottom: 1rem; padding-right: 1rem;">By clicking the checkbox, the undersigned would like to make an APPEAL for the following reasons:</p>
+                                        </input>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-bordered" style="margin-top: 1rem; border: solid black 2px;">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="col-1" style="text-align: center; padding-top: 1rem; padding-bottom: 1rem;">Department/Unit/Fund</th>
+                                    <th scope="col" class="col-1" style="text-align: center; padding-top: 1rem; padding-bottom: 1rem;">Budget Reference</th>
+                                    <th scope="col" class="col-1" style="text-align: center; padding-top: 1rem; padding-bottom: 1rem;">Amount to be Charged</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                    <th scope="row">
+                                        <input type="text" class="form-control" style="background-color: white; border: none;">
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="2" style="text-align: center; padding-top: 1rem; padding-bottom: 1rem; background-color: #F4FCD2;"><h2>TOTAL</h2></th>
+                                    <th scope="row"></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-bordered" style="margin-top: 1rem; border: solid black 2px;">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="col-1" style="text-align: center; justify-content: center; padding-top: 1rem; padding-bottom: 1rem; background-color: #43855A80;">AGRRED BY:</th>
+                                    <th scope="col" class="col-1" style="text-align: center; justify-content: center; background-color: #43855A80;">APPROVED BY: <br>(Department/Unit/Head)</th>
+                                    <th scope="col" class="col-1" style="text-align: center; justify-content: center; padding-top: 1rem; padding-bottom: 1rem; background-color: #43855A80;">BUDGET VERIFIED BY:</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        NAME <br> Position
+                                    </th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </form>
             </div>

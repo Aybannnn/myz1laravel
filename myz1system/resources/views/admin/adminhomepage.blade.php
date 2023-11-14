@@ -21,7 +21,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{url('style/adminhomepage.css')}}">
-    <link rel="stylesheet" href="{{url('style/responsive.css')}}">
     <link rel="stylesheet" href="{{url('style/main.css')}}">
     <link rel="stylesheet" href="{{url('style/animation.css')}}">
     <title>Admin Homepage</title>
@@ -77,6 +76,14 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="admin-booking">
+                            <span class="material-icons-sharp">
+                                calendar_month
+                            </span>
+                            <h3>Booking</h3>
+                        </a>
+                    </li>
+                    <li>
                         <a href="#">
                             <span class="material-icons-sharp">
                                 report
@@ -88,14 +95,6 @@
                             <li><a href="#">Track Report</a></li>
                             <li><a href="#">View Status</a></li>
                         </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="material-icons-sharp">
-                                question_answer
-                            </span>
-                            <h3>FAQ</h3>
-                        </a>
                     </li>
                     <li>
                         <a href="#">

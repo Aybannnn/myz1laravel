@@ -28,6 +28,11 @@ Route::get('/category_services/{id}', [CustomAuthController::class, 'categorySer
 Route::get('/inclusion_details/{id}', [CustomAuthController::class, 'inclusionDetails'])->middleware('isLoggedIn');
 Route::post('/register-request', [CustomAuthController::class, 'registerRequest'])->name('register-request');
 Route::get('/add-booking', [CustomAuthController::class, 'userBookingForm'])->middleware('isLoggedIn');
+Route::get('/create-report', [CustomAuthController::class, 'userCreateReport'])->middleware('isLoggedIn');
+Route::get('/frequently-asked-questions', [CustomAuthController::class, 'userQuestion'])->middleware('isLoggedIn');
+Route::get('/feedback', [CustomAuthController::class, 'userFeedback'])->middleware('isLoggedIn');
+Route::get('/logout', [CustomAuthController::class, 'logout']);
+
 Route::get('/admin-homepage', [AdminController::class, 'adminHomepage'])->middleware('isLoggedIn');
 Route::get('/admin-post', [AdminController::class, 'adminPost']);
 Route::get('/admin-notification', [AdminController::class, 'adminNotification'])->middleware('isLoggedIn');
@@ -37,10 +42,7 @@ Route::get('/accept_request/{id}', [AdminController::class, 'acceptRequest'])->m
 Route::get('/update_request/{id}', [AdminController::class, 'updateRequest'])->middleware('isLoggedIn');
 Route::post('/update-request/{id}', [AdminController::class, 'updateRequestConfirmation'])->middleware('isLoggedIn');
 Route::get('/deact_request/{id}', [AdminController::class, 'deactRequest'])->middleware('isLoggedIn');
-Route::get('/create-report', [CustomAuthController::class, 'userCreateReport'])->middleware('isLoggedIn');
-Route::get('/frequently-asked-questions', [CustomAuthController::class, 'userQuestion'])->middleware('isLoggedIn');
-Route::get('/feedback', [CustomAuthController::class, 'userFeedback'])->middleware('isLoggedIn');
-Route::get('/logout', [CustomAuthController::class, 'logout']);
+Route::get('/admin-booking', [AdminController::class, 'adminBooking'])->middleware('isLoggedIn');
 
 
 
