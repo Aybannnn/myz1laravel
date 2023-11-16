@@ -30,7 +30,6 @@ main h1 span{
     border-style: solid solid none none;
     border-width: 0.8rem;
 }
-
 main .reportform{
     margin-top: 2.5rem;
     border: solid #163920 0.2rem;
@@ -42,6 +41,54 @@ main .reportform{
 main .reportform .containerform-fluid h6{
     font-weight: 900;
     margin-top: 0.8rem;
+}
+main .categories .row .col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+main .categories .row .col .featured-img{
+    position: relative;
+    top: 1rem;
+    width: 250px;
+    height: 100px;
+    background-color: #d9d9d9;
+    border-radius: 10px;
+}
+main h1{
+    margin-left: -2rem;
+}
+main .row .col:nth-child(odd){
+    background: #16392026;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px #00000040;
+}
+main .row .col:nth-child(odd) h5{
+    padding-bottom: 0.4rem;
+    border-bottom: solid black 1px;
+}
+main .row .col:nth-child(even){
+    background-color: #16392087;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px #00000040;
+}
+main .row .col:nth-child(even) h5{
+    padding-bottom: 0.4rem;
+    border-bottom: solid white 1px;
+}
+main .row .col:nth-child(odd) button{
+    background-color: white;
+    color: black;
+}
+main .row .col:nth-child(even) button{
+    background-color: white;
+    color: black;
+}
+main .categories .row{
+    padding: 2rem;
+    margin-top: 1rem;
+    display: flex;
+    gap: 2rem;
 }
 .form-control{
     background-color: #43855A33;

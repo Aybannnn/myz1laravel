@@ -175,6 +175,7 @@ class CustomAuthController extends Controller
     }
     public function registerReport(Request $request)
     {
+
         $data = array();
         if(Session::has('loginId'))
         {
@@ -188,6 +189,7 @@ class CustomAuthController extends Controller
             'sender_email' => 'required'
         ]);
         $reportRequest = new CreateReport();
+        $reportRequest->user_id = $userId;
         $reportRequest->edm_request = $request->edm_request;
         $reportRequest->client_office = $request->client_office;
         $reportRequest->returned_by = $request->returned_by;
@@ -208,11 +210,20 @@ class CustomAuthController extends Controller
 
         return view('user.usercreate_report', compact('maincategory'));
     }
-    public function userTrackReport()
+    public function userTrackReport($id)
     {
+        $trackreport = CreateReport::where('user_id', '=', $id)->get();
+        $status = CreateReport::where('id', '=', $id)->get();
         $maincategory = Category::all();
 
-        return view('user.usertrackreport', compact('maincategory'));
+        return view('user.usertrackreport', compact('id', 'maincategory', 'trackreport', 'status'));
+    }
+    public function userTrackReportStatus($id)
+    {
+        $maincategory = Category::all();
+        $status = CreateReport::where('id', '=', $id)->get();
+
+        return view('user.userreportstatus', compact('maincategory', 'status'));
     }
     public function userQuestion()
     {

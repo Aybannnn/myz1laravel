@@ -85,7 +85,7 @@
                             <h3>Create Report</h3>
                         </a>
                         <ul class="sub-menu">
-                            <li><a href="#">Track Report</a></li>
+                            <li><a href="track-report">Track Report</a></li>
                             <li><a href="#">View Status</a></li>
                         </ul>
                     </li>

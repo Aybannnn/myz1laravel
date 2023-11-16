@@ -21,6 +21,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{url('style/trackreport.css')}}">
+    <link rel="stylesheet" href="{{url('style/track.css')}}">
     <link rel="stylesheet" href="{{url('style/main.css')}}">
     <link rel="stylesheet" href="{{url('style/animation.css')}}">
     <title>myZ1 Homepage</title>
@@ -127,42 +128,48 @@
                     <div class="material-icons-sharp" style="margin-right: 2rem; border-right: solid black 0.2rem; padding-right: 1rem">
                     arrow_back
                     </div></a>
-                    Track Report</span>
+                    Status</span>
                 </h1>
             </div>
-            <div class="container">
-                <h3 style="margin-top: 4rem;">Reports Submitted</h3>
-                <div class="categories">
-                    <div class="row">
-                        @foreach($trackreport as $report)
-                        <div class="col">
-                            
-                            <div class="title"style="margin-top: 2rem;">
-                                <h3 style="text-align: center; background-color: #d9d9d9; padding-right: 6rem; padding-left: 6rem; border-radius: 10px; padding-top: 1rem; padding-bottom: 1rem;">Report Status <span>#{{$report->id}}</span></h3>
-                                <h6>Date and Time <span>{{$report->created_at}}</span></h6>
-                                <h6>Report From <span>{{$report->client_office}}</span></h6>
-                            </div>
-                            <a href="{{url('track-status', $report->id)}}">
-                                <button class="btn btn-success" style="margin-bottom: 1rem; font-size: 14px;">View More Information</button>
-                            </a>
-                        </div>
-                        @endforeach
-                    </div> 
-                </div>
-            </div>
-            <!-- <div class="container" style="margin-top: 4rem;">
+            @foreach($status as $stat)
+            <div class="container" style="margin-top: 4rem; margin-bottom: 4rem;">
                 <div class="card" style="padding: 2rem;">
                     <div class="report_no">
-                        <h3>Report Status <span>#3829759832</span></h3>
+                        <h3>Report Status <span>#{{$stat->id}}</span></h3>
                     </div>
                     <div class="date_time">
-                        <h5>Date and Time: <span>HIHIHIH</span></h5>
+                        <h5>Date and Time: <span>{{$stat->created_at}}</span></h5>
                     </div>
                     <div class="report_by">
-                        <h5>Report From: <span>HIHIHI</span></h5>
+                        <h5>Report From: <span>{{$stat->client_office}}</span></h5>
                     </div>
+                    <section class="step-wizard" style="border-radius: 10px;">
+                        <ul class="step-wizard-list">
+                            <li class="step-wizard-item {{$stat->report_status == 'Waiting for Approval' ? 'current-item' : ''}}">
+                                <span class="progress-count">1</span>
+                                <span class="progress-label">Waiting for Approval</span>
+                            </li>
+                            <li class="step-wizard-item {{$stat->report_status == 'Under Review' ? 'current-item' : ''}}">
+                                <span class="progress-count">2</span>
+                                <span class="progress-label">Under Review</span>
+                            </li>
+                            <li class="step-wizard-item {{$stat->report_status == 'Report Accepted' ? 'current-item' : ''}}">
+                                <span class="progress-count">3</span>
+                                <span class="progress-label">Report Accepted</span>
+                            </li>
+                            <li class="step-wizard-item {{$stat->report_status == 'Under Maintenance' ? 'current-item' : ''}}">
+                                <span class="progress-count">4</span>
+                                <span class="progress-label">Under Maintenance</span>
+                            </li>
+                            <li class="step-wizard-item {{$stat->report_status == 'Report Resolved' ? 'current-item' : ''}}">
+                                <span class="progress-count">5</span>
+                                <span class="progress-label">Report Resolved</span>
+                            </li>
+                        </ul>
+                    </section>
                 </div>
-            </div> -->
+            </div>
+            @endforeach
         </main>
         <!-- End of Main Content -->
 

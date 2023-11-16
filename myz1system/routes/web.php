@@ -30,7 +30,9 @@ Route::post('/register-request', [CustomAuthController::class, 'registerRequest'
 Route::post('/register-report', [CustomAuthController::class, 'registerReport'])->name('register-report');
 Route::get('/add-booking', [CustomAuthController::class, 'userBookingForm'])->middleware('isLoggedIn');
 Route::get('/create-report', [CustomAuthController::class, 'userCreateReport'])->middleware('isLoggedIn');
-Route::get('/track-report', [CustomAuthController::class, 'userTrackReport'])->middleware('isLoggedIn');
+Route::get('/track-report/{id}', [CustomAuthController::class, 'userTrackReport'])->middleware('isLoggedIn')->name('track-report');
+Route::get('/track-status/{id}', [CustomAuthController::class, 'userTrackReportStatus'])->middleware('isLoggedIn');
+
 Route::get('/frequently-asked-questions', [CustomAuthController::class, 'userQuestion'])->middleware('isLoggedIn');
 Route::get('/feedback', [CustomAuthController::class, 'userFeedback'])->middleware('isLoggedIn');
 Route::get('/logout', [CustomAuthController::class, 'logout']);

@@ -86,8 +86,7 @@
                             <h3>Create Report</h3>
                         </a>
                         <ul class="sub-menu">
-                            <li><a href="track-report">Track Report</a></li>
-                            <li><a href="#">View Status</a></li>
+                            <li><a href="{{ route('track-report', ['id' => $data->id]) }}">Track Report</a></li>
                         </ul>
                     </li>
                     <li>
@@ -264,28 +263,6 @@
                         <h3>Add Reminder</h3>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4" style="margin-top:20px;">
-                <h4>WELCOME</h4>
-                <hr>
-                <table class="table">
-                    <thead>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Action</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{$data->name}}</td>
-                            <td>{{$data->email}}</td>
-                            <td><a href="logout">Logout</a></td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
