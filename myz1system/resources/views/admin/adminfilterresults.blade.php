@@ -127,28 +127,29 @@
             <div class="container" style="margin-top: 2rem;">
                 <div class="filter" style="display: flex; justify-content: right;">
                     <form action="/search" method="get" class="d-flex" style="gap: 0.5rem;">
-                        <input type="text" name="search" class="form-control" placeholder="Search report" style="width: 80%; font-size: 18px;">
-                        <button type="submit" class="btn" style="background-color: #fff;">
+                        <input type="text" name="search" class="form-control" placeholder="Search report" style="width: 80%; font-size: 18px;" value="{{ isset($search) ? $search : ''}}">
+                        <button type="submit" class="btn" style="background-color: #fff; margin-right: 2rem;">
                             <span class="material-icons-sharp" style="margin-top: 0.4rem;">search</span>
                         </button>
-                    </form>
                     </form>
                     <form action="/filter" method="get" class="d-flex" style="gap: 0.5rem;">
                         <select name="filter" style="border-radius: 6px; font-size: 18px;">
                             <option value="">Filter Reports by Status</option>
-                                @foreach($status as $status)
-                                    <option value="{{$status->status}}">{{$status->status}}</option>
-                                @endforeach
+                            @foreach($status as $statusOption)
+                                <option value="{{ $statusOption->status }}" {{ isset($filter) && $filter === $statusOption->status ? 'selected' : '' }}>
+                                    {{ $statusOption->status }}
+                                </option>
+                            @endforeach
                         </select>
-                        <button tyle="submit" class="btn" style="background-color: #fff;">
-                        <span class="material-icons-sharp" style="margin-top: 0.4rem;">filter_alt</span>
+                        <button type="submit" class="btn" style="background-color: #fff;">
+                            <span class="material-icons-sharp" style="margin-top: 0.4rem;">filter_alt</span>
                         </button>
                     </form>
                 </div>
             </div>
             <div class="container" style="margin-top: 2rem;">
                 <div class="row">
-                @foreach($filterreports as $post)
+                @foreach($filterResults as $post)
                     <div class="col-6">
                         <div class="card" style="text-align: center; padding: 2rem; margin: 1rem;">
                             <h2 style="margin-right: 2rem; margin-left: 2rem;">Report No. {{$post->id}}</h2>

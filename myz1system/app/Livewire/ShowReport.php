@@ -25,10 +25,10 @@ class ShowReport extends Component
 
     public function reloadReport($status_id, $query)
     {
-        $this->postreport = CreateReport::query();
+        $this->postreport = ReportStatus::query();
 
-        if ($report_status) {
-            $this->postreport = $this->postreport->where('report_status', $report_status);
+        if ($status_id) {
+            $this->postreport = $this->postreport->where('report_status', $status_id);
         }
 
         if ($query) {

@@ -134,6 +134,8 @@ class AdminController extends Controller
     public function adminReport()
     {
         $filterreports = CreateReport::all();
+        $report = CreateReport::get();
+        $status = ReportStatus::get();
 
         $data = array();
         if(Session::has('loginId'))
@@ -141,7 +143,50 @@ class AdminController extends Controller
             $data = User::where('id', '=', Session::get('loginId'))->first();
         }
 
-        return view ('admin.adminreport', compact('data', 'filterreports'));
+        return view ('admin.adminreport', compact('data', 'filterreports', 'report', 'status'));
+    }
+
+    public function search(Request $request)
+    {
+
+        $data = array();
+        if(Session::has('loginId'))
+        {
+            $data = User::where('id', '=', Session::get('loginId'))->first();
+        }
+        $filterreports = CreateReport::all();
+        $report = CreateReport::get();
+        $status = ReportStatus::get();
+        $search = $request->search;
+
+        $searchResults = CreateReport::where(function($query) use ($search){
+
+            $query->where('client_office', 'like', "%$search%");
+        })
+        ->get();
+
+        return view('admin.adminsearchreport', compact('data', 'search', 'report', 'filterreports', 'searchResults', 'status'));
+    }
+
+    public function filter(Request $request)
+    {
+
+        $data = array();
+        if(Session::has('loginId'))
+        {
+            $data = User::where('id', '=', Session::get('loginId'))->first();
+        }
+        $filterreports = CreateReport::all();
+        $status = ReportStatus::get();
+        $filter = $request->filter;
+
+        $filterResults = CreateReport::where(function($query) use ($filter){
+
+            $query->where('report_status', 'like', "%$filter%");
+        })
+        ->get();
+
+        return view('admin.adminfilterresults', compact('data', 'filter', 'filterreports', 'filterResults', 'status'));
     }
 
     public function adminUpdateStatus(Request $request, $id)
