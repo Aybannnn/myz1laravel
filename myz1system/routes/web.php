@@ -32,7 +32,6 @@ Route::get('/add-booking', [CustomAuthController::class, 'userBookingForm'])->mi
 Route::get('/create-report', [CustomAuthController::class, 'userCreateReport'])->middleware('isLoggedIn');
 Route::get('/track-report/{id}', [CustomAuthController::class, 'userTrackReport'])->middleware('isLoggedIn')->name('track-report');
 Route::get('/track-status/{id}', [CustomAuthController::class, 'userTrackReportStatus'])->middleware('isLoggedIn');
-
 Route::get('/frequently-asked-questions', [CustomAuthController::class, 'userQuestion'])->middleware('isLoggedIn');
 Route::get('/feedback', [CustomAuthController::class, 'userFeedback'])->middleware('isLoggedIn');
 Route::get('/logout', [CustomAuthController::class, 'logout']);
@@ -47,7 +46,8 @@ Route::get('/update_request/{id}', [AdminController::class, 'updateRequest'])->m
 Route::post('/update-request/{id}', [AdminController::class, 'updateRequestConfirmation'])->middleware('isLoggedIn');
 Route::get('/deact_request/{id}', [AdminController::class, 'deactRequest'])->middleware('isLoggedIn');
 Route::get('/admin-booking', [AdminController::class, 'adminBooking'])->middleware('isLoggedIn');
-
+Route::get('/admin-report', [AdminController::class, 'adminReport'])->middleware('isLoggedIn');
+Route::post('/update-status/{id}', [AdminController::class, 'adminUpdateStatus'])->middleware('isLoggedIn')->name('update-status');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

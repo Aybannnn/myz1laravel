@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Notification;
 use App\Models\BookingRequest;
+use App\Models\CreateReport;
+use App\Models\ReportStatus;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -23,10 +25,12 @@ class AdminController extends Controller
         }
         return view ('admin.adminhomepage', compact('data', 'notification'));
     }
+
     public function adminPost()
     {
         return view ('admin.adminpostannouncement');
     }
+
     public function adminNotification()
     {
         $notificationPending = BookingRequest::where('booking_status', '=', 'Pending')->get();
@@ -39,18 +43,21 @@ class AdminController extends Controller
         }
         return view ('admin.adminnotification', compact('data', 'notificationPending', 'notificationActive'));
     }
+
     public function viewRequest($id)
     {
         $notificationPending = BookingRequest::find($id);
 
         return view ('admin.adminrequestform', compact('notificationPending'));
     }
+
     public function updateRequest($id)
     {
         $notificationActive = BookingRequest::find($id);
 
         return view ('admin.adminupdateform', compact('notificationActive'));
     }
+
     public function updateRequestConfirmation(Request $request, $id)
     {
         $notificationActive = BookingRequest::find($id);
@@ -77,6 +84,7 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
     public function deleteRequest($id)
     {
         $notificationPending = BookingRequest::find($id);
@@ -87,6 +95,7 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
     public function acceptRequest($id)
     {
         $notificationPending = BookingRequest::find($id);
@@ -97,6 +106,7 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
     public function deactRequest($id)
     {
         $notificationActive = BookingRequest::find($id);
@@ -107,6 +117,7 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
     public function adminBooking()
     {
         $notificationActive = BookingRequest::whereIn('booking_status', ['Accepted', 'Ready'])->get();
@@ -118,5 +129,29 @@ class AdminController extends Controller
         }
 
         return view ('admin.adminbooking', compact('data', 'notificationActive'));
+    }
+
+    public function adminReport()
+    {
+        $filterreports = CreateReport::all();
+
+        $data = array();
+        if(Session::has('loginId'))
+        {
+            $data = User::where('id', '=', Session::get('loginId'))->first();
+        }
+
+        return view ('admin.adminreport', compact('data', 'filterreports'));
+    }
+
+    public function adminUpdateStatus(Request $request, $id)
+    {
+        $statusupdate = CreateReport::find($id);
+    
+        $statusupdate->report_status = $request->report_status;
+    
+        $statusupdate->save();
+    
+        return redirect()->back();
     }
 }

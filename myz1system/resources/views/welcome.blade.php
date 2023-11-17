@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{url('style/zone.css')}}">
     <link rel="stylesheet" href="{{url('style/main.css')}}">
     <title>ZONE</title>
+    <link rel="icon" type="image/x-icon" href="{{asset('images/logo-no-bg.png')}}">
 </head>
 <body>
     <div class="container">

@@ -84,17 +84,12 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="admin-report">
                             <span class="material-icons-sharp">
                                 report
                             </span>
                             <h3>Report</h3>
                         </a>
-                        <ul class="sub-menu">
-                            <li><a href="create.html">Create Report</a></li>
-                            <li><a href="#">Track Report</a></li>
-                            <li><a href="#">View Status</a></li>
-                        </ul>
                     </li>
                     <li>
                         <a href="#">
@@ -324,28 +319,6 @@
                         <h3>Add Reminder</h3>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4" style="margin-top:20px;">
-                <h4>WELCOME</h4>
-                <hr>
-                <table class="table">
-                    <thead>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Action</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{$data->name}}</td>
-                            <td>{{$data->email}}</td>
-                            <td><a href="logout">Logout</a></td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>

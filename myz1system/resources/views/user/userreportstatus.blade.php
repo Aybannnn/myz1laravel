@@ -145,23 +145,23 @@
                     </div>
                     <section class="step-wizard" style="border-radius: 10px;">
                         <ul class="step-wizard-list">
-                            <li class="step-wizard-item {{$stat->report_status == 'Waiting for Approval' ? 'current-item' : ''}}">
+                            <li class="step-wizard-item {{$stat->report_status == '1' ? 'current-item' : ''}}">
                                 <span class="progress-count">1</span>
                                 <span class="progress-label">Waiting for Approval</span>
                             </li>
-                            <li class="step-wizard-item {{$stat->report_status == 'Under Review' ? 'current-item' : ''}}">
+                            <li class="step-wizard-item {{$stat->report_status == '2' ? 'current-item' : ''}}">
                                 <span class="progress-count">2</span>
                                 <span class="progress-label">Under Review</span>
                             </li>
-                            <li class="step-wizard-item {{$stat->report_status == 'Report Accepted' ? 'current-item' : ''}}">
+                            <li class="step-wizard-item {{$stat->report_status == '3' ? 'current-item' : ''}}">
                                 <span class="progress-count">3</span>
                                 <span class="progress-label">Report Accepted</span>
                             </li>
-                            <li class="step-wizard-item {{$stat->report_status == 'Under Maintenance' ? 'current-item' : ''}}">
+                            <li class="step-wizard-item {{$stat->report_status == '4' ? 'current-item' : ''}}">
                                 <span class="progress-count">4</span>
                                 <span class="progress-label">Under Maintenance</span>
                             </li>
-                            <li class="step-wizard-item {{$stat->report_status == 'Report Resolved' ? 'current-item' : ''}}">
+                            <li class="step-wizard-item {{$stat->report_status == '5' ? 'current-item' : ''}}">
                                 <span class="progress-count">5</span>
                                 <span class="progress-label">Report Resolved</span>
                             </li>
