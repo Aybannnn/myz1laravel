@@ -70,17 +70,29 @@
                             </span>
                             <h3>Notification</h3>
                         </a>
-                        <ul class="sub-menu">
-                            <li><a href="#">Equipment</a></li>
-                            <li><a href="#">Services</a></li>
-                        </ul>
+                    </li>
+                    <li>
+                        <a href="admin-calendar">
+                            <span class="material-icons-sharp">
+                                calendar_month
+                            </span>
+                            <h3>Services Calendar</h3>
+                        </a>
                     </li>
                     <li>
                         <a href="admin-booking">
                             <span class="material-icons-sharp">
-                                calendar_month
+                                event
                             </span>
                             <h3>Booking</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="material-icons-sharp">
+                                summarize
+                            </span>
+                            <h3>Monthly Report</h3>
                         </a>
                     </li>
                     <li>
@@ -88,7 +100,7 @@
                             <span class="material-icons-sharp">
                                 report
                             </span>
-                            <h3>Report</h3>
+                            <h3>Equipment Report</h3>
                         </a>
                     </li>
                     <li>
@@ -96,7 +108,7 @@
                             <span class="material-icons-sharp">
                                 feedback
                             </span>
-                            <h3>Feedback</h3>
+                            <h3>FAQ</h3>
                         </a>
                     </li>
                     <li>

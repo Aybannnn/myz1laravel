@@ -57,7 +57,7 @@
             <div class="sidebar close">
                 <ul class="nav-links">
                     <li>
-                        <a href="admin-homepage">
+                        <a href="{{url('admin-homepage')}}">
                             <span class="material-icons-sharp">
                                 home
                             </span>
