@@ -136,33 +136,19 @@
                     <div class="row">
                         @foreach($trackreport as $report)
                         <div class="col">
-                            
                             <div class="title"style="margin-top: 2rem;">
-                                <h3 style="text-align: center; background-color: #d9d9d9; padding-right: 6rem; padding-left: 6rem; border-radius: 10px; padding-top: 1rem; padding-bottom: 1rem;">Report Status <span>#{{$report->id}}</span></h3>
-                                <h6>Date and Time <span>{{$report->created_at}}</span></h6>
-                                <h6>Report From <span>{{$report->client_office}}</span></h6>
+                                <h3 style="text-align: center; background-color: #fff; padding-right: 4rem; padding-left: 4rem; border-radius: 10px; padding-top: 1rem; padding-bottom: 1rem;">Report Status <span>#{{$report->id}}</span></h3>
+                                <h6 style="color: #fff;">Date and Time <span>{{$report->created_at}}</span></h6>
+                                <h6 style="color: #fff;">Report From <span>{{$report->client_office}}</span></h6>
                             </div>
                             <a href="{{url('track-status', $report->id)}}">
-                                <button class="btn btn-success" style="margin-bottom: 1rem; font-size: 14px;">View More Information</button>
+                                <button class="btn btn-success" style="margin-bottom: 1rem; font-size: 14px; color: #163920; font-weight: 900; margin-top: 2rem;">View More Information</button>
                             </a>
                         </div>
                         @endforeach
                     </div> 
                 </div>
             </div>
-            <!-- <div class="container" style="margin-top: 4rem;">
-                <div class="card" style="padding: 2rem;">
-                    <div class="report_no">
-                        <h3>Report Status <span>#3829759832</span></h3>
-                    </div>
-                    <div class="date_time">
-                        <h5>Date and Time: <span>HIHIHIH</span></h5>
-                    </div>
-                    <div class="report_by">
-                        <h5>Report From: <span>HIHIHI</span></h5>
-                    </div>
-                </div>
-            </div> -->
         </main>
         <!-- End of Main Content -->
 

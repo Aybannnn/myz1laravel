@@ -1,0 +1,42 @@
+.container-fluid{
+    display: grid;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 12rem auto !important;
+}
+/*CENTER PAGE*/
+main{
+    margin-top: 1.4rem;
+    margin-left: 1.8rem;
+    margin-right: 1.8rem;
+    background-color: white;
+    padding-left: 2rem;
+    padding-top: 2rem;
+    padding-right: 2rem;
+    border-radius: 0px 17px 17px 0px;
+    margin-bottom: 0.5rem;
+}
+main h1 span{
+    background-color: white;
+    position: relative;
+    top: 0.8rem;
+    padding-top: 1.9rem;
+    padding-bottom: 1.9rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 0px 30px 100px 0px;
+    border-color: #16381f;
+    border-style: solid solid none none;
+    border-width: 0.8rem;
+}
+main h1{
+    margin-left: -2rem;
+}
+.right-section .nav{
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+}
+.right-section .nav button{
+    display: none;
+}

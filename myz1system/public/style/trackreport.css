@@ -59,7 +59,7 @@ main h1{
     margin-left: -2rem;
 }
 main .row .col:nth-child(odd){
-    background: #16392026;
+    background: #076026;
     border-radius: 10px;
     box-shadow: 4px 4px 4px #00000040;
 }
@@ -68,7 +68,7 @@ main .row .col:nth-child(odd) h5{
     border-bottom: solid black 1px;
 }
 main .row .col:nth-child(even){
-    background-color: #16392087;
+    background-color: #076026;
     border-radius: 10px;
     box-shadow: 4px 4px 4px #00000040;
 }
