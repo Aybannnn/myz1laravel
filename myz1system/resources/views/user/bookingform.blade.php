@@ -193,8 +193,13 @@
                                 <span class="errormsg">@error('production_title') {{$message}} @enderror</span>
                             </div>
                             <div class="col">
-                                <h6>Expected Running Time</h6>
-                                <input type="date" class="form-control" name="running_time" value="{{old('running_time')}}">
+                                <h6>Expected Start of Running Time</h6>
+                                <input type="datetime-local" class="form-control" name="start_date" value="{{old('start_date')}}">
+                                <span class="errormsg">@error('running_time') {{$message}} @enderror</span>
+                            </div>
+                            <div class="col">
+                                <h6>Expected End of Running Time</h6>
+                                <input type="datetime-local" class="form-control" name="end_date" value="{{old('end_date')}}">
                                 <span class="errormsg">@error('running_time') {{$message}} @enderror</span>
                             </div>
                         </div>

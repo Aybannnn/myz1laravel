@@ -59,6 +59,12 @@ main .grid4{
     flex-direction: row-reverse;
     gap: 1rem;
 }
+/* .full-calendar .fc-content .fc-event-container .fc-event {
+    background: #ef6262 !important;
+    border-color: #eb3d3d !important;
+    color: #fff !important;
+    border-radius: 0;
+} */
 /*RIGHT PAGE*/
 .right-section{
     margin-top: 1.4rem;

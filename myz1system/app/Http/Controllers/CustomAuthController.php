@@ -134,7 +134,8 @@ class CustomAuthController extends Controller
             'contact_person_no' => 'required|max:11',
             'contact_person_email' => 'required',
             'production_title' => 'required',
-            'running_time' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
             'rental_name1' => 'required',
             'rental_name1_hours' => 'required',
             'rental_name2' => 'sometimes',
@@ -153,7 +154,8 @@ class CustomAuthController extends Controller
         $bookingRequest->contact_person_no = $request->contact_person_no;
         $bookingRequest->contact_person_email = $request->contact_person_email;
         $bookingRequest->production_title = $request->production_title;
-        $bookingRequest->running_time = $request->running_time;
+        $bookingRequest->start_date = $request->start_date;
+        $bookingRequest->end_date = $request->end_date;
         $bookingRequest->rental_name1 = $request->rental_name1;
         $bookingRequest->rental_name1_hours = $request->rental_name1_hours;
         $bookingRequest->rental_name2 = $request->rental_name2;

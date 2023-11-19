@@ -28,12 +28,23 @@ class AdminController extends Controller
 
     public function adminCalendar()
     {
+        $events = array();
+        $bookings = BookingRequest::where('booking_status', 'Accepted')->get();
+        foreach($bookings as $booking) {
+            $events[] = [
+                'title' => $booking->requesting_office,
+                'start' => $booking->start_date,
+                'end' => $booking->end_date,
+                'url' => url('update_request', ['id' => $booking->id]),
+            ];
+        }
+
         $data = array();
         if(Session::has('loginId'))
         {
             $data = User::where('id', '=', Session::get('loginId'))->first();
         }
-        return view ('admin.admincalendar', compact('data'));
+        return view ('admin.admincalendar', ['events' => $events], compact('data'));
     }
 
     public function adminPost()
