@@ -507,7 +507,7 @@
                             <button class="btn" type="submit" style="font-size: 24px; background-color: #F4FCD2; margin-bottom: 1rem; padding: 1rem; border: solid black 1px;">Save Changes and Proceess Request</button>
                             </div>
                             <div class="col d-grid">
-                            <a href="{{url('admin-booking')}}" class="btn" style="font-size: 24px; background-color: #F4FCD2; margin-bottom: 1rem; padding: 1rem; border: solid black 1px;">Go Back and Dont Save Changes</a>
+                            <a href="{{url('admin-calendar')}}" class="btn" style="font-size: 24px; background-color: #F4FCD2; margin-bottom: 1rem; padding: 1rem; border: solid black 1px;">Go Back</a>
                             </div>
                         </div>
                     </div>

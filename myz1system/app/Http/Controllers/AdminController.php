@@ -29,7 +29,7 @@ class AdminController extends Controller
     public function adminCalendar()
     {
         $events = array();
-        $bookings = BookingRequest::where('booking_status', 'Accepted')->get();
+        $bookings = BookingRequest::whereIn('booking_status', ['Accepted', 'Ready'])->get();
         foreach($bookings as $booking) {
             $events[] = [
                 'title' => $booking->requesting_office,
