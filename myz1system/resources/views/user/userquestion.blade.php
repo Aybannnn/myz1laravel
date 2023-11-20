@@ -65,7 +65,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="booking-form">
+                        <a href="add-booking">
                             <span class="material-icons-sharp">
                                 add_circle
                             </span>
@@ -120,7 +120,40 @@
 
         <!--MIDDLE CONTENT-->
         <main>
-            
+            <h1><span>FREQUENTLY ASKED QUESTIONS</span></h1>
+            <div class="container" style="margin-top: 6rem;">
+                <div class="questioncontainer" style="background-color: white; border-radius: 8px; padding: 1rem; border-left: solid #163920 12px; margin-bottom: 2rem;">
+                    <button type="button" class="btn btn-link" style="text-decoration: none; color: #163920;" href="#collapseInfo" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseInfo"><h3>Lorem ipsum dolor sit amet</h3></button>
+                    <div class="collapse" id="collapseInfo">
+                        <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h6>
+                    </div>
+                </div>
+                <div class="questioncontainer" style="background-color: white; border-radius: 8px; padding: 1rem; border-left: solid #163920 12px; margin-bottom: 2rem;">
+                    <button type="button" class="btn btn-link" style="text-decoration: none; color: #163920;" href="#collapseInfo2" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseInfo"><h3>Lorem ipsum dolor sit amet</h3></button>
+                    <div class="collapse" id="collapseInfo2">
+                        <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h6>
+                    </div>
+                </div>
+                <div class="questioncontainer" style="background-color: white; border-radius: 8px; padding: 1rem; border-left: solid #163920 12px; margin-bottom: 2rem;">
+                    <button type="button" class="btn btn-link" style="text-decoration: none; color: #163920;" href="#collapseInfo3" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseInfo"><h3>Lorem ipsum dolor sit amet</h3></button>
+                    <div class="collapse" id="collapseInfo3">
+                        <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h6>
+                    </div>
+                </div>
+                <div class="questioncontainer" style="background-color: white; border-radius: 8px; padding: 1rem; border-left: solid #163920 12px; margin-bottom: 2rem;">
+                    <button type="button" class="btn btn-link" style="text-decoration: none; color: #163920;" href="#collapseInfo4" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseInfo"><h3>Lorem ipsum dolor sit amet</h3></button>
+                    <div class="collapse" id="collapseInfo4">
+                        <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h6>
+                    </div>
+                </div>
+                <div class="questioncontainer" style="background-color: white; border-radius: 8px; padding: 1rem; border-left: solid #163920 12px; margin-bottom: 2rem;">
+                    <button type="button" class="btn btn-link" style="text-decoration: none; color: #163920;" href="#collapseInfo5" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseInfo"><h3>Lorem ipsum dolor sit amet</h3></button>
+                    <div class="collapse" id="collapseInfo5">
+                        <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h6>
+                    </div>
+                </div>
+            </div>
+
         </main>
         <!-- End of Main Content -->
 
@@ -134,67 +167,6 @@
                 </button>
             </div>
             <!-- End of Nav -->
-
-            <div class="user-profile">
-                <div class="logo">
-                </div>
-            </div>
-
-            <div class="reminders">
-                <div class="header">
-                    <h2>Reminders</h2>
-                    <span class="material-icons-sharp">
-                        notifications_none
-                    </span>
-                </div>
-
-                <div class="notification">
-                    <div class="icon">
-                        <span class="material-icons-sharp">
-                            volume_up
-                        </span>
-                    </div>
-                    <div class="content">
-                        <div class="info">
-                            <h3>Workshop</h3>
-                            <small class="text_muted">
-                                08:00 AM - 12:00 PM
-                            </small>
-                        </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
-
-                <div class="notification deactive">
-                    <div class="icon">
-                        <span class="material-icons-sharp">
-                            edit
-                        </span>
-                    </div>
-                    <div class="content">
-                        <div class="info">
-                            <h3>Workshop</h3>
-                            <small class="text_muted">
-                                08:00 AM - 12:00 PM
-                            </small>
-                        </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
-
-                <div class="notification add-reminder">
-                    <div>
-                        <span class="material-icons-sharp">
-                            add
-                        </span>
-                        <h3>Add Reminder</h3>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 <!--FOOTER-->
@@ -203,7 +175,7 @@
 </div>
 <!--FOOTER-->
 
-<script src="script/homepage.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
