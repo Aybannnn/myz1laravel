@@ -1,0 +1,80 @@
+.container-fluid{
+    display: grid;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 12rem auto !important;
+}
+/*CENTER PAGE*/
+main{
+    margin-top: 1.4rem;
+    margin-left: 1.8rem;
+    margin-right: 1.8rem;
+    background-color: #16392033;
+    padding-left: 2rem;
+    padding-top: 2rem;
+    padding-right: 2rem;
+    border-radius: 0px 17px 17px 0px;
+    margin-bottom: 0.5rem;
+}
+main h1 span{
+    background-color: white;
+    position: relative;
+    top: 0.8rem;
+    padding-top: 1.9rem;
+    padding-bottom: 1.9rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 0px 30px 100px 0px;
+    border-color: #16381f;
+    border-style: solid solid none none;
+    border-width: 0.8rem;
+}
+main h1{
+    margin-left: -2rem;
+}
+.rate {
+    justify-content: center;
+    display: flex;
+    height: 46px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    flex-direction: row-reverse;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #163920;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #163920;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #163920;
+}
+.right-section .nav{
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+}
+.right-section .nav button{
+    display: none;
+}

@@ -20,8 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{url('style/homepage.css')}}">
-    <link rel="stylesheet" href="{{url('style/responsive.css')}}">
+    <link rel="stylesheet" href="{{url('style/feedback.css')}}">
     <link rel="stylesheet" href="{{url('style/main.css')}}">
     <link rel="stylesheet" href="{{url('style/animation.css')}}">
     <title>Feedback</title>
@@ -121,7 +120,33 @@
 
         <!--MIDDLE CONTENT-->
         <main>
-            
+            <h1><span>FEEDBACK</span></h1>
+            <div class="feedbackform" style="background-color: white; margin-top: 4rem; text-align: center; margin-left: 12rem; margin-right: 12rem; margin-bottom: 6rem; padding: 2rem; border-radius: 12px; box-shadow: 4px 4px 10px #000000bf;">
+            <form action="#">
+                @csrf
+                <span>
+                    <h3 style="color: #163920; font-size: 32px;">Tell us what can be improved.</h3>
+                </span>
+                <div class="rate">
+                    <input type="radio" id="star5" name="rate" value="5" />
+                    <label for="star5" title="text">5 stars</label>
+                    <input type="radio" id="star4" name="rate" value="4" />
+                    <label for="star4" title="text">4 stars</label>
+                    <input type="radio" id="star3" name="rate" value="3" />
+                    <label for="star3" title="text">3 stars</label>
+                    <input type="radio" id="star2" name="rate" value="2" />
+                    <label for="star2" title="text">2 stars</label>
+                    <input type="radio" id="star1" name="rate" value="1" />
+                    <label for="star1" title="text">1 star</label>
+                </div>
+                <textarea name="feedback" cols="30" rows="10" style="background-color: #D9D9D9; width: 30rem; border-radius: 10px; font-size: 18px; padding: 1rem;" placeholder="Tell us more..."></textarea>
+                <div class="row">
+                    <div class="col">
+                    <button class="btn btn-success" style="margin-top: 2rem;">SEND</button>
+                    </div>
+                </div>
+            </form>
+            </div>
         </main>
         <!-- End of Main Content -->
 
@@ -135,67 +160,6 @@
                 </button>
             </div>
             <!-- End of Nav -->
-
-            <div class="user-profile">
-                <div class="logo">
-                </div>
-            </div>
-
-            <div class="reminders">
-                <div class="header">
-                    <h2>Reminders</h2>
-                    <span class="material-icons-sharp">
-                        notifications_none
-                    </span>
-                </div>
-
-                <div class="notification">
-                    <div class="icon">
-                        <span class="material-icons-sharp">
-                            volume_up
-                        </span>
-                    </div>
-                    <div class="content">
-                        <div class="info">
-                            <h3>Workshop</h3>
-                            <small class="text_muted">
-                                08:00 AM - 12:00 PM
-                            </small>
-                        </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
-
-                <div class="notification deactive">
-                    <div class="icon">
-                        <span class="material-icons-sharp">
-                            edit
-                        </span>
-                    </div>
-                    <div class="content">
-                        <div class="info">
-                            <h3>Workshop</h3>
-                            <small class="text_muted">
-                                08:00 AM - 12:00 PM
-                            </small>
-                        </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
-
-                <div class="notification add-reminder">
-                    <div>
-                        <span class="material-icons-sharp">
-                            add
-                        </span>
-                        <h3>Add Reminder</h3>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 <!--FOOTER-->
