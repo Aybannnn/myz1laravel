@@ -38,6 +38,7 @@ Route::get('/logout', [CustomAuthController::class, 'logout']);
 
 Route::get('/admin-homepage', [AdminController::class, 'adminHomepage'])->middleware('isLoggedIn');
 Route::get('/admin-calendar', [AdminController::class, 'adminCalendar'])->middleware('isLoggedIn');
+Route::get('/admin-monthly', [AdminController::class, 'adminMonthly'])->middleware('isLoggedIn');
 Route::get('/admin-post', [AdminController::class, 'adminPost']);
 Route::get('/admin-notification', [AdminController::class, 'adminNotification'])->middleware('isLoggedIn');
 Route::get('/view_request/{id}', [AdminController::class, 'viewRequest'])->middleware('isLoggedIn');

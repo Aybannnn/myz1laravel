@@ -57,7 +57,7 @@
             <div class="sidebar close">
                 <ul class="nav-links">
                     <li>
-                        <a href="user-homepage">
+                        <a href="{{url('user-homepage')}}">
                             <span class="material-icons-sharp">
                                 home
                             </span>
@@ -65,7 +65,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="add-booking">
+                        <a href="{{url('add-booking')}}">
                             <span class="material-icons-sharp">
                                 add_circle
                             </span>
@@ -78,19 +78,18 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="create-report">
+                        <a href="{{url('create-report')}}">
                             <span class="material-icons-sharp">
                                 report
                             </span>
                             <h3>Create Report</h3>
                         </a>
                         <ul class="sub-menu">
-                            <li><a href="#">Track Report</a></li>
-                            <li><a href="#">View Status</a></li>
+                            <li><a href="{{ route('track-report', ['id' => $data->id]) }}">Track Report</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="frequently-asked-questions" class="active">
+                        <a href="{{url('frequently-asked-questions')}}" class="active">
                             <span class="material-icons-sharp">
                                 question_answer
                             </span>
@@ -98,7 +97,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="feedback">
+                        <a href="{{url('feedback')}}">
                             <span class="material-icons-sharp">
                                 feedback
                             </span>
@@ -106,7 +105,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="logout">
+                        <a href="{{url('logout')}}">
                             <span class="material-icons-sharp">
                                 logout
                             </span>

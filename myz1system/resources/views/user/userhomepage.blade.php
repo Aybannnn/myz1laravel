@@ -58,7 +58,7 @@
             <div class="sidebar close">
                 <ul class="nav-links">
                     <li>
-                        <a href="user-homepage" class="active">
+                        <a href="{{url('user-homepage')}}" class="active">
                             <span class="material-icons-sharp">
                                 home
                             </span>
@@ -66,7 +66,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="add-booking">
+                        <a href="{{url('add-booking')}}">
                             <span class="material-icons-sharp">
                                 add_circle
                             </span>
@@ -79,7 +79,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="create-report">
+                        <a href="{{url('create-report')}}">
                             <span class="material-icons-sharp">
                                 report
                             </span>
@@ -90,7 +90,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="frequently-asked-questions">
+                        <a href="{{url('frequently-asked-questions')}}">
                             <span class="material-icons-sharp">
                                 question_answer
                             </span>
@@ -98,7 +98,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="feedback">
+                        <a href="{{url('feedback')}}">
                             <span class="material-icons-sharp">
                                 feedback
                             </span>
@@ -106,7 +106,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="logout">
+                        <a href="{{url('logout')}}">
                             <span class="material-icons-sharp">
                                 logout
                             </span>

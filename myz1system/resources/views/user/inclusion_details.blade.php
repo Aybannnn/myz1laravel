@@ -89,7 +89,6 @@
                         </a>
                         <ul class="sub-menu">
                             <li><a href="#">Track Report</a></li>
-                            <li><a href="#">View Status</a></li>
                         </ul>
                     </li>
                     <li>

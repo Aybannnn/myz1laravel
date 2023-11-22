@@ -47,6 +47,17 @@ class AdminController extends Controller
         return view ('admin.admincalendar', ['events' => $events], compact('data'));
     }
 
+    public function adminMonthly()
+    {
+        $data = array();
+        if(Session::has('loginId'))
+        {
+            $data = User::where('id', '=', Session::get('loginId'))->first();
+        }
+
+        return view('admin.adminmonthly', compact('data'));
+    }
+
     public function adminPost()
     {
         return view ('admin.adminpostannouncement');

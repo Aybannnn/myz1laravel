@@ -84,9 +84,13 @@ class CustomAuthController extends Controller
         $maincategory = Category::all();
         $category = Category::find($id);
         $subcategory = SubCategory::where('main_id', '=', $id)->get();
-        
+        $data = array();
+        if(Session::has('loginId'))
+        {
+            $data = User::where('id','=', Session::get('loginId'))->first();
+        }
 
-        return view ('user.category_details', compact('category', 'maincategory', 'subcategory'));
+        return view ('user.category_details', compact('data', 'category', 'maincategory', 'subcategory'));
     }
     public function categoryServices($id)
     {
@@ -94,8 +98,13 @@ class CustomAuthController extends Controller
         $category = Category::where('id', '=', $id)->first();
         $subcategory = SubCategory::find($id);
         $indivitems = IndividualItem::where('sub_id', '=', $id)->get();
+        $data = array();
+        if(Session::has('loginId'))
+        {
+            $data = User::where('id','=', Session::get('loginId'))->first();
+        }
 
-        return view ('user.category_services', compact('category', 'maincategory', 'subcategory', 'indivitems'));
+        return view ('user.category_services', compact('data', 'category', 'maincategory', 'subcategory', 'indivitems'));
     }
     public function inclusionDetails($id)
     {
@@ -103,8 +112,13 @@ class CustomAuthController extends Controller
         $indivitems = IndividualItem::find($id);
         $indivprice = IndividualItem::where('sub_id', '=', $id)->get();
         $inclusion = Inclusion::where('item_id', '=', $id)->get();
+        $data = array();
+        if(Session::has('loginId'))
+        {
+            $data = User::where('id','=', Session::get('loginId'))->first();
+        }
 
-        return view ('user.inclusion_details', compact('maincategory', 'indivitems', 'indivprice', 'inclusion'));
+        return view ('user.inclusion_details', compact('data', 'maincategory', 'indivitems', 'indivprice', 'inclusion'));
     }
     public function userBookingForm()
     {
@@ -209,35 +223,60 @@ class CustomAuthController extends Controller
     public function userCreateReport()
     {
         $maincategory = Category::all();
+        $data = array();
+        if(Session::has('loginId'))
+        {
+            $data = User::where('id','=', Session::get('loginId'))->first();
+        }
 
-        return view('user.usercreate_report', compact('maincategory'));
+        return view('user.usercreate_report', compact('data', 'maincategory'));
     }
     public function userTrackReport($id)
     {
         $trackreport = CreateReport::where('user_id', '=', $id)->get();
         $status = CreateReport::where('id', '=', $id)->get();
         $maincategory = Category::all();
+        $data = array();
+        if(Session::has('loginId'))
+        {
+            $data = User::where('id','=', Session::get('loginId'))->first();
+        }
 
-        return view('user.usertrackreport', compact('id', 'maincategory', 'trackreport', 'status'));
+        return view('user.usertrackreport', compact('data', 'id', 'maincategory', 'trackreport', 'status'));
     }
     public function userTrackReportStatus($id)
     {
         $maincategory = Category::all();
         $status = CreateReport::where('id', '=', $id)->get();
+        $data = array();
+        if(Session::has('loginId'))
+        {
+            $data = User::where('id','=', Session::get('loginId'))->first();
+        }
 
-        return view('user.userreportstatus', compact('maincategory', 'status'));
+        return view('user.userreportstatus', compact('data', 'maincategory', 'status'));
     }
     public function userQuestion()
     {
         $maincategory = Category::all();
+        $data = array();
+        if(Session::has('loginId'))
+        {
+            $data = User::where('id','=', Session::get('loginId'))->first();
+        }
 
-        return view('user.userquestion', compact('maincategory'));
+        return view('user.userquestion', compact('data', 'maincategory'));
     }
     public function userFeedback()
     {
         $maincategory = Category::all();
+        $data = array();
+        if(Session::has('loginId'))
+        {
+            $data = User::where('id','=', Session::get('loginId'))->first();
+        }
 
-        return view('user.userfeedback', compact('maincategory'));
+        return view('user.userfeedback', compact('data', 'maincategory'));
     }
     public function logout()
     {

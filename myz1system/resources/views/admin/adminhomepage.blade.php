@@ -80,15 +80,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="admin-booking">
-                            <span class="material-icons-sharp">
-                                event
-                            </span>
-                            <h3>Booking</h3>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
+                        <a href="admin-monthly">
                             <span class="material-icons-sharp">
                                 summarize
                             </span>
