@@ -128,11 +128,12 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-    public function acceptRequest($id)
+    public function acceptRequest(Request $request, $id)
     {
         $notificationPending = BookingRequest::find($id);
 
         $notificationPending -> booking_status='Accepted';
+        $notificationPending -> received_by = $request->received_by;
 
         $notificationPending -> save();
 

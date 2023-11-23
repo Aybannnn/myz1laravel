@@ -162,8 +162,66 @@
                             </div>
                             <div class="button-holder" style="padding-left: 5.2rem; padding-bottom: 2rem;">
                                 <a href="{{url('view_request', $notificationP->id)}}" class="btn btn-primary">View Request</a>
-                                <a href="{{url('accept_request', $notificationP->id)}}" class="btn btn-success" style="margin-left: 1rem;">Accept Request</a>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#acceptModal{{ $notificationP->id }}" class="btn btn-success" style="margin-left: 1rem;">Accept Request</a>
                                 <a href="{{url('delete_request', $notificationP->id)}}" class="btn btn-danger" style="margin-left: 1rem;">Reject Request</a>
+                            </div>
+                            <div class="modal fade" id="acceptModal{{ $notificationP->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Accept Request</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container">
+                                        <form action="{{ url('accept_request', $notificationP->id) }}" method="post">
+                                        @csrf
+                                            <h4>Received by:</h4>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="received_by" style="font-size: 16px;" value="Mr. Ted Nudget Tac-an">
+                                                <label class="form-check-label" for="receivedby1">
+                                                    <h5>Mr. Ted Nudgent Tac-an</h5>
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="received_by" style="font-size: 16px;" value="Ms. Maria Alexandra Benitez">
+                                                <label class="form-check-label" for="receivedby2">
+                                                    <h5>Ms. Maria Alexandra Benitez</h5>
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="received_by" style="font-size: 16px;" value="Ms. Jenny Largo">
+                                                <label class="form-check-label" for="receivedby3">
+                                                    <h5>Ms. Jenny Largo</h5>
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="received_by" style="font-size: 16px;" value="Mr. Neulan Ian Atienza">
+                                                <label class="form-check-label" for="receivedby4">
+                                                    <h5>Mr. Nuelan Ian Atienza</h5>
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="received_by" style="font-size: 16px;" value="Mr Arjohn Macarate">
+                                                <label class="form-check-label" for="receivedby5">
+                                                    <h5>Mr. Arjohn Macarate</h5>
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="received_by" style="font-size: 16px;" value="Mr Reyan Amacna">
+                                                <label class="form-check-label" for="receivedby6">
+                                                    <h5>Mr. Reyan Amacna</h5>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit">Hi</button>
+                                    </div>
+                                    </form>
+                                    </div>
+                                </div>
                             </div>
                         @endforeach
                         </div>

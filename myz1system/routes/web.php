@@ -43,7 +43,7 @@ Route::get('/admin-post', [AdminController::class, 'adminPost'])->middleware('is
 Route::get('/admin-notification', [AdminController::class, 'adminNotification'])->middleware('isLoggedIn');
 Route::get('/view_request/{id}', [AdminController::class, 'viewRequest'])->middleware('isLoggedIn');
 Route::get('/delete_request/{id}', [AdminController::class, 'deleteRequest'])->middleware('isLoggedIn');
-Route::get('/accept_request/{id}', [AdminController::class, 'acceptRequest'])->middleware('isLoggedIn');
+Route::post('/accept_request/{id}', [AdminController::class, 'acceptRequest'])->middleware('isLoggedIn');
 Route::get('/update_request/{id}', [AdminController::class, 'updateRequest'])->middleware('isLoggedIn');
 Route::post('/update-request/{id}', [AdminController::class, 'updateRequestConfirmation'])->middleware('isLoggedIn');
 Route::get('/deact_request/{id}', [AdminController::class, 'deactRequest'])->middleware('isLoggedIn');
