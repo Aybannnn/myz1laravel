@@ -62,7 +62,7 @@
             <div class="sidebar close">
                 <ul class="nav-links">
                     <li>
-                        <a href="admin-homepage">
+                        <a href="{{url('admin-homepage')}}">
                             <span class="material-icons-sharp">
                                 home
                             </span>
@@ -70,7 +70,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="admin-notification">
+                        <a href="{{url('admin-notification')}}">
                             <span class="material-icons-sharp">
                                 notifications
                             </span>
@@ -78,23 +78,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="admin-calendar" class="active">
-                            <span class="material-icons-sharp" class="active">
+                        <a href="{{url('admin-calendar')}}" class="active">
+                            <span class="material-icons-sharp">
                                 calendar_month
                             </span>
                             <h3>Services Calendar</h3>
                         </a>
                     </li>
                     <li>
-                        <a href="admin-booking">
-                            <span class="material-icons-sharp">
-                                event
-                            </span>
-                            <h3>Booking</h3>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
+                        <a href="{{url('admin-monthly')}}">
                             <span class="material-icons-sharp">
                                 summarize
                             </span>
@@ -102,7 +94,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="admin-report">
+                        <a href="{{url('admin-report')}}">
                             <span class="material-icons-sharp">
                                 report
                             </span>
@@ -110,7 +102,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('admin-feedback')}}">
                             <span class="material-icons-sharp">
                                 feedback
                             </span>
@@ -118,7 +110,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="logout">
+                        <a href="{{url('logout')}}">
                             <span class="material-icons-sharp">
                                 logout
                             </span>

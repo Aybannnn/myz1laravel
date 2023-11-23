@@ -231,4 +231,15 @@ class AdminController extends Controller
     
         return redirect()->back();
     }
+
+    public function adminFeedback()
+    {
+        $data = array();
+        if(Session::has('loginId'))
+        {
+            $data = User::where('id', '=', Session::get('loginId'))->first();
+        }
+
+        return view('admin.adminfeedback', compact('data'));
+    }
 }

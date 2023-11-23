@@ -39,7 +39,7 @@ Route::get('/logout', [CustomAuthController::class, 'logout']);
 Route::get('/admin-homepage', [AdminController::class, 'adminHomepage'])->middleware('isLoggedIn');
 Route::get('/admin-calendar', [AdminController::class, 'adminCalendar'])->middleware('isLoggedIn');
 Route::get('/admin-monthly', [AdminController::class, 'adminMonthly'])->middleware('isLoggedIn');
-Route::get('/admin-post', [AdminController::class, 'adminPost']);
+Route::get('/admin-post', [AdminController::class, 'adminPost'])->middleware('isLoggedIn');
 Route::get('/admin-notification', [AdminController::class, 'adminNotification'])->middleware('isLoggedIn');
 Route::get('/view_request/{id}', [AdminController::class, 'viewRequest'])->middleware('isLoggedIn');
 Route::get('/delete_request/{id}', [AdminController::class, 'deleteRequest'])->middleware('isLoggedIn');
@@ -49,6 +49,7 @@ Route::post('/update-request/{id}', [AdminController::class, 'updateRequestConfi
 Route::get('/deact_request/{id}', [AdminController::class, 'deactRequest'])->middleware('isLoggedIn');
 Route::get('/admin-booking', [AdminController::class, 'adminBooking'])->middleware('isLoggedIn');
 Route::get('/admin-report', [AdminController::class, 'adminReport'])->middleware('isLoggedIn');
+Route::get('/admin-feedback', [AdminController::class, 'adminFeedback'])->middleware('isLoggedIn');
 Route::get('/search', [AdminController::class, 'search'])->middleware('isLoggedIn');
 Route::get('/filter', [AdminController::class, 'filter'])->middleware('isLoggedIn');
 Route::post('/update-status/{id}', [AdminController::class, 'adminUpdateStatus'])->middleware('isLoggedIn')->name('update-status');

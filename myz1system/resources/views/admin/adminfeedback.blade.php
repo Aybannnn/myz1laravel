@@ -56,7 +56,7 @@
             <div class="sidebar close">
                 <ul class="nav-links">
                     <li>
-                        <a href="{{url('admin-homepage')}}" class="active">
+                        <a href="{{url('admin-homepage')}}">
                             <span class="material-icons-sharp">
                                 home
                             </span>
@@ -96,7 +96,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{url('admin-feedback')}}">
+                        <a href="{{url('admin-feedback')}}" class="active">
                             <span class="material-icons-sharp">
                                 feedback
                             </span>
@@ -126,130 +126,7 @@
                     <h1>{{$data->name}}</h1>
                 </div>
             </div>
-            <div class="homepage-container">
-                <div class="side1">
-                    <h6>
-                        WELCOME BACK <br>
-                        {{$data->name}}
-                    </h6>
-                    <img src="{{asset('images/image 15.png')}}">
-                </div>
-                <div class="side2">
-                    <div class="header-home">
-                        <h5>Notification</h5>
-                        <a href="admin-notification"><button class="btn">View All</button></a>
-                    </div>
-                    <table>
-                        <div class="col">
-                            <div class="row">
-                                @foreach($notification as $notification)
-                                <div class="notification-solo" style="margin-bottom: 1.6rem; margin-left: 2rem; display: flex; padding-right: 4rem;">
-                                    <span class="material-icons-sharp" style="color: green;">calendar_today</span>
-                                    <h4 style="margin-left: 1rem;">New booking for
-                                        @if ($notification->rental_name1) 
-                                            <span style="color: #076026; border-bottom: solid black 1px">{{$notification->rental_name1}}</span>
-                                        @endif
-                                        @if ($notification->rental_name2)
-                                            @if ($notification->rental_name1), @endif
-                                            <span style="color: #076026; border-bottom: solid black 1px">{{$notification->rental_name2}}</span>
-                                        @endif
-                                        @if ($notification->rental_name3)
-                                            @if ($notification->rental_name1 || $notification->rental_name2), @endif
-                                            <span style="color: #076026; border-bottom: solid black 1px">{{$notification->rental_name3}}</span>
-                                        @endif
-                                        @if ($notification->rental_name4)
-                                            @if ($notification->rental_name1 || $notification->rental_name2 || $notification->rental_name3), @endif
-                                            <span style="color: #076026; border-bottom: solid black 1px">{{$notification->rental_name4}}</span>
-                                        @endif
-                                        @if ($notification->rental_name5)
-                                            @if ($notification->rental_name1 || $notification->rental_name2 || $notification->rental_name3 || $notification->rental_name4), @endif
-                                            <span style="color: #076026; border-bottom: solid black 1px">{{$notification->rental_name5}}</span>
-                                        @endif
-                                        from {{$notification->requesting_office}}
-                                    </h4>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </table>
-                </div>
-            </div>
-            <div class="featured-list">
-                <div class="featured-list-header">
-                    <h2>Featured</h2>
-                    <a href="admin-post">
-                        <button class="btn">Add Announcement
-                        <span class="material-icons-sharp">
-                            add
-                        </span>
-                        </button>
-                    </a>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="featured-img"></div>
-                        <h5>Lorem Ipsum</h5>
-                        <p>September 00, 2023</p>
-                    </div>
-                    <div class="col">
-                        <div class="featured-img"></div>
-                        <h5>Lorem Ipsum</h5>
-                        <p>September 00, 2023</p>
-                    </div>
-                    <div class="col">
-                        <div class="featured-img"></div>
-                        <h5>Lorem Ipsum</h5>
-                        <p>September 00, 2023</p>
-                    </div>
-                    <div class="col">
-                        <div class="featured-img"></div>
-                        <h5>Lorem Ipsum</h5>
-                        <p>September 00, 2023</p>
-                    </div>
-                </div>
-            </div>
-            <!--RECENT ANNOUNCEMENTS-->
-            <div class="recent-announcement">
-                <h2>Recent</h2>
-                <h1>
-                    <?php 
-                        date_default_timezone_set('Asia/Kolkata');
-                        $today = date('F d, Y');
-                        echo $today;
-                    ?>
-                </h1>
-                <div class="row2">
-                    <div class="col2">
-                        <div class="grid-item-one"></div>
-                        <span class="grid-item-two">
-                            <h5>Lorem Ipsum <span class="material-icons-sharp">more_vert</span></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <h6>September 00, 2023</h6>
-                        </span>
-                    </div>
-                </div>
-                <div class="row2">
-                    <div class="col2">
-                        <div class="grid-item-one"></div>
-                        <span class="grid-item-two">
-                            <h5>Lorem Ipsum <span class="material-icons-sharp">more_vert</span></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <h6>September 00, 2023</h6>
-                        </span>
-                    </div>
-                </div>
-                <div class="row2">
-                    <div class="col2">
-                        <div class="grid-item-one"></div>
-                        <span class="grid-item-two">
-                            <h5>Lorem Ipsum <span class="material-icons-sharp">more_vert</span></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <h6>September 00, 2023</h6>
-                        </span>
-                    </div>
-                </div>
-                <a href="#">Show All</a>
-            </div>
+            
         </main>
         <!-- End of Main Content -->
 
