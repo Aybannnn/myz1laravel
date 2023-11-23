@@ -166,7 +166,7 @@
                                 <a href="{{url('delete_request', $notificationP->id)}}" class="btn btn-danger" style="margin-left: 1rem;">Reject Request</a>
                             </div>
                             <div class="modal fade" id="acceptModal{{ $notificationP->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
+                                <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Accept Request</h5>
@@ -178,7 +178,7 @@
                                         @csrf
                                             <h4>Received by:</h4>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="received_by" style="font-size: 16px;" value="Mr. Ted Nudget Tac-an">
+                                                <input class="form-check-input" type="radio" name="received_by" style="font-size: 16px;" value="Mr. Ted Nudget Tac-an" required>
                                                 <label class="form-check-label" for="receivedby1">
                                                     <h5>Mr. Ted Nudgent Tac-an</h5>
                                                 </label>
@@ -217,7 +217,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit">Hi</button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
                                     </div>
                                     </form>
                                     </div>
