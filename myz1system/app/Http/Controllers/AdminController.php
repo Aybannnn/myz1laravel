@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Hash;
 use Session;
+use DB;
 
 class AdminController extends Controller
 {
@@ -48,15 +49,19 @@ class AdminController extends Controller
     }
 
     public function adminMonthly()
-    {
-        $data = array();
-        if(Session::has('loginId'))
-        {
-            $data = User::where('id', '=', Session::get('loginId'))->first();
-        }
-
-        return view('admin.adminmonthly', compact('data'));
+{
+    $data = array();
+    if (Session::has('loginId')) {
+        $data = User::where('id', '=', Session::get('loginId'))->first();
     }
+
+    $result = BookingRequest::select(DB::raw("COUNT(*) as count"), 'rental_name1')
+        ->groupBy('rental_name1')
+        ->get();
+
+    return view('admin.adminmonthly', compact('data', 'result'));
+}
+
 
     public function adminPost()
     {

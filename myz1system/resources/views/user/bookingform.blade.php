@@ -242,7 +242,12 @@
                             <div class="row">
                                 <div class="col-4">
                                     <h6>Specific Type of ETC Rental Request</h6>
-                                    <input type="text" class="form-control" name="rental_name2" value="{{old('rental_name2')}}">
+                                    <select class="form-control" name="rental_name2" value="{{old('rental_name2')}}">
+                                        <option disabled selected value> -- select an available equipment/service -- </option>
+                                        @foreach($indivitems as $items)
+                                        <option>{{$items->service}}</option>
+                                        @endforeach
+                                    </select>
                                     <span class="errormsg">@error('rental_name2') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-2">
@@ -274,7 +279,12 @@
                             <div class="row">
                             <div class="col-4">
                                 <h6>Specific Type of ETC Rental Request</h6>
-                                    <input type="text" class="form-control" name="rental_name3" value="{{old('rental_name3')}}">
+                                    <select class="form-control" name="rental_name3" value="{{old('rental_name3')}}">
+                                        <option disabled selected value> -- select an available equipment/service -- </option>
+                                        @foreach($indivitems as $items)
+                                        <option>{{$items->service}}</option>
+                                        @endforeach
+                                    </select>
                                     <span class="errormsg">@error('rental_name3') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-2">
@@ -306,7 +316,12 @@
                             <div class="row">
                                 <div class="col-4">
                                 <h6>Specific Type of ETC Rental Request</h6>
-                                    <input type="text" class="form-control" name="rental_name4" value="{{old('rental_name4')}}">
+                                    <select class="form-control" name="rental_name4" value="{{old('rental_name4')}}">
+                                        <option disabled selected value> -- select an available equipment/service -- </option>
+                                        @foreach($indivitems as $items)
+                                        <option>{{$items->service}}</option>
+                                        @endforeach
+                                    </select>
                                     <span class="errormsg">@error('rental_name4') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-2">
@@ -338,7 +353,12 @@
                             <div class="row">
                             <div class="col-4">
                                 <h6>Specific Type of ETC Rental Request</h6>
-                                    <input type="text" class="form-control" name="rental_name5" value="{{old('rental_name5')}}">
+                                    <select class="form-control" name="rental_name5" value="{{old('rental_name5')}}">
+                                        <option disabled selected value> -- select an available equipment/service -- </option>
+                                        @foreach($indivitems as $items)
+                                        <option>{{$items->service}}</option>
+                                        @endforeach
+                                    </select>
                                     <span class="errormsg">@error('rental_name5') {{$message}} @enderror</span>
                                 </div>
                                 <div class="col-2">

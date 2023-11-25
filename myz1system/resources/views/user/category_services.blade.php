@@ -155,21 +155,6 @@
                 </button>
             </div>
             <!-- End of Nav -->
-            <div class="searchbooking">
-                <tr>
-                    <td>
-                        <div class="search">
-                        <span class="material-icons-sharp">
-                        search
-                        </span>
-                            <input type="text" class="form-control" name="search" value="{{old('password')}}">
-                        </div>
-                    </td>
-                </tr>
-            </div>
-            <a href="{{url('booking-form')}}">
-            <button class='btn d-grid gap-2 mx-auto'>BOOK NOW</button>
-            </a>
         </div>
     </div>
 

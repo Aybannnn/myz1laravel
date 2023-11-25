@@ -1,7 +1,14 @@
+.container-fluid{
+    display: grid;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 12rem auto !important;
+}
 /*CENTER PAGE*/
 main{
     margin-top: 1.4rem;
     margin-left: 1.8rem;
+    margin-right: 1rem;
     background-color: #16392033;
     padding-left: 2rem;
     padding-top: 2rem;

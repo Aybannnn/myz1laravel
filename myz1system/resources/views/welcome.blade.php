@@ -9,18 +9,26 @@
     <link rel="icon" type="image/x-icon" href="{{asset('images/logo-no-bg.png')}}">
 </head>
 <body>
-    <div class="container">
+    <div class="bannerContainer">
         <div class="banner">
             <img src="{{asset('images/zone main page banner.png')}}">
         </div>
     </div>
 
     <div class="container2">
-        <div class="nav">
-            <a href="{{url('login')}}">Z1: Operational System</a>
-            <a href="#">Phase 2</a>
-            <a href="#">Phase 3</a>
-            <a href="#">Phase 4</a>
+        <div class="row" style="text-align: center; background-color: ">
+            <div class="col">
+                <a href="{{url('login')}}" style="text-decoration: none;"><h4 style="color: white; padding: 0.6rem; background-color: #076026; border-radius: 8px; padding: 1rem;">Z1: Operational System</span></h4></a>
+            </div>
+            <div class="col">
+                <a href="#" style="text-decoration: none;"><h4 style="color: white; padding: 0.6rem; background-color: #076026; border-radius: 8px; padding: 1rem;">Phase 2</h4></a>
+            </div>
+            <div class="col">
+                <a href="#" style="text-decoration: none;"><h4 style="color: white; padding: 0.6rem; background-color: #076026; border-radius: 8px; padding: 1rem;">Phase 3</h4></a>
+            </div>
+            <div class="col">
+                <a href="#" style="text-decoration: none;"><h4 style="color: white; padding: 0.6rem; background-color: #076026; border-radius: 8px; padding: 1rem;">Phase 4</h4></a>
+            </div>
         </div>
     </div>
 
