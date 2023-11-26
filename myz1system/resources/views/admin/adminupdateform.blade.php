@@ -65,48 +65,47 @@
                         </a>
                     </li>
                     <li>
-                        <a href="admin-notification">
+                        <a href="{{url('admin-notification')}}">
                             <span class="material-icons-sharp">
                                 notifications
                             </span>
                             <h3>Notification</h3>
                         </a>
-                        <ul class="sub-menu">
-                            <li><a href="#">Equipment</a></li>
-                            <li><a href="#">Services</a></li>
-                        </ul>
                     </li>
                     <li>
-                        <a href="admin-booking" class="active">
+                        <a href="{{url('admin-calendar')}}" class="active">
                             <span class="material-icons-sharp">
                                 calendar_month
                             </span>
-                            <h3>Booking</h3>
+                            <h3>Services Calendar</h3>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('admin-monthly')}}">
+                            <span class="material-icons-sharp">
+                                summarize
+                            </span>
+                            <h3>Monthly Report</h3>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('admin-report')}}">
                             <span class="material-icons-sharp">
                                 report
                             </span>
-                            <h3>Report</h3>
+                            <h3>Equipment Report</h3>
                         </a>
-                        <ul class="sub-menu">
-                            <li><a href="create.html">Create Report</a></li>
-                            <li><a href="#">Track Report</a></li>
-                            <li><a href="#">View Status</a></li>
-                        </ul>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('admin-feedback')}}">
                             <span class="material-icons-sharp">
                                 feedback
                             </span>
-                            <h3>Feedback</h3>
+                            <h3>FAQ</h3>
                         </a>
                     </li>
                     <li>
-                        <a href="logout">
+                        <a href="{{url('logout')}}">
                             <span class="material-icons-sharp">
                                 logout
                             </span>

@@ -159,6 +159,65 @@
                             Total percentage of current booked equipment/services.
                         </p>
                     </figure>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    View More
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <figure class="highcharts-figure">
+                                            <div id="containerPie2"></div>
+                                            <p class="highcharts-description">
+                                                Total percentage of current booked equipment/services.
+                                            </p>
+                                        </figure>
+                                    </div>
+                                    <div class="col">
+                                        <figure class="highcharts-figure">
+                                            <div id="containerPie3"></div>
+                                            <p class="highcharts-description">
+                                                Total percentage of current booked equipment/services.
+                                            </p>
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <figure class="highcharts-figure">
+                                            <div id="containerPie4"></div>
+                                            <p class="highcharts-description">
+                                                Total percentage of current booked equipment/services.
+                                            </p>
+                                        </figure>
+                                    </div>
+                                    <div class="col">
+                                        <figure class="highcharts-figure">
+                                            <div id="containerPie5"></div>
+                                            <p class="highcharts-description">
+                                                Total percentage of current booked equipment/services.
+                                            </p>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
                     </div>
                     <div class="col">
                     <figure class="highcharts-figure">
@@ -286,7 +345,7 @@ Highcharts.chart('container1', {
         type: 'pie'
     },
     title: {
-        text: 'Percentage of booked Equipment and Services',
+        text: 'Percentage of commonly booked Equipment and Services',
         align: 'left'
     },
     subtitle: {
@@ -324,6 +383,514 @@ Highcharts.chart('container1', {
     colorByPoint: true,
     data: result.map(item => ({
         name: item.rental_name1,
+        y: item.count
+    }))
+}]
+});
+</script>
+
+<script>
+    var result = <?php echo json_encode($result2)?>;
+    
+    (function (H) {
+    H.seriesTypes.pie.prototype.animate = function (init) {
+        const series = this,
+            chart = series.chart,
+            points = series.points,
+            {
+                animation
+            } = series.options,
+            {
+                startAngleRad
+            } = series;
+
+        function fanAnimate(point, startAngleRad) {
+            const graphic = point.graphic,
+                args = point.shapeArgs;
+
+            if (graphic && args) {
+
+                graphic
+                    // Set inital animation values
+                    .attr({
+                        start: startAngleRad,
+                        end: startAngleRad,
+                        opacity: 1
+                    })
+                    // Animate to the final position
+                    .animate({
+                        start: args.start,
+                        end: args.end
+                    }, {
+                        duration: animation.duration / points.length
+                    }, function () {
+                        // On complete, start animating the next point
+                        if (points[point.index + 1]) {
+                            fanAnimate(points[point.index + 1], args.end);
+                        }
+                        // On the last point, fade in the data labels, then
+                        // apply the inner size
+                        if (point.index === series.points.length - 1) {
+                            series.dataLabelsGroup.animate({
+                                opacity: 1
+                            },
+                            void 0,
+                            function () {
+                                points.forEach(point => {
+                                    point.opacity = 1;
+                                });
+                                series.update({
+                                    enableMouseTracking: true
+                                }, false);
+                                chart.update({
+                                    plotOptions: {
+                                        pie: {
+                                            innerSize: '40%',
+                                            borderRadius: 8
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                    });
+            }
+        }
+
+        if (init) {
+            // Hide points on init
+            points.forEach(point => {
+                point.opacity = 0;
+            });
+        } else {
+            fanAnimate(points[0], startAngleRad);
+        }
+    };
+}(Highcharts));
+
+Highcharts.chart('containerPie2', {
+    chart: {
+        type: 'pie'
+    },
+    title: {
+        text: 'Percentage of 2nd choice booked Equipment and Services',
+        align: 'left'
+    },
+    subtitle: {
+        text: ' ',
+        align: 'left'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    credits: {
+        enabled: false
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            borderWidth: 2,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b><br>{point.percentage}%',
+                distance: 20
+            }
+        }
+    },
+    series: [{
+    enableMouseTracking: false,
+    animation: {
+        duration: 2000
+    },
+    colorByPoint: true,
+    data: result.map(item => ({
+        name: item.rental_name2,
+        y: item.count
+    }))
+}]
+});
+</script>
+
+<script>
+    var result = <?php echo json_encode($result3)?>;
+    
+    (function (H) {
+    H.seriesTypes.pie.prototype.animate = function (init) {
+        const series = this,
+            chart = series.chart,
+            points = series.points,
+            {
+                animation
+            } = series.options,
+            {
+                startAngleRad
+            } = series;
+
+        function fanAnimate(point, startAngleRad) {
+            const graphic = point.graphic,
+                args = point.shapeArgs;
+
+            if (graphic && args) {
+
+                graphic
+                    // Set inital animation values
+                    .attr({
+                        start: startAngleRad,
+                        end: startAngleRad,
+                        opacity: 1
+                    })
+                    // Animate to the final position
+                    .animate({
+                        start: args.start,
+                        end: args.end
+                    }, {
+                        duration: animation.duration / points.length
+                    }, function () {
+                        // On complete, start animating the next point
+                        if (points[point.index + 1]) {
+                            fanAnimate(points[point.index + 1], args.end);
+                        }
+                        // On the last point, fade in the data labels, then
+                        // apply the inner size
+                        if (point.index === series.points.length - 1) {
+                            series.dataLabelsGroup.animate({
+                                opacity: 1
+                            },
+                            void 0,
+                            function () {
+                                points.forEach(point => {
+                                    point.opacity = 1;
+                                });
+                                series.update({
+                                    enableMouseTracking: true
+                                }, false);
+                                chart.update({
+                                    plotOptions: {
+                                        pie: {
+                                            innerSize: '40%',
+                                            borderRadius: 8
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                    });
+            }
+        }
+
+        if (init) {
+            // Hide points on init
+            points.forEach(point => {
+                point.opacity = 0;
+            });
+        } else {
+            fanAnimate(points[0], startAngleRad);
+        }
+    };
+}(Highcharts));
+
+Highcharts.chart('containerPie3', {
+    chart: {
+        type: 'pie'
+    },
+    title: {
+        text: 'Percentage of 3rd choice booked Equipment and Services',
+        align: 'left'
+    },
+    subtitle: {
+        text: ' ',
+        align: 'left'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    credits: {
+        enabled: false
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            borderWidth: 2,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b><br>{point.percentage}%',
+                distance: 20
+            }
+        }
+    },
+    series: [{
+    enableMouseTracking: false,
+    animation: {
+        duration: 2000
+    },
+    colorByPoint: true,
+    data: result.map(item => ({
+        name: item.rental_name3,
+        y: item.count
+    }))
+}]
+});
+</script>
+
+<script>
+    var result = <?php echo json_encode($result4)?>;
+    
+    (function (H) {
+    H.seriesTypes.pie.prototype.animate = function (init) {
+        const series = this,
+            chart = series.chart,
+            points = series.points,
+            {
+                animation
+            } = series.options,
+            {
+                startAngleRad
+            } = series;
+
+        function fanAnimate(point, startAngleRad) {
+            const graphic = point.graphic,
+                args = point.shapeArgs;
+
+            if (graphic && args) {
+
+                graphic
+                    // Set inital animation values
+                    .attr({
+                        start: startAngleRad,
+                        end: startAngleRad,
+                        opacity: 1
+                    })
+                    // Animate to the final position
+                    .animate({
+                        start: args.start,
+                        end: args.end
+                    }, {
+                        duration: animation.duration / points.length
+                    }, function () {
+                        // On complete, start animating the next point
+                        if (points[point.index + 1]) {
+                            fanAnimate(points[point.index + 1], args.end);
+                        }
+                        // On the last point, fade in the data labels, then
+                        // apply the inner size
+                        if (point.index === series.points.length - 1) {
+                            series.dataLabelsGroup.animate({
+                                opacity: 1
+                            },
+                            void 0,
+                            function () {
+                                points.forEach(point => {
+                                    point.opacity = 1;
+                                });
+                                series.update({
+                                    enableMouseTracking: true
+                                }, false);
+                                chart.update({
+                                    plotOptions: {
+                                        pie: {
+                                            innerSize: '40%',
+                                            borderRadius: 8
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                    });
+            }
+        }
+
+        if (init) {
+            // Hide points on init
+            points.forEach(point => {
+                point.opacity = 0;
+            });
+        } else {
+            fanAnimate(points[0], startAngleRad);
+        }
+    };
+}(Highcharts));
+
+Highcharts.chart('containerPie4', {
+    chart: {
+        type: 'pie'
+    },
+    title: {
+        text: 'Percentage of 4th choice booked Equipment and Services',
+        align: 'left'
+    },
+    subtitle: {
+        text: ' ',
+        align: 'left'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    credits: {
+        enabled: false
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            borderWidth: 2,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b><br>{point.percentage}%',
+                distance: 20
+            }
+        }
+    },
+    series: [{
+    enableMouseTracking: false,
+    animation: {
+        duration: 2000
+    },
+    colorByPoint: true,
+    data: result.map(item => ({
+        name: item.rental_name4,
+        y: item.count
+    }))
+}]
+});
+</script>
+
+<script>
+    var result = <?php echo json_encode($result5)?>;
+    
+    (function (H) {
+    H.seriesTypes.pie.prototype.animate = function (init) {
+        const series = this,
+            chart = series.chart,
+            points = series.points,
+            {
+                animation
+            } = series.options,
+            {
+                startAngleRad
+            } = series;
+
+        function fanAnimate(point, startAngleRad) {
+            const graphic = point.graphic,
+                args = point.shapeArgs;
+
+            if (graphic && args) {
+
+                graphic
+                    // Set inital animation values
+                    .attr({
+                        start: startAngleRad,
+                        end: startAngleRad,
+                        opacity: 1
+                    })
+                    // Animate to the final position
+                    .animate({
+                        start: args.start,
+                        end: args.end
+                    }, {
+                        duration: animation.duration / points.length
+                    }, function () {
+                        // On complete, start animating the next point
+                        if (points[point.index + 1]) {
+                            fanAnimate(points[point.index + 1], args.end);
+                        }
+                        // On the last point, fade in the data labels, then
+                        // apply the inner size
+                        if (point.index === series.points.length - 1) {
+                            series.dataLabelsGroup.animate({
+                                opacity: 1
+                            },
+                            void 0,
+                            function () {
+                                points.forEach(point => {
+                                    point.opacity = 1;
+                                });
+                                series.update({
+                                    enableMouseTracking: true
+                                }, false);
+                                chart.update({
+                                    plotOptions: {
+                                        pie: {
+                                            innerSize: '40%',
+                                            borderRadius: 8
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                    });
+            }
+        }
+
+        if (init) {
+            // Hide points on init
+            points.forEach(point => {
+                point.opacity = 0;
+            });
+        } else {
+            fanAnimate(points[0], startAngleRad);
+        }
+    };
+}(Highcharts));
+
+Highcharts.chart('containerPie5', {
+    chart: {
+        type: 'pie'
+    },
+    title: {
+        text: 'Percentage of 5th choice booked Equipment and Services',
+        align: 'left'
+    },
+    subtitle: {
+        text: ' ',
+        align: 'left'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    credits: {
+        enabled: false
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            borderWidth: 2,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b><br>{point.percentage}%',
+                distance: 20
+            }
+        }
+    },
+    series: [{
+    enableMouseTracking: false,
+    animation: {
+        duration: 2000
+    },
+    colorByPoint: true,
+    data: result.map(item => ({
+        name: item.rental_name5,
         y: item.count
     }))
 }]
@@ -409,7 +976,7 @@ Highcharts.chart('container1', {
         },
         yAxis: {
             title: {
-                text: 'Number of New Users'
+                text: 'Number of Booking and Rentals'
             }
         },
         legend: {
@@ -426,7 +993,7 @@ Highcharts.chart('container1', {
             enabled: false
         },
         series: [{
-            name: 'New Users',
+            name: 'Booking and Rentals',
             data: userData
         }],
         responsive: {

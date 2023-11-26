@@ -89,8 +89,7 @@
                             <h3>Create Report</h3>
                         </a>
                         <ul class="sub-menu">
-                            <li><a href="#">Track Report</a></li>
-                            <li><a href="#">View Status</a></li>
+                            <li><a href="{{ route('track-report', ['id' => $data->id]) }}">Track Report</a></li>
                         </ul>
                     </li>
                     <li>

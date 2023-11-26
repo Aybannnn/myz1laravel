@@ -59,6 +59,22 @@ class AdminController extends Controller
         ->groupBy('rental_name1')
         ->get();
 
+    $result2 = BookingRequest::select(DB::raw("COUNT(*) as count"), 'rental_name2')
+        ->groupBy('rental_name2')
+        ->get();
+
+    $result3 = BookingRequest::select(DB::raw("COUNT(*) as count"), 'rental_name3')
+        ->groupBy('rental_name3')
+        ->get();
+
+    $result4 = BookingRequest::select(DB::raw("COUNT(*) as count"), 'rental_name4')
+        ->groupBy('rental_name4')
+        ->get();
+
+    $result5 = BookingRequest::select(DB::raw("COUNT(*) as count"), 'rental_name5')
+        ->groupBy('rental_name5')
+        ->get();
+
     $resultbar = BookingRequest::select(DB::raw("COUNT(*) as count"), DB::raw("DATE(created_at) as day"))
         ->groupBy(DB::raw("DATE(created_at)"))
         ->get();
@@ -68,10 +84,10 @@ class AdminController extends Controller
         ->groupBy(DB::raw("Month(created_at)"))
         ->pluck('count');
 
-    $bAccepted = BookingRequest::where('booking_status', 'Accepted')->count();
+    $bAccepted = BookingRequest::whereIn('booking_status', ['Accepted', 'Ready'])->count();
     $bPending = BookingRequest::where('booking_status', 'Pending')->count();
 
-    return view('admin.adminmonthly', compact('data', 'result', 'resultbar', 'resultline', 'bAccepted', 'bPending'));
+    return view('admin.adminmonthly', compact('data', 'result', 'result2', 'result3', 'result4', 'result5', 'resultbar', 'resultline', 'bAccepted', 'bPending'));
 }
 
     public function adminPost()
@@ -115,7 +131,6 @@ class AdminController extends Controller
         $notificationActive->contact_person_no = $request->contact_person_no;
         $notificationActive->contact_person_email = $request->contact_person_email;
         $notificationActive->production_title = $request->production_title;
-        $notificationActive->running_time = $request->running_time;
         $notificationActive->rental_name1 = $request->rental_name1;
         $notificationActive->rental_name1_hours = $request->rental_name1_hours;
         $notificationActive->rental_name2 = $request->rental_name2;
