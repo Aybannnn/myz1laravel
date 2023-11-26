@@ -106,6 +106,7 @@ class CustomAuthController extends Controller
 
         return view ('user.category_services', compact('data', 'category', 'maincategory', 'subcategory', 'indivitems'));
     }
+    
     public function inclusionDetails($id)
     {
         $maincategory = Category::all();
@@ -120,6 +121,7 @@ class CustomAuthController extends Controller
 
         return view ('user.inclusion_details', compact('data', 'maincategory', 'indivitems', 'indivprice', 'inclusion'));
     }
+
     public function userBookingForm()
     {
         $data = array();
@@ -129,18 +131,19 @@ class CustomAuthController extends Controller
         }
 
         $maincategory = Category::all();
+        $subcategory = SubCategory::all();
         $category = Category::all();
         $indivitems = IndividualItem::all();
 
-        return view ('user.bookingform', compact('data', 'maincategory', 'indivitems', 'category'));
+        return view ('user.bookingform', compact('data', 'maincategory', 'indivitems', 'category', 'subcategory'));
     }
+
     public function registerRequest(Request $request)
     {
         $data = array();
         if(Session::has('loginId'))
         {
         $userId = Session::get('loginId');
-        
 
         $request->validate([
             'requesting_office' => 'required',

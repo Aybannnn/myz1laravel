@@ -132,13 +132,31 @@
                     <h1>{{$data->name}}</h1>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
+            <div class="container" style="margin-top: 2rem; margin-bottom: 1rem;">
+                <div class="row" style="margin-top: 2rem; margin_bottom: 2rem;">
+                    <div class="col">
+                        <div class="card" style="background-color: #6bc26c; color: white;">
+                            <h3 style="padding: 2rem;">Total Number of Accepted Bookings</h3>
+                            <div class="numberContainer" style="padding: 2rem;">
+                                <h1>{{$bAccepted}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card" style="background-color: #b33d3d; color: white;">
+                            <h3 style="padding: 2rem;">Total Number of Pending Bookings</h3>
+                            <div class="numberContainer" style="padding: 2rem;">
+                                <h1>{{$bPending}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 2rem;">
                     <div class="col">
                     <figure class="highcharts-figure">
-                        <div id="container"></div>
+                        <div id="container1"></div>
                         <p class="highcharts-description">
-                            Pie charts demo showing how to create a custom entrance animation.
+                            Total percentage of current booked equipment/services.
                         </p>
                     </figure>
                     </div>
@@ -146,9 +164,17 @@
                     <figure class="highcharts-figure">
                         <div id="container2"></div>
                         <p class="highcharts-description">
-                            Chart showing use of rotated axis labels and data labels. This can be a
-                            way to include more labels in the chart, but note that more labels can
-                            sometimes make charts harder to read.
+                            Total number of booked equipment/services by date or by daily basis.
+                        </p>
+                    </figure>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <figure class="highcharts-figure" style="margin-top: 1em;">
+                        <div id="container3"></div>
+                        <p class="highcharts-description">
+                            Total number of booked equipment/services by month.
                         </p>
                     </figure>
                     </div>
@@ -255,16 +281,16 @@
     };
 }(Highcharts));
 
-Highcharts.chart('container', {
+Highcharts.chart('container1', {
     chart: {
         type: 'pie'
     },
     title: {
-        text: 'Departamental Strength of the Company',
+        text: 'Percentage of booked Equipment and Services',
         align: 'left'
     },
     subtitle: {
-        text: 'Custom animation of pie series',
+        text: ' ',
         align: 'left'
     },
     tooltip: {
@@ -274,6 +300,9 @@ Highcharts.chart('container', {
         point: {
             valueSuffix: '%'
         }
+    },
+    credits: {
+        enabled: false
     },
     plotOptions: {
         pie: {
@@ -300,140 +329,124 @@ Highcharts.chart('container', {
 }]
 });
 </script>
+
 <script>
-    var result = <?php echo json_encode($result)?>;
-
-    
-// A point click event that uses the Renderer to draw a label next to the point
-// On subsequent clicks, move the existing label instead of creating a new one.
-Highcharts.addEvent(Highcharts.Point, 'click', function () {
-    if (this.series.options.className.indexOf('popup-on-click') !== -1) {
-        const chart = this.series.chart;
-        const date = Highcharts.dateFormat('%A, %b %e, %Y', this.x);
-        const text = `<b>${date}</b><br/>${this.y} ${this.series.name}`;
-
-        const anchorX = this.plotX + this.series.xAxis.pos;
-        const anchorY = this.plotY + this.series.yAxis.pos;
-        const align = anchorX < chart.chartWidth - 200 ? 'left' : 'right';
-        const x = align === 'left' ? anchorX + 10 : anchorX - 10;
-        const y = anchorY - 30;
-        if (!chart.sticky) {
-            chart.sticky = chart.renderer
-                .label(text, x, y, 'callout',  anchorX, anchorY)
-                .attr({
-                    align,
-                    fill: 'rgba(0, 0, 0, 0.75)',
-                    padding: 10,
-                    zIndex: 7 // Above series, below tooltip
-                })
-                .css({
-                    color: 'white'
-                })
-                .on('click', function () {
-                    chart.sticky = chart.sticky.destroy();
-                })
-                .add();
-        } else {
-            chart.sticky
-                .attr({ align, text })
-                .animate({ anchorX, anchorY, x, y }, { duration: 250 });
-        }
+    function formatDate(dateString) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString(undefined, options);
     }
-});
 
+    var resultBar = <?php echo json_encode($resultbar)?>;
 
-Highcharts.chart('container2', {
-
-    chart: {
-        scrollablePlotArea: {
-            minWidth: 700
-        }
-    },
-
-    data: result.map(item => ({
-        name: item.rental_name1,
-        y: item.count
-    })),
-
-    title: {
-        text: 'Daily sessions at www.highcharts.com',
-        align: 'left'
-    },
-
-    subtitle: {
-        text: 'Source: Google Analytics',
-        align: 'left'
-    },
-
-    xAxis: {
-        tickInterval: 7 * 24 * 3600 * 1000, // one week
-        tickWidth: 0,
-        gridLineWidth: 1,
-        labels: {
-            align: 'left',
-            x: 3,
-            y: -3
-        }
-    },
-
-    yAxis: [{ // left y axis
+    Highcharts.chart('container2', {
+        chart: {
+            type: 'column'
+        },
         title: {
-            text: null
+            text: 'Daily Booking Requests'
         },
-        labels: {
-            align: 'left',
-            x: 3,
-            y: 16,
-            format: '{value:.,0f}'
+        xAxis: {
+            type: 'category',
+            labels: {
+                autoRotation: [-45, -90],
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
         },
-        showFirstLabel: false
-    }, { // right y axis
-        linkedTo: 0,
-        gridLineWidth: 0,
-        opposite: true,
-        title: {
-            text: null
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Number of Booking Requests'
+            }
         },
-        labels: {
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            pointFormat: 'Requests on {point.name}: <b>{point.y}</b>'
+        },
+        series: [{
+            name: 'Booking Requests',
+            colorByPoint: true,
+            data: resultBar.map(item => ({
+                name: formatDate(item.day),
+                y: item.count
+            }))
+        }],
+        credits: {
+            enabled: false
+        },
+        dataLabels: {
+            enabled: true,
+            rotation: -90,
+            color: '#FFFFFF',
             align: 'right',
-            x: -3,
-            y: 16,
-            format: '{value:.,0f}'
-        },
-        showFirstLabel: false
-    }],
-
-    legend: {
-        align: 'left',
-        verticalAlign: 'top',
-        borderWidth: 0
-    },
-
-    tooltip: {
-        shared: true,
-        crosshairs: true
-    },
-
-    plotOptions: {
-        series: {
-            cursor: 'pointer',
-            className: 'popup-on-click',
-            marker: {
-                lineWidth: 1
+            format: '{point.y}', // Display the exact count on top of each bar
+            y: 10,
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
             }
         }
-    },
-
-    series: [{
-        name: 'All sessions',
-        lineWidth: 4,
-        marker: {
-            radius: 4
-        }
-    }, {
-        name: 'New users'
-    }]
-});
+    });
 </script>
+
+<script type="text/javascript">
+    var userData = <?php echo json_encode($resultline)?>;
+    Highcharts.chart('container3', {
+        title: {
+            text: 'Booked Equipment/Services in 2023'
+        },
+        subtitle: {
+            text: ' '
+        },
+        xAxis: {
+            categories: ['November', 'December', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
+                'October'
+            ]
+        },
+        yAxis: {
+            title: {
+                text: 'Number of New Users'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+        plotOptions: {
+            series: {
+                allowPointSelect: true
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: 'New Users',
+            data: userData
+        }],
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+    });
+</script>
+
+
+
 </body>
 </html>

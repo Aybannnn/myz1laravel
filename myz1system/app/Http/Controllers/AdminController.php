@@ -59,9 +59,20 @@ class AdminController extends Controller
         ->groupBy('rental_name1')
         ->get();
 
-    return view('admin.adminmonthly', compact('data', 'result'));
-}
+    $resultbar = BookingRequest::select(DB::raw("COUNT(*) as count"), DB::raw("DATE(created_at) as day"))
+        ->groupBy(DB::raw("DATE(created_at)"))
+        ->get();
 
+    $resultline = BookingRequest::select(DB::raw("COUNT(*) as count"))
+        ->whereYear('created_at', date('Y'))
+        ->groupBy(DB::raw("Month(created_at)"))
+        ->pluck('count');
+
+    $bAccepted = BookingRequest::where('booking_status', 'Accepted')->count();
+    $bPending = BookingRequest::where('booking_status', 'Pending')->count();
+
+    return view('admin.adminmonthly', compact('data', 'result', 'resultbar', 'resultline', 'bAccepted', 'bPending'));
+}
 
     public function adminPost()
     {
