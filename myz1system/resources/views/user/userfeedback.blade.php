@@ -121,7 +121,7 @@
         <main>
             <h1><span>FEEDBACK</span></h1>
             <div class="feedbackform" style="background-color: white; margin-top: 4rem; text-align: center; margin-left: 12rem; margin-right: 12rem; margin-bottom: 6rem; padding: 2rem; border-radius: 12px; box-shadow: 4px 4px 10px #000000bf;">
-            <form action="#">
+            <form action="{{url('add-feedback')}}" method="post">
                 @csrf
                 <span>
                     <h3 style="color: #163920; font-size: 32px;">Tell us what can be improved.</h3>

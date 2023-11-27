@@ -8,6 +8,7 @@ use App\Models\IndividualItem;
 use App\Models\Inclusion;
 use App\Models\BookingRequest;
 use App\Models\CreateReport;
+use App\Models\addPost;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -71,13 +72,15 @@ class CustomAuthController extends Controller
     public function userHomepage()
     {
         $maincategory = Category::all();
+        $fPost = addPost::where('status_post', '=', 'Feature')->get();
+        $nPost = addPost::where('status_post', '=', 'Normal')->orderBy('created_at', 'desc')->get();
 
         $data = array();
         if(Session::has('loginId'))
         {
             $data = User::where('id','=', Session::get('loginId'))->first();
         }
-        return view ('user.userhomepage', compact('data', 'maincategory'));
+        return view ('user.userhomepage', compact('data', 'maincategory', 'fPost', 'nPost'));
     }
     public function categoryDetails($id)
     {
@@ -260,6 +263,7 @@ class CustomAuthController extends Controller
 
         return view('user.userreportstatus', compact('data', 'maincategory', 'status'));
     }
+
     public function userQuestion()
     {
         $maincategory = Category::all();
@@ -271,6 +275,7 @@ class CustomAuthController extends Controller
 
         return view('user.userquestion', compact('data', 'maincategory'));
     }
+    
     public function userFeedback()
     {
         $maincategory = Category::all();
@@ -282,6 +287,7 @@ class CustomAuthController extends Controller
 
         return view('user.userfeedback', compact('data', 'maincategory'));
     }
+
     public function logout()
     {
         if(Session::has('loginId'))

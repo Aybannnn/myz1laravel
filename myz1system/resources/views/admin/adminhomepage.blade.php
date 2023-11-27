@@ -126,7 +126,7 @@
                     <h1>{{$data->name}}</h1>
                 </div>
             </div>
-            <div class="homepage-container">
+            <div class="homepage-container" style="margin-bottom: 2rem;">
                 <div class="side1">
                     <h6>
                         WELCOME BACK <br>
@@ -139,7 +139,7 @@
                         <h5>Notification</h5>
                         <a href="admin-notification"><button class="btn">View All</button></a>
                     </div>
-                    <table>
+                    <table class="overflow-auto">
                         <div class="col">
                             <div class="row">
                                 @foreach($notification as $notification)
@@ -177,8 +177,8 @@
             <div class="featured-list">
                 <div class="featured-list-header">
                     <h2>Featured</h2>
-                    <a href="admin-post">
-                        <button class="btn">Add Announcement
+                    <a href="#">
+                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#addPost">Add Announcement
                         <span class="material-icons-sharp">
                             add
                         </span>
@@ -186,26 +186,15 @@
                     </a>
                 </div>
                 <div class="row">
+                @foreach($fPost as $post)
                     <div class="col">
-                        <div class="featured-img"></div>
-                        <h5>Lorem Ipsum</h5>
-                        <p>September 00, 2023</p>
+                        <center style="margin-top: 1.4rem;">
+                            <img src="postimage/{{$post->image_post}}" style="width: 60%; border-radius: 10px;">
+                        </center>
+                        <h5 style="text-align: center;">{{$post->title_post}}</h5>
+                        <p>{{$post->created_at->format('F j, Y')}}</p>
                     </div>
-                    <div class="col">
-                        <div class="featured-img"></div>
-                        <h5>Lorem Ipsum</h5>
-                        <p>September 00, 2023</p>
-                    </div>
-                    <div class="col">
-                        <div class="featured-img"></div>
-                        <h5>Lorem Ipsum</h5>
-                        <p>September 00, 2023</p>
-                    </div>
-                    <div class="col">
-                        <div class="featured-img"></div>
-                        <h5>Lorem Ipsum</h5>
-                        <p>September 00, 2023</p>
-                    </div>
+                @endforeach
                 </div>
             </div>
             <!--RECENT ANNOUNCEMENTS-->
@@ -218,41 +207,59 @@
                         echo $today;
                     ?>
                 </h1>
-                <div class="row2">
-                    <div class="col2">
-                        <div class="grid-item-one"></div>
-                        <span class="grid-item-two">
-                            <h5>Lorem Ipsum <span class="material-icons-sharp">more_vert</span></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <h6>September 00, 2023</h6>
-                        </span>
+                <div class="container">
+                    @foreach($nPost as $post)
+                    <div class="row" style="border-left: solid #163920 20px; width: 100%; height: 100%; background: #FFFDFD; box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 20px; margin-top: 1rem;">
+                        <div class="col-4" style="padding: 2rem;">
+                            <div class="imageContainer">
+                                <img src="postimage/{{$post->image_post}}" style="border-radius: 10px;">
+                            </div>
+                        </div>
+                        <div class="col" style="padding: 2rem; background-color: white;">
+                            <h6 style="font-weight: 900; font-size: 24px;">{{$post->title_post}}</h5>
+                            <h6>{{$post->body_post}}</h6>
+                            <h6>{{$post->created_at->format('F j, Y')}}</h6>
+                        </div>
                     </div>
-                </div>
-                <div class="row2">
-                    <div class="col2">
-                        <div class="grid-item-one"></div>
-                        <span class="grid-item-two">
-                            <h5>Lorem Ipsum <span class="material-icons-sharp">more_vert</span></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <h6>September 00, 2023</h6>
-                        </span>
-                    </div>
-                </div>
-                <div class="row2">
-                    <div class="col2">
-                        <div class="grid-item-one"></div>
-                        <span class="grid-item-two">
-                            <h5>Lorem Ipsum <span class="material-icons-sharp">more_vert</span></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <h6>September 00, 2023</h6>
-                        </span>
-                    </div>
+                    @endforeach
                 </div>
                 <a href="#">Show All</a>
             </div>
         </main>
         <!-- End of Main Content -->
-
+            <!-- Modal -->
+            <div class="modal fade" id="addPost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Announcement</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="{{url('add-post')}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="modal-body">
+                                <h4>Add Title to Post</h4>
+                                <input type="text" name="title_post" class="form-control">
+                                <textarea name="body_post" rows="10" placeholder="Add body" style="margin-top: 1rem; font-size: 18px; width: 100%"></textarea>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h6>Attach Image</h6>
+                                        <input type="file" name="image_post">
+                                    </div>
+                                    <div class="col-4">
+                                        <h6>Feature this post?</h6>
+                                        <input type="checkbox" value="1" name="status_post">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Add Post</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         <!-- Right Section -->
         <div class="right-section">
             <div class="nav">
@@ -263,67 +270,6 @@
                 </button>
             </div>
             <!-- End of Nav -->
-
-            <div class="user-profile">
-                <div class="logo">
-                </div>
-            </div>
-
-            <div class="reminders">
-                <div class="header">
-                    <h2>Reminders</h2>
-                    <span class="material-icons-sharp">
-                        notifications_none
-                    </span>
-                </div>
-
-                <div class="notification">
-                    <div class="icon">
-                        <span class="material-icons-sharp">
-                            volume_up
-                        </span>
-                    </div>
-                    <div class="content">
-                        <div class="info">
-                            <h3>Workshop</h3>
-                            <small class="text_muted">
-                                08:00 AM - 12:00 PM
-                            </small>
-                        </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
-
-                <div class="notification deactive">
-                    <div class="icon">
-                        <span class="material-icons-sharp">
-                            edit
-                        </span>
-                    </div>
-                    <div class="content">
-                        <div class="info">
-                            <h3>Workshop</h3>
-                            <small class="text_muted">
-                                08:00 AM - 12:00 PM
-                            </small>
-                        </div>
-                        <span class="material-icons-sharp">
-                            more_vert
-                        </span>
-                    </div>
-                </div>
-
-                <div class="notification add-reminder">
-                    <div>
-                        <span class="material-icons-sharp">
-                            add
-                        </span>
-                        <h3>Add Reminder</h3>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 <!--FOOTER-->

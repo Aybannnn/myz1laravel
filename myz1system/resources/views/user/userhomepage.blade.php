@@ -124,28 +124,19 @@
                 <h1><span>ANNOUNCEMENTS</span></h1>
             <!--FEATURED ANNOUNCEMENTS-->
             <div class="featured-list">
-                <h2>Featured</h2>
+                <div class="featured-list-header">
+                    <h2>Featured</h2>
+                </div>
                 <div class="row">
+                @foreach($fPost as $post)
                     <div class="col">
-                        <div class="featured-img"></div>
-                        <h5>Lorem Ipsum</h5>
-                        <p>September 00, 2023</p>
+                        <center style="margin-top: 1.4rem;">
+                            <img src="postimage/{{$post->image_post}}" style="width: 60%; border-radius: 10px;">
+                        </center>
+                        <h5 style="text-align: center;">{{$post->title_post}}</h5>
+                        <p>{{$post->created_at->format('F j, Y')}}</p>
                     </div>
-                    <div class="col">
-                        <div class="featured-img"></div>
-                        <h5>Lorem Ipsum</h5>
-                        <p>September 00, 2023</p>
-                    </div>
-                    <div class="col">
-                        <div class="featured-img"></div>
-                        <h5>Lorem Ipsum</h5>
-                        <p>September 00, 2023</p>
-                    </div>
-                    <div class="col">
-                        <div class="featured-img"></div>
-                        <h5>Lorem Ipsum</h5>
-                        <p>September 00, 2023</p>
-                    </div>
+                @endforeach
                 </div>
             </div>
             <!--RECENT ANNOUNCEMENTS-->
@@ -158,35 +149,21 @@
                         echo $today;
                     ?>
                 </h1>
-                <div class="row2">
-                    <div class="col2">
-                        <div class="grid-item-one"></div>
-                        <span class="grid-item-two">
-                            <h5>Lorem Ipsum <span class="material-icons-sharp">more_vert</span></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <h6>September 00, 2023</h6>
-                        </span>
+                <div class="container">
+                    @foreach($nPost as $post)
+                    <div class="row" style="border-left: solid #163920 20px; width: 100%; height: 100%; background: #FFFDFD; box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 20px; margin-top: 1rem;">
+                        <div class="col-4" style="padding: 2rem;">
+                            <div class="imageContainer">
+                                <img src="postimage/{{$post->image_post}}" style="border-radius: 10px;">
+                            </div>
+                        </div>
+                        <div class="col" style="padding: 2rem; background-color: white;">
+                            <h6 style="font-weight: 900; font-size: 24px;">{{$post->title_post}}</h5>
+                            <h6>{{$post->body_post}}</h6>
+                            <h6>{{$post->created_at->format('F j, Y')}}</h6>
+                        </div>
                     </div>
-                </div>
-                <div class="row2">
-                    <div class="col2">
-                        <div class="grid-item-one"></div>
-                        <span class="grid-item-two">
-                            <h5>Lorem Ipsum <span class="material-icons-sharp">more_vert</span></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <h6>September 00, 2023</h6>
-                        </span>
-                    </div>
-                </div>
-                <div class="row2">
-                    <div class="col2">
-                        <div class="grid-item-one"></div>
-                        <span class="grid-item-two">
-                            <h5>Lorem Ipsum <span class="material-icons-sharp">more_vert</span></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <h6>September 00, 2023</h6>
-                        </span>
-                    </div>
+                    @endforeach
                 </div>
                 <a href="#">Show All</a>
             </div>

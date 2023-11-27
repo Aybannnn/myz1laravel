@@ -6,6 +6,7 @@ use App\Models\Notification;
 use App\Models\BookingRequest;
 use App\Models\CreateReport;
 use App\Models\ReportStatus;
+use App\Models\addPost;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -18,13 +19,16 @@ class AdminController extends Controller
     public function adminHomepage()
     {
         $notification = BookingRequest::where('booking_status', '=', 'Pending')->get();
+        $fPost = addPost::where('status_post', '=', 'Feature')->get();
+        $nPost = addPost::where('status_post', '=', 'Normal')->orderBy('created_at', 'desc')->get();
+
 
         $data = array();
         if(Session::has('loginId'))
         {
             $data = User::where('id', '=', Session::get('loginId'))->first();
         }
-        return view ('admin.adminhomepage', compact('data', 'notification'));
+        return view ('admin.adminhomepage', compact('data', 'notification', 'fPost', 'nPost'));
     }
 
     public function adminCalendar()
@@ -49,51 +53,71 @@ class AdminController extends Controller
     }
 
     public function adminMonthly()
-{
-    $data = array();
-    if (Session::has('loginId')) {
-        $data = User::where('id', '=', Session::get('loginId'))->first();
+    {
+        $data = array();
+        if (Session::has('loginId')) {
+            $data = User::where('id', '=', Session::get('loginId'))->first();
+        }
+
+        $result = BookingRequest::select(DB::raw("COUNT(*) as count"), 'rental_name1')
+            ->groupBy('rental_name1')
+            ->get();
+
+        $result2 = BookingRequest::select(DB::raw("COUNT(*) as count"), 'rental_name2')
+            ->groupBy('rental_name2')
+            ->get();
+
+        $result3 = BookingRequest::select(DB::raw("COUNT(*) as count"), 'rental_name3')
+            ->groupBy('rental_name3')
+            ->get();
+
+        $result4 = BookingRequest::select(DB::raw("COUNT(*) as count"), 'rental_name4')
+            ->groupBy('rental_name4')
+            ->get();
+
+        $result5 = BookingRequest::select(DB::raw("COUNT(*) as count"), 'rental_name5')
+            ->groupBy('rental_name5')
+            ->get();
+
+        $resultbar = BookingRequest::select(DB::raw("COUNT(*) as count"), DB::raw("DATE(created_at) as day"))
+            ->groupBy(DB::raw("DATE(created_at)"))
+            ->get();
+
+        $resultline = BookingRequest::select(DB::raw("COUNT(*) as count"))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->pluck('count');
+
+        $bAccepted = BookingRequest::whereIn('booking_status', ['Accepted', 'Ready'])->count();
+        $bPending = BookingRequest::where('booking_status', 'Pending')->count();
+
+        return view('admin.adminmonthly', compact('data', 'result', 'result2', 'result3', 'result4', 'result5', 'resultbar', 'resultline', 'bAccepted', 'bPending'));
     }
-
-    $result = BookingRequest::select(DB::raw("COUNT(*) as count"), 'rental_name1')
-        ->groupBy('rental_name1')
-        ->get();
-
-    $result2 = BookingRequest::select(DB::raw("COUNT(*) as count"), 'rental_name2')
-        ->groupBy('rental_name2')
-        ->get();
-
-    $result3 = BookingRequest::select(DB::raw("COUNT(*) as count"), 'rental_name3')
-        ->groupBy('rental_name3')
-        ->get();
-
-    $result4 = BookingRequest::select(DB::raw("COUNT(*) as count"), 'rental_name4')
-        ->groupBy('rental_name4')
-        ->get();
-
-    $result5 = BookingRequest::select(DB::raw("COUNT(*) as count"), 'rental_name5')
-        ->groupBy('rental_name5')
-        ->get();
-
-    $resultbar = BookingRequest::select(DB::raw("COUNT(*) as count"), DB::raw("DATE(created_at) as day"))
-        ->groupBy(DB::raw("DATE(created_at)"))
-        ->get();
-
-    $resultline = BookingRequest::select(DB::raw("COUNT(*) as count"))
-        ->whereYear('created_at', date('Y'))
-        ->groupBy(DB::raw("Month(created_at)"))
-        ->pluck('count');
-
-    $bAccepted = BookingRequest::whereIn('booking_status', ['Accepted', 'Ready'])->count();
-    $bPending = BookingRequest::where('booking_status', 'Pending')->count();
-
-    return view('admin.adminmonthly', compact('data', 'result', 'result2', 'result3', 'result4', 'result5', 'resultbar', 'resultline', 'bAccepted', 'bPending'));
-}
 
     public function adminPost()
     {
         return view ('admin.adminpostannouncement');
     }
+
+    public function adminAddPost(Request $request)
+{
+    $post = new addPost;
+    $post->title_post = $request->title_post;
+    $post->body_post = $request->body_post;
+
+    $image = $request->file('image_post'); // Use file() method to get the file
+    if ($image) {
+        $imagename = time() . '.' . $image->getClientOriginalExtension();
+        $image->move('postimage', $imagename);
+        $post->image_post = $imagename; // Corrected column name
+    }
+
+    $post->status_post = $request->has('status_post') ? 'Feature' : 'Normal';
+    $post->save(); // Corrected method call
+
+    return redirect()->back();
+}
+
 
     public function adminNotification()
     {
