@@ -126,9 +126,70 @@
                     <h1>{{$data->name}}</h1>
                 </div>
             </div>
-            
+            <div class="container">
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#addFAQ" style="display: flex; align-items: center; margin-top: 2rem; flex-direction: row-reverse;">Add FAQ
+                        <span class="material-icons-sharp">
+                            add
+                        </span>
+                    </button>
+                </div>
+                @foreach($question as $question)
+                    <div class="questioncontainer" style="background-color: white; border-radius: 8px; padding: 1rem; border-left: solid #163920 12px; margin-bottom: 2rem; margin-top: 2rem; box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);">
+                        <button type="button" class="btn btn-link" style="text-decoration: none; color: #163920;" data-bs-toggle="collapse" data-bs-target="#collapseInfo{{$loop->iteration}}" aria-expanded="false" aria-controls="collapseInfo{{$loop->iteration}}">
+                            <h3>{{$question->question_title}}</h3>
+                        </button>
+                        <div class="collapse" id="collapseInfo{{$loop->iteration}}" style="margin-top: 1rem;">
+                            <h6>{{$question->question_body}}</h6>
+                        </div>
+                    </div>
+                @endforeach
+                <h2>Feedbacks</h2>
+                <div class="container" style="background-color: #16392033; padding: 2rem; border-radius: 10px; margin-bottom: 2rem;">
+                @foreach($feedback as $feed)
+                    <div class="row">
+                        <div class="col-10">
+                            <h2 style="color: #163920; border-bottom: solid 2px #163920; padding-bottom: 0.6rem; display: flex; align-items: center;">
+                                <span class="material-icons-sharp" style="font-size: 32px; margin-right: 0.6rem;">chat_bubble</span>
+                                {{$feed->body_feedback}}
+                            </h2>
+                        </div>
+                        <div class="col justify-content-end" style="display: flex; flex-direction: row; flex-wrap: wrap; align-content: flex-start; gap: 1rem;">
+                            <a href="#" class="btn" style="background-color: #F4FCD2;">Read</a>
+                            <a href="#" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                @endforeach
+                </div>
+            </div>
         </main>
         <!-- End of Main Content -->
+        <!-- Modal -->
+        <div class="modal fade" id="addFAQ" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add FAQ</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{url('add-question')}}" method="post">
+                @csrf
+                <div class="modal-body">
+                    <div class="container">
+                        <h3>Question:</h3>
+                        <input type="text" name="question_title" class="form-control" style="width: 100%; font-size: 20px;">
+                        <textarea name="question_body" class="form-control" rows="10" style="width: 100%; font-size: 18px; margin-top: 0.8rem;" placeholder="Add Answer"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+            </div>
+        </div>
+        </div>
+
 
         <!-- Right Section -->
         <div class="right-section">

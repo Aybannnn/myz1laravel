@@ -121,36 +121,16 @@
         <main>
             <h1><span>FREQUENTLY ASKED QUESTIONS</span></h1>
             <div class="container" style="margin-top: 6rem;">
-                <div class="questioncontainer" style="background-color: white; border-radius: 8px; padding: 1rem; border-left: solid #163920 12px; margin-bottom: 2rem;">
-                    <button type="button" class="btn btn-link" style="text-decoration: none; color: #163920;" href="#collapseInfo" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseInfo"><h3>Lorem ipsum dolor sit amet</h3></button>
-                    <div class="collapse" id="collapseInfo">
-                        <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h6>
+            @foreach($question as $question)
+                <div class="questioncontainer" style="background-color: white; border-radius: 8px; padding: 1rem; border-left: solid #163920 12px; margin-bottom: 2rem; margin-top: 2rem; box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);">
+                    <button type="button" class="btn btn-link" style="text-decoration: none; color: #163920;" data-bs-toggle="collapse" data-bs-target="#collapseInfo{{$loop->iteration}}" aria-expanded="false" aria-controls="collapseInfo{{$loop->iteration}}">
+                        <h3>{{$question->question_title}}</h3>
+                    </button>
+                    <div class="collapse" id="collapseInfo{{$loop->iteration}}" style="margin-top: 1rem;">
+                        <h6>{{$question->question_body}}</h6>
                     </div>
                 </div>
-                <div class="questioncontainer" style="background-color: white; border-radius: 8px; padding: 1rem; border-left: solid #163920 12px; margin-bottom: 2rem;">
-                    <button type="button" class="btn btn-link" style="text-decoration: none; color: #163920;" href="#collapseInfo2" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseInfo"><h3>Lorem ipsum dolor sit amet</h3></button>
-                    <div class="collapse" id="collapseInfo2">
-                        <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h6>
-                    </div>
-                </div>
-                <div class="questioncontainer" style="background-color: white; border-radius: 8px; padding: 1rem; border-left: solid #163920 12px; margin-bottom: 2rem;">
-                    <button type="button" class="btn btn-link" style="text-decoration: none; color: #163920;" href="#collapseInfo3" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseInfo"><h3>Lorem ipsum dolor sit amet</h3></button>
-                    <div class="collapse" id="collapseInfo3">
-                        <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h6>
-                    </div>
-                </div>
-                <div class="questioncontainer" style="background-color: white; border-radius: 8px; padding: 1rem; border-left: solid #163920 12px; margin-bottom: 2rem;">
-                    <button type="button" class="btn btn-link" style="text-decoration: none; color: #163920;" href="#collapseInfo4" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseInfo"><h3>Lorem ipsum dolor sit amet</h3></button>
-                    <div class="collapse" id="collapseInfo4">
-                        <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h6>
-                    </div>
-                </div>
-                <div class="questioncontainer" style="background-color: white; border-radius: 8px; padding: 1rem; border-left: solid #163920 12px; margin-bottom: 2rem;">
-                    <button type="button" class="btn btn-link" style="text-decoration: none; color: #163920;" href="#collapseInfo5" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseInfo"><h3>Lorem ipsum dolor sit amet</h3></button>
-                    <div class="collapse" id="collapseInfo5">
-                        <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h6>
-                    </div>
-                </div>
+            @endforeach
             </div>
 
         </main>

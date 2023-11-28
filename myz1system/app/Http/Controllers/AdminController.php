@@ -7,6 +7,8 @@ use App\Models\BookingRequest;
 use App\Models\CreateReport;
 use App\Models\ReportStatus;
 use App\Models\addPost;
+use App\Models\Feedback;
+use App\Models\Question;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -280,9 +282,7 @@ class AdminController extends Controller
     public function adminUpdateStatus(Request $request, $id)
     {
         $statusupdate = CreateReport::find($id);
-    
         $statusupdate->report_status = $request->report_status;
-    
         $statusupdate->save();
     
         return redirect()->back();
@@ -290,12 +290,27 @@ class AdminController extends Controller
 
     public function adminFeedback()
     {
+        $question = Question::all();
+
         $data = array();
         if(Session::has('loginId'))
         {
             $data = User::where('id', '=', Session::get('loginId'))->first();
         }
 
-        return view('admin.adminfeedback', compact('data'));
+        $feedback = Feedback::all();
+
+        return view('admin.adminfeedback', compact('data', 'feedback', 'question'));
+    }
+
+    public function adminAddQuestion(Request $request)
+    {
+        $question = new Question;
+        $question->question_title = $request->question_title;
+        $question->question_body = $request->question_body;
+
+        $question->save(); // Corrected method call
+
+        return redirect()->back();
     }
 }

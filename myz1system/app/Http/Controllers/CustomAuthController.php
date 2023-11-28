@@ -9,6 +9,8 @@ use App\Models\Inclusion;
 use App\Models\BookingRequest;
 use App\Models\CreateReport;
 use App\Models\addPost;
+use App\Models\Feedback;
+use App\Models\Question;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -267,15 +269,16 @@ class CustomAuthController extends Controller
     public function userQuestion()
     {
         $maincategory = Category::all();
+        $question = Question::all();
         $data = array();
         if(Session::has('loginId'))
         {
             $data = User::where('id','=', Session::get('loginId'))->first();
         }
 
-        return view('user.userquestion', compact('data', 'maincategory'));
+        return view('user.userquestion', compact('data', 'maincategory','question'));
     }
-    
+
     public function userFeedback()
     {
         $maincategory = Category::all();
@@ -286,6 +289,16 @@ class CustomAuthController extends Controller
         }
 
         return view('user.userfeedback', compact('data', 'maincategory'));
+    }
+
+    public function addFeedback(Request $request)
+    {
+        $feedback = new Feedback();
+        $feedback->rate = $request->rate;
+        $feedback->body_feedback = $request->body_feedback;
+        $feedback->save();
+
+        return redirect()->back();
     }
 
     public function logout()

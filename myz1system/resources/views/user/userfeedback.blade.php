@@ -138,7 +138,7 @@
                     <input type="radio" id="star1" name="rate" value="1" />
                     <label for="star1" title="text">1 star</label>
                 </div>
-                <textarea name="feedback" cols="30" rows="10" style="background-color: #D9D9D9; width: 30rem; border-radius: 10px; font-size: 18px; padding: 1rem;" placeholder="Tell us more..."></textarea>
+                <textarea name="body_feedback" rows="10" style="background-color: #D9D9D9; width: 100%; border-radius: 10px; font-size: 18px; padding: 1rem;" placeholder="Tell us more..."></textarea>
                 <div class="row">
                     <div class="col">
                     <button class="btn btn-success" style="margin-top: 2rem;">SEND</button>

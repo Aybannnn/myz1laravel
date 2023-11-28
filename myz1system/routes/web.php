@@ -52,6 +52,7 @@ Route::get('/deact_request/{id}', [AdminController::class, 'deactRequest'])->mid
 Route::get('/admin-booking', [AdminController::class, 'adminBooking'])->middleware('isLoggedIn');
 Route::get('/admin-report', [AdminController::class, 'adminReport'])->middleware('isLoggedIn');
 Route::get('/admin-feedback', [AdminController::class, 'adminFeedback'])->middleware('isLoggedIn');
+Route::post('/add-question', [AdminController::class, 'adminAddQuestion'])->middleware('isLoggedIn');
 Route::get('/search', [AdminController::class, 'search'])->middleware('isLoggedIn');
 Route::get('/filter', [AdminController::class, 'filter'])->middleware('isLoggedIn');
 Route::post('/update-status/{id}', [AdminController::class, 'adminUpdateStatus'])->middleware('isLoggedIn')->name('update-status');
