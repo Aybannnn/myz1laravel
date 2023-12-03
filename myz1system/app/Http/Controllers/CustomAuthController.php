@@ -74,7 +74,7 @@ class CustomAuthController extends Controller
     public function userHomepage()
     {
         $maincategory = Category::all();
-        $fPost = addPost::where('status_post', '=', 'Feature')->get();
+        $fPost = addPost::where('status_post', '=', 'Feature')->orderBy('created_at', 'desc')->get();
         $nPost = addPost::where('status_post', '=', 'Normal')->orderBy('created_at', 'desc')->get();
 
         $data = array();
@@ -169,6 +169,19 @@ class CustomAuthController extends Controller
             'rental_name5' => 'sometimes',
             'rental_name5_hours' => 'sometimes',
         ]);
+
+        $existingBooking = BookingRequest::where('rental_name1', $request->rental_name1)
+        ->where('start_date', '<=', $request->end_date)
+        ->where('end_date', '>=', $request->start_date)
+        ->where('booking_status', '!=', 'Cancelled') // Optional: Exclude cancelled bookings
+        ->first();
+
+        if ($existingBooking) {
+            // Set a flag in the session
+            session()->flash('service_already_booked', true);
+            return back();
+        }
+        
         $bookingRequest = new BookingRequest(); // Keep the model instance name as 'Request'
         $bookingRequest->user_id = $userId;
         $bookingRequest->requesting_office = $request->requesting_office;
@@ -196,7 +209,7 @@ class CustomAuthController extends Controller
         } else {
             return back()->with('fail', 'Something went wrong, Please try again.');
         }
-    }
+        }
     }
     public function registerReport(Request $request)
     {
@@ -223,7 +236,7 @@ class CustomAuthController extends Controller
         $reportRequest->report_status = 'Waiting for Approval';
         $res = $reportRequest->save();
         if ($res) {
-            return back()->with('success', 'Your booking have been placed Successfully!');
+            return back()->with('success', 'Your report have been placed Successfully!');
         } else {
             return back()->with('fail', 'Something went wrong, Please try again.');
         }

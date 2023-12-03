@@ -100,7 +100,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('admin-feedback')}}">
                             <span class="material-icons-sharp">
                                 feedback
                             </span>

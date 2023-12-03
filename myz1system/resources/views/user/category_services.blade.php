@@ -134,7 +134,7 @@
                             <h5 style="text-align: center;">{{$indiv->service}}</h5>
                         </div>
                         <a href="{{url('inclusion_details', $indiv->id)}}">
-                            <button class="btn btn-success" style="margin-bottom: 1rem; font-size: 14px;">View More Information</button>
+                            <button class="btn btn-success" style="margin-bottom: 1rem; font-size: 14px;">View Inclusions</button>
                         </a>
                         <p style="text-align: center;">{{$indiv->additional_info}}</p>
                     </div>

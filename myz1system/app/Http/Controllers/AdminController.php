@@ -21,7 +21,7 @@ class AdminController extends Controller
     public function adminHomepage()
     {
         $notification = BookingRequest::where('booking_status', '=', 'Pending')->get();
-        $fPost = addPost::where('status_post', '=', 'Feature')->get();
+        $fPost = addPost::where('status_post', '=', 'Feature')->orderBy('created_at', 'desc')->get();
         $nPost = addPost::where('status_post', '=', 'Normal')->orderBy('created_at', 'desc')->get();
 
 

@@ -239,12 +239,12 @@
                             @csrf
                             <div class="modal-body">
                                 <h4>Add Title to Post</h4>
-                                <input type="text" name="title_post" class="form-control">
-                                <textarea name="body_post" rows="10" placeholder="Add body" style="margin-top: 1rem; font-size: 18px; width: 100%"></textarea>
+                                <input type="text" name="title_post" class="form-control" required>
+                                <textarea name="body_post" rows="10" placeholder="Add body" style="margin-top: 1rem; font-size: 18px; width: 100%" required></textarea>
                                 <div class="row">
                                     <div class="col-4">
                                         <h6>Attach Image</h6>
-                                        <input type="file" name="image_post">
+                                        <input type="file" name="image_post" required>
                                     </div>
                                     <div class="col-4">
                                         <h6>Feature this post?</h6>

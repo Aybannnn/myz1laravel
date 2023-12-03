@@ -127,7 +127,7 @@
                     <h3 style="color: #163920; font-size: 32px;">Tell us what can be improved.</h3>
                 </span>
                 <div class="rate">
-                    <input type="radio" id="star5" name="rate" value="5" />
+                    <input type="radio" id="star5" name="rate" value="5" required />
                     <label for="star5" title="text">5 stars</label>
                     <input type="radio" id="star4" name="rate" value="4" />
                     <label for="star4" title="text">4 stars</label>
@@ -138,7 +138,7 @@
                     <input type="radio" id="star1" name="rate" value="1" />
                     <label for="star1" title="text">1 star</label>
                 </div>
-                <textarea name="body_feedback" rows="10" style="background-color: #D9D9D9; width: 100%; border-radius: 10px; font-size: 18px; padding: 1rem;" placeholder="Tell us more..."></textarea>
+                <textarea name="body_feedback" rows="10" style="background-color: #D9D9D9; width: 100%; border-radius: 10px; font-size: 18px; padding: 1rem;" placeholder="Tell us more..." required></textarea>
                 <div class="row">
                     <div class="col">
                     <button class="btn btn-success" style="margin-top: 2rem;">SEND</button>

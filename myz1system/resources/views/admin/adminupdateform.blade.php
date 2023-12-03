@@ -127,7 +127,7 @@
                     <div class="material-icons-sharp" style="margin-right: 2rem; border-right: solid black 0.2rem; padding-right: 1rem">
                     arrow_back
                     </div></a>
-                    Pending Request</span>
+                    Update Form</span>
                 </h1>
             </div>
             <div class="bookingform">

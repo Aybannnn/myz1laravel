@@ -34,7 +34,7 @@ Route::get('/track-report/{id}', [CustomAuthController::class, 'userTrackReport'
 Route::get('/track-status/{id}', [CustomAuthController::class, 'userTrackReportStatus'])->middleware('isLoggedIn');
 Route::get('/frequently-asked-questions', [CustomAuthController::class, 'userQuestion'])->middleware('isLoggedIn');
 Route::get('/feedback', [CustomAuthController::class, 'userFeedback'])->middleware('isLoggedIn');
-Route::post('/add-feedback', [CustomAuthController::class, 'addFeedback'])->name('register-request');
+Route::post('/add-feedback', [CustomAuthController::class, 'addFeedback'])->middleware('isLoggedIn');
 Route::get('/logout', [CustomAuthController::class, 'logout']);
 
 Route::get('/admin-homepage', [AdminController::class, 'adminHomepage'])->middleware('isLoggedIn');

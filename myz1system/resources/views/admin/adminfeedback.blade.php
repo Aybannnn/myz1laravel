@@ -147,7 +147,7 @@
                 <h2>Feedbacks</h2>
                 <div class="container" style="background-color: #16392033; padding: 2rem; border-radius: 10px; margin-bottom: 2rem;">
                 @foreach($feedback as $feed)
-                    <div class="row">
+                    <div class="row" style="margin-top: 1rem;">
                         <div class="col-10">
                             <h2 style="color: #163920; border-bottom: solid 2px #163920; padding-bottom: 0.6rem; display: flex; align-items: center;">
                                 <span class="material-icons-sharp" style="font-size: 32px; margin-right: 0.6rem;">chat_bubble</span>
@@ -177,8 +177,8 @@
                 <div class="modal-body">
                     <div class="container">
                         <h3>Question:</h3>
-                        <input type="text" name="question_title" class="form-control" style="width: 100%; font-size: 20px;">
-                        <textarea name="question_body" class="form-control" rows="10" style="width: 100%; font-size: 18px; margin-top: 0.8rem;" placeholder="Add Answer"></textarea>
+                        <input type="text" name="question_title" class="form-control" style="width: 100%; font-size: 20px;" required>
+                        <textarea name="question_body" class="form-control" rows="10" style="width: 100%; font-size: 18px; margin-top: 0.8rem;" placeholder="Add Answer" required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">

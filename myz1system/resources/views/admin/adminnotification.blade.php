@@ -176,7 +176,7 @@
                                         <div class="container">
                                         <form action="{{ url('accept_request', $notificationP->id) }}" method="post">
                                         @csrf
-                                            <h4>Received by:</h4>
+                                            <h4>Released by:</h4>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="received_by" style="font-size: 16px;" value="Mr. Ted Nudget Tac-an" required>
                                                 <label class="form-check-label" for="receivedby1">

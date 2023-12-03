@@ -138,9 +138,6 @@
                                 @if(Session::has('success'))
                                 <div class="alert alert-success">{{Session::get('success')}}</div>
                                 @endif
-                                @if(Session::has('fail'))
-                                <div class="errormsg">{{Session::get('fail')}}</div>
-                                @endif
                             </div>
                             <div class="col">
                             <h6>User Id</h6>
@@ -172,7 +169,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <h6>Contact Person's #</h6>
+                                <h6>Contact Person's Number</h6>
                                 <input type="text" class="form-control" name="contact_person_no" value="{{old('contact_person_no')}}">
                                 <span class="errormsg">@error('contact_person_no') {{$message}} @enderror</span>
                             </div>
@@ -193,12 +190,12 @@
                             <div class="col">
                                 <h6>Expected Start of Running Time</h6>
                                 <input type="datetime-local" class="form-control" name="start_date" value="{{old('start_date')}}">
-                                <span class="errormsg">@error('running_time') {{$message}} @enderror</span>
+                                <span class="errormsg">@error('start_date') {{$message}} @enderror</span>
                             </div>
                             <div class="col">
                                 <h6>Expected End of Running Time</h6>
                                 <input type="datetime-local" class="form-control" name="end_date" value="{{old('end_date')}}">
-                                <span class="errormsg">@error('running_time') {{$message}} @enderror</span>
+                                <span class="errormsg">@error('end_date') {{$message}} @enderror</span>
                             </div>
                         </div>
                         <div class="add_item">
@@ -211,11 +208,20 @@
                                         <option>{{$items->service}}</option>
                                         @endforeach
                                     </select>
+                                        @if(Session::has('fail'))
+                                            <span class="errormsg">{{Session::get('fail')}}</span>
+                                        @endif
                                     <span class="errormsg">@error('rental_name1') Please select an available equipment/service @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                    <input type="time" class="form-control" name="rental_name1_hours" value="{{old('rental_name1_hours')}}">
+                                    <select name="rental_name1_hours" class="form-control" value="{{old('rental_name1_hours')}}">
+                                        <option disabled selected value> -- select duration -- </option>
+                                        <option>1 Hour</option>
+                                        <option>3 Hours</option>
+                                        <option>8 Hours</option>
+                                        <option>1 Day</option>
+                                    </select>
                                     <span class="errormsg">@error('rental_name1_hours') This field is required @enderror</span>
                                 </div>
                                 <div class="col-2">
@@ -565,6 +571,30 @@
                     </div>
                 </form>
             </div>
+
+            <!-- Your modal HTML structure (adjust as needed) -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel" style="color: red;">There has been a problem processing your booking!</h5>
+                        </div>
+                        <div class="modal-body">
+                            <h6>It appears that one or more of your selected services cannot be booked on the chosen date as they are already reserved.</h6>
+                            <br><h6>Please verify the availability for your desired booking by clicking on the available categories below: 
+                                <br>
+                                <ul class="sub-menu" style="color: black; text-decoration: none;">
+                                    @foreach($maincategory as $main)
+                                    <li><a href="{{url('category_details', $main->id)}}" style="text-decoration: none; color: #163920; font-size 22px;">{{$main->main_category}}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
         </main>
         <!-- End of Main Content -->
 
@@ -682,6 +712,15 @@ loadMoreBtn.onclick = () =>{
 }
 
 </script>
+@if(session('service_already_booked'))
+    <script>
+        // Use JavaScript to trigger the modal
+        $(document).ready(function() {
+            $('#myModal').modal('show'); // Replace 'myModal' with the actual ID of your modal
+        });
+    </script>
+@endif
+
 <script src="script/homepage.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
