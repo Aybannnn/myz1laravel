@@ -118,13 +118,39 @@ class CustomAuthController extends Controller
         $indivitems = IndividualItem::find($id);
         $indivprice = IndividualItem::where('sub_id', '=', $id)->get();
         $inclusion = Inclusion::where('item_id', '=', $id)->get();
+
+        $events = array();
+        $currentId = Inclusion::find($id);
+
+        $bookings = BookingRequest::where('booking_status', 'Pending')
+            ->orWhere('booking_status', 'Ready')
+            ->where('id', $currentId)
+            ->get();
+
+        foreach ($bookings as $booking) {
+            $events[] = [
+                'title' => 'Currently Booked Dates',
+                'start' => $booking->start_date,
+                'end' => $booking->end_date,
+                'url' => url('user_check', ['id' => $booking->id]),
+            ];
+        }
+
         $data = array();
         if(Session::has('loginId'))
         {
             $data = User::where('id','=', Session::get('loginId'))->first();
         }
 
-        return view ('user.inclusion_details', compact('data', 'maincategory', 'indivitems', 'indivprice', 'inclusion'));
+        return view ('user.inclusion_details', compact('data', 'maincategory', 'indivitems', 'indivprice', 'inclusion', 'events', 'currentId'));
+    }
+
+    public function userCheck($id)
+    {
+        $maincategory = Category::all();
+        $information = BookingRequest::find($id);
+
+        return view ('user.availability_check', compact('information', 'maincategory'));
     }
 
     public function userBookingForm()

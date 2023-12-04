@@ -126,9 +126,20 @@
             <div class="announcement-bg"></div>
                 <h1><span>{{$category->main_category}}</span></h1>
             <div class="booking-landing" style="margin-top: 6rem;">
-                <p>ABOUT ETC BOOKING EQUIPMENT CHU CHU CHU</p>
+                <center><h5>
+                    The Educational Technology Center (ETC) at La Salle University - Ozamiz City has established a comprehensive policy for 
+                    booking equipment and services to facilitate efficient and organized usage. Eligibility extends to faculty, staff, and 
+                    recognized student organizations, aligning with the institution's educational objectives. Reservation procedures involve 
+                    submitting requests through the official system on a first-come, first-served basis, emphasizing timely submissions. 
+                    Confirmation or denial is provided within a specified timeframe, and only confirmed bookings are deemed valid. 
+                    Responsible use and care of equipment, training if necessary, and prompt returns are expected from requesters. 
+                    The policy includes guidelines for cancellations, fees, compliance with institution policies, and avenues for feedback. 
+                    Users are encouraged to provide suggestions for improvement, and periodic reviews ensure ongoing effectiveness and relevance. 
+                    Access to the reservation system is granted to eligible entities, with an emphasis on security and privacy adherence. 
+                    The ETC policy seeks to streamline the booking process, fostering a conducive environment for educational technology utilization.
+                </h5></center>
             </div>
-            <div class="categories" style="margin-top: 6rem;">
+            <div class="categories" style="margin-top: 2rem;">
                 <h2>Categories</h2>
                 <div class="row">
                     @foreach($subcategory as $sub)

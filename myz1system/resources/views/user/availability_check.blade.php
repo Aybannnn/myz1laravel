@@ -20,17 +20,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="../style/inclusions.css">
-    <link rel="stylesheet" href="../style/main.css">
-    <link rel="stylesheet" href="../style/animation.css">
-    <title>{{$indivitems->service}}</title>
-    <link rel="icon" type="image/x-icon" href="{{asset('images/logo-no-bg.png')}}">
+    <link rel="stylesheet" href="{{url('style/bookingform.css')}}">
+    <link rel="stylesheet" href="{{url('style/responsive.css')}}">
+    <link rel="stylesheet" href="{{url('style/main.css')}}">
+    <link rel="stylesheet" href="{{url('style/animation.css')}}">
+    <title>Booking Form</title>
 </head>
 <style>
     main{
@@ -39,12 +33,9 @@
     .right-section{
         animation: transitionIn-Y-bottom  0.5s;
     }
-    #equipnment, #services{
-        animation: transition-Y-over 0.5s;
-    }
 </style>
 <body>
-<!--HEADER-->
+
 <div class="page-header">
     <img src="{{asset('images/parts/Screenshot 2023-09-29 082533.png')}}">
 </div>
@@ -128,41 +119,50 @@
 
         <!--MIDDLE CONTENT-->
         <main>
-            <div class="announcement-bg"></div>
-                <h1><span>{{$indivitems->service}}</span></h1>
-            <div class="categories" style="margin-top: 6rem;">
-                <h2></h2>
-                <div class="row">
-                    <div class="col" style="background-color: #43855A80; border-radius: 10px;">
-                        <h2 style="padding: 1rem; font-weight: 900;">Inclusions</h2>
-                        @foreach($inclusion as $inclusion)
-                        <h4 style="margin-left: 4rem;">
-                            <span class="material-icons-sharp" style="font-size: 18px;">
-                            radio_button_unchecked
-                            </span><p style="display: inline-block; margin-left: 0.6rem;">{{$inclusion->inclusions}}</p>
-                        </h4>
-                        @endforeach
-                    </div>
-                    <div class="row">
-                    <h2 style="padding: 1rem; font-weight: 900; margin-top: 1rem;">Service Fee</h2>
+            <div class="bookingheader">
+                <h1>
+                    <span>
+                    <a href="{{url()->previous()}}" style="text-decoration: none; color: black;">
+                    <div class="material-icons-sharp" style="margin-right: 2rem; border-right: solid black 0.2rem; padding-right: 1rem">
+                    arrow_back
+                    </div></a>
+                    Booking Check</span>
+                </h1>
+            </div>
+            <div class="container" style="margin-top: 4rem; background-color: #16392033; padding: 2rem; border-radius: 12px;">
+                <div class="container">
+                    <h2>Currently Booked on <span style="color: #163920; border-bottom: solid #163920 2px;">{{$information->start_date}}</span> to <span style="color: #163920; border-bottom: solid #163920 2px;">{{$information->end_date}}</span></h2>
+                    <div class="container">
                         <div class="col">
-                            <h2 style="display: flex; justify-content: left;">Regular</h2>
-                            <h6 style="display: flex; justify-content: left; border-bottom: solid black 1px; padding-bottom: 1rem; font-style: italic;">(Normal Price)</h6>
-                            <div class="requestinfo" style="background-color: #43855A33; padding: 2rem;">
-                                <h2>{{$indivitems->regular}}</h2>
-                            </div>
-                        </div>
-                        <div class="col" style="border-left: solid black 1px; padding-bottom: 2rem;">
-                            <h2 style="display: flex; justify-content: left;">Lasallian Partner</h2>
-                            <h6 style="display: flex; justify-content: left; border-bottom: solid black 1px; padding-bottom: 1rem; font-style: italic;">(25% Discount)</h6>
-                            <div class="requestinfo" style="background-color: #43855A33; padding: 2rem;">
-                                <h2>{{$indivitems->lasallian_partner}}</h2>
+                            <div class="row">
+                                <div class="information-solo" style="margin-bottom: 1.6rem; margin-left: 2rem; display: flex; padding-right: 4rem; margin-top: 2rem;">
+                                    <h4 style="margin-left: 1rem;">
+                                        @if ($information->rental_name1) 
+                                            <span style="color: #076026; border-bottom: solid black 1px">{{$information->rental_name1}}</span>
+                                        @endif
+                                        @if ($information->rental_name2)
+                                            @if ($information->rental_name1), @endif
+                                            <span style="color: #076026; border-bottom: solid black 1px">{{$information->rental_name2}}</span>
+                                        @endif
+                                        @if ($information->rental_name3)
+                                            @if ($information->rental_name1 || $information->rental_name2), @endif
+                                            <span style="color: #076026; border-bottom: solid black 1px">{{$information->rental_name3}}</span>
+                                        @endif
+                                        @if ($information->rental_name4)
+                                            @if ($information->rental_name1 || $information->rental_name2 || $information->rental_name3), @endif
+                                            <span style="color: #076026; border-bottom: solid black 1px">{{$information->rental_name4}}</span>
+                                        @endif
+                                        @if ($information->rental_name5)
+                                            @if ($information->rental_name1 || $information->rental_name2 || $information->rental_name3 || $information->rental_name4), @endif
+                                            <span style="color: #076026; border-bottom: solid black 1px">{{$information->rental_name5}}</span>
+                                        @endif
+                                    </h4>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="calendar" style="margin-top: 2rem; margin-bottom: 2rem; background-color: white; padding: 1rem; border-radius: 10px; border: solid black 1px;"></div>
         </main>
         <!-- End of Main Content -->
 
@@ -178,29 +178,14 @@
             <!-- End of Nav -->
         </div>
     </div>
-
+    
 <!--FOOTER-->
 <div class="footer">
     <img src="{{asset('images/zonefooter.png')}}">
 </div>
 <!--FOOTER-->
-<script src="script/booking.js"></script>
-<script>
-    $(document).ready(function(){
-        var booking = @json($events);
-
-        $('#calendar').fullCalendar({
-            nextDayThreshold:'00:00:00',
-            header: {
-                    left: 'prev, next today',
-                    center: 'title',
-                    right: 'month, agendaWeek, agendaDay',
-                },
-                events: booking,
-                displayEventTime: false,
-                eventColor: '#374f2f'
-        })
-    })
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="script/homepage.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
