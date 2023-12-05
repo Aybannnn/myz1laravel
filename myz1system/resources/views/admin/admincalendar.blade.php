@@ -134,9 +134,8 @@
                     <h1>{{$data->name}}</h1>
                 </div>
             </div>
-            <div id="calendar" style="margin-top: 2rem; margin-bottom: 2rem;">
-
-            </div>
+            <h4 style="margin-top: 2rem;">Accepted Booking Request</h4>
+            <div id="calendar" style="margin-top: 2rem; margin-bottom: 2rem;"></div>
         </main>
         <!-- End of Main Content -->
 
@@ -171,10 +170,14 @@
                     right: 'month, agendaWeek, agendaDay',
                 },
                 events: booking,
-                eventColor: '#374f2f'
+                eventColor: '#374f2f',
+                height: 1200,
+                eventLimit: true,
+                initialView: 'dayGridMonth',
+                dayMaxEvents: true, // allow "more" link when too many events
         })
-        $('.fc-event').css('font-size', '16px');
-        $('.fc-event').css('padding', '0.4rem');
+        // $('.fc-event').css('font-size', '16px');
+        // $('.fc-event').css('padding', '0.4rem');
     })
 </script>
 </body>

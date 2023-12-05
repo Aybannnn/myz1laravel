@@ -122,8 +122,10 @@ class CustomAuthController extends Controller
         $events = array();
         $currentId = Inclusion::find($id);
 
-        $bookings = BookingRequest::where('booking_status', 'Pending')
+        $bookings = BookingRequest::whereIn('booking_status', ['Accepted', 'Ready'])
             ->orWhere('booking_status', 'Ready')
+            ->orWhere('booking_status', 'Pending')
+            ->orWhere('booking_status', 'Accepted')
             ->where('id', $currentId)
             ->get();
 
@@ -196,18 +198,31 @@ class CustomAuthController extends Controller
             'rental_name5_hours' => 'sometimes',
         ]);
 
-        $existingBooking = BookingRequest::where('rental_name1', $request->rental_name1)
-        ->where('start_date', '<=', $request->end_date)
-        ->where('end_date', '>=', $request->start_date)
-        ->where('booking_status', '!=', 'Cancelled') // Optional: Exclude cancelled bookings
-        ->first();
-
+        $existingBooking = BookingRequest::where(function($query) use ($request) {
+            $rentalNames = [$request->rental_name1, $request->rental_name2, $request->rental_name3, $request->rental_name4, $request->rental_name5];
+    
+            foreach ($rentalNames as $rentalName) {
+                $query->orWhere(function($subQuery) use ($request, $rentalName) {
+                    $subQuery->where('start_date', '<=', $request->end_date)
+                        ->where('end_date', '>=', $request->start_date)
+                        ->where('booking_status', '!=', 'Cancelled')
+                        ->where('rental_name1', $rentalName)
+                        ->orWhere('rental_name2', $rentalName)
+                        ->orWhere('rental_name3', $rentalName)
+                        ->orWhere('rental_name4', $rentalName)
+                        ->orWhere('rental_name5', $rentalName);
+                    });
+                }
+            })
+            ->first();
+        
         if ($existingBooking) {
             // Set a flag in the session
             session()->flash('service_already_booked', true);
             return back();
         }
-        
+    
+    
         $bookingRequest = new BookingRequest(); // Keep the model instance name as 'Request'
         $bookingRequest->user_id = $userId;
         $bookingRequest->requesting_office = $request->requesting_office;

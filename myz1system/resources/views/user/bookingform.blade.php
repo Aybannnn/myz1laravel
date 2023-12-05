@@ -246,7 +246,7 @@
                         </div>
                         <div class="add_item_hidden">
                             <div class="row">
-                                <div class="col-4">
+                            <div class="col-4">
                                     <h6>Specific Type of ETC Rental Request</h6>
                                     <select class="form-control" name="rental_name2" value="{{old('rental_name2')}}">
                                         <option disabled selected value> -- select an available equipment/service -- </option>
@@ -254,12 +254,21 @@
                                         <option>{{$items->service}}</option>
                                         @endforeach
                                     </select>
-                                    <span class="errormsg">@error('rental_name2') {{$message}} @enderror</span>
+                                        @if(Session::has('fail'))
+                                            <span class="errormsg">{{Session::get('fail')}}</span>
+                                        @endif
+                                    <span class="errormsg">@error('rental_name2') Please select an available equipment/service @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                    <input type="time" class="form-control" name="rental_name2_hours" value="{{old('rental_name2_hours')}}">
-                                    <span class="errormsg">@error('rental_name2_hours') {{$message}} @enderror</span>
+                                    <select name="rental_name2_hours" class="form-control" value="{{old('rental_name2_hours')}}">
+                                        <option disabled selected value> -- select duration -- </option>
+                                        <option>1 Hour</option>
+                                        <option>3 Hours</option>
+                                        <option>8 Hours</option>
+                                        <option>1 Day</option>
+                                    </select>
+                                    <span class="errormsg">@error('rental_name2_hours') This field is required @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Rate</h6>
@@ -284,19 +293,28 @@
                         <div class="add_item_hidden">
                             <div class="row">
                             <div class="col-4">
-                                <h6>Specific Type of ETC Rental Request</h6>
+                                    <h6>Specific Type of ETC Rental Request</h6>
                                     <select class="form-control" name="rental_name3" value="{{old('rental_name3')}}">
                                         <option disabled selected value> -- select an available equipment/service -- </option>
                                         @foreach($indivitems as $items)
                                         <option>{{$items->service}}</option>
                                         @endforeach
                                     </select>
-                                    <span class="errormsg">@error('rental_name3') {{$message}} @enderror</span>
+                                        @if(Session::has('fail'))
+                                            <span class="errormsg">{{Session::get('fail')}}</span>
+                                        @endif
+                                    <span class="errormsg">@error('rental_name3') Please select an available equipment/service @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                    <input type="time" class="form-control" name="rental_name3_hours" value="{{old('rental_name3_hours')}}">
-                                    <span class="errormsg">@error('rental_name3_hours') {{$message}} @enderror</span>
+                                    <select name="rental_name3_hours" class="form-control" value="{{old('rental_name3_hours')}}">
+                                        <option disabled selected value> -- select duration -- </option>
+                                        <option>1 Hour</option>
+                                        <option>3 Hours</option>
+                                        <option>8 Hours</option>
+                                        <option>1 Day</option>
+                                    </select>
+                                    <span class="errormsg">@error('rental_name3_hours') This field is required @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Rate</h6>
@@ -321,19 +339,28 @@
                         <div class="add_item_hidden">
                             <div class="row">
                                 <div class="col-4">
-                                <h6>Specific Type of ETC Rental Request</h6>
+                                    <h6>Specific Type of ETC Rental Request</h6>
                                     <select class="form-control" name="rental_name4" value="{{old('rental_name4')}}">
                                         <option disabled selected value> -- select an available equipment/service -- </option>
                                         @foreach($indivitems as $items)
                                         <option>{{$items->service}}</option>
                                         @endforeach
                                     </select>
-                                    <span class="errormsg">@error('rental_name4') {{$message}} @enderror</span>
+                                        @if(Session::has('fail'))
+                                            <span class="errormsg">{{Session::get('fail')}}</span>
+                                        @endif
+                                    <span class="errormsg">@error('rental_name4') Please select an available equipment/service @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                    <input type="time" class="form-control" name="rental_name4_hours" value="{{old('rental_name4_hours')}}">
-                                    <span class="errormsg">@error('rental_name4_hours') {{$message}} @enderror</span>
+                                    <select name="rental_name4_hours" class="form-control" value="{{old('rental_name4_hours')}}">
+                                        <option disabled selected value> -- select duration -- </option>
+                                        <option>1 Hour</option>
+                                        <option>3 Hours</option>
+                                        <option>8 Hours</option>
+                                        <option>1 Day</option>
+                                    </select>
+                                    <span class="errormsg">@error('rental_name4_hours') This field is required @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Rate</h6>
@@ -358,19 +385,28 @@
                         <div class="add_item_hidden">
                             <div class="row">
                             <div class="col-4">
-                                <h6>Specific Type of ETC Rental Request</h6>
+                                    <h6>Specific Type of ETC Rental Request</h6>
                                     <select class="form-control" name="rental_name5" value="{{old('rental_name5')}}">
                                         <option disabled selected value> -- select an available equipment/service -- </option>
                                         @foreach($indivitems as $items)
                                         <option>{{$items->service}}</option>
                                         @endforeach
                                     </select>
-                                    <span class="errormsg">@error('rental_name5') {{$message}} @enderror</span>
+                                        @if(Session::has('fail'))
+                                            <span class="errormsg">{{Session::get('fail')}}</span>
+                                        @endif
+                                    <span class="errormsg">@error('rental_name5') Please select an available equipment/service @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                    <input type="time" class="form-control" name="rental_name5_hours" value="{{old('rental_name5_hours')}}">
-                                    <span class="errormsg">@error('rental_name5_hours') {{$message}} @enderror</span>
+                                    <select name="rental_name5_hours" class="form-control" value="{{old('rental_name5_hours')}}">
+                                        <option disabled selected value> -- select duration -- </option>
+                                        <option>1 Hour</option>
+                                        <option>3 Hours</option>
+                                        <option>8 Hours</option>
+                                        <option>1 Day</option>
+                                    </select>
+                                    <span class="errormsg">@error('rental_name5_hours') This field is required @enderror</span>
                                 </div>
                                 <div class="col-2">
                                 <h6>Rate</h6>

@@ -247,7 +247,7 @@
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                    <input type="text" class="form-control" name="rental_name3_hours" value="{{$notificationActive->rental_name3_hour}}">
+                                    <input type="text" class="form-control" name="rental_name3_hours" value="{{$notificationActive->rental_name3_hours}}">
                                 </div>
                                 <div class="col-2">
                                 <h6>Rate</h6>
@@ -277,7 +277,7 @@
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                    <input type="text" class="form-control" name="rental_name4_hours" value="{{$notificationActive->rental_name4_hour}}">
+                                    <input type="text" class="form-control" name="rental_name4_hours" value="{{$notificationActive->rental_name4_hours}}">
                                 </div>
                                 <div class="col-2">
                                 <h6>Rate</h6>
@@ -307,7 +307,7 @@
                                 </div>
                                 <div class="col-2">
                                 <h6>Hours</h6>
-                                    <input type="text" class="form-control" name="rental_name5_hours" value="{{$notificationActive->rental_name5_hour}}">
+                                    <input type="text" class="form-control" name="rental_name5_hours" value="{{$notificationActive->rental_name5_hours}}">
                                 </div>
                                 <div class="col-2">
                                 <h6>Rate</h6>

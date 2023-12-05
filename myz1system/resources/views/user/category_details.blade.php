@@ -126,7 +126,7 @@
             <div class="announcement-bg"></div>
                 <h1><span>{{$category->main_category}}</span></h1>
             <div class="booking-landing" style="margin-top: 6rem;">
-                <center><h5>
+                <center><h5 style="font-weight: 200;">
                     The Educational Technology Center (ETC) at La Salle University - Ozamiz City has established a comprehensive policy for 
                     booking equipment and services to facilitate efficient and organized usage. Eligibility extends to faculty, staff, and 
                     recognized student organizations, aligning with the institution's educational objectives. Reservation procedures involve 
