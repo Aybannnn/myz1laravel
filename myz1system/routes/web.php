@@ -18,6 +18,30 @@ use App\Http\Controllers\AdminController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/memory-usage', function () {
+    $memoryUsage = round(memory_get_peak_usage(true) / 1024 / 1024, 2); // Peak memory usage in MB
+
+    return view('auth.memory-usage', ['memoryUsage' => $memoryUsage]);
+});
+
+Route::get('/hard-drive', function () {
+    $directory = storage_path('/'); // Replace with your directory path
+
+    $size = 0;
+    $files = File::allFiles($directory);
+
+    foreach ($files as $file) {
+        $size += $file->getSize();
+    }
+
+    $usedSpaceInMB = round($size / 1024 / 1024, 2); // Convert to MB
+
+    return view('auth.disk-space', [
+        'usedSpace' => $usedSpaceInMB,
+    ]);
+});
+
 Route::get('/login',[CustomAuthController::class,'login']);
 Route::get('/registration',[CustomAuthController::class,'registration']);
 Route::post('/register-user', [CustomAuthController::class, 'registerUser'])->name('register-user');

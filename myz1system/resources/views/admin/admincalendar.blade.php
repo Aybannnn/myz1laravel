@@ -171,7 +171,10 @@
                     right: 'month, agendaWeek, agendaDay',
                 },
                 events: booking,
+                eventColor: '#374f2f'
         })
+        $('.fc-event').css('font-size', '16px');
+        $('.fc-event').css('padding', '0.4rem');
     })
 </script>
 </body>

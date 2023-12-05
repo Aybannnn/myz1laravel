@@ -198,8 +198,14 @@
                 },
                 events: booking,
                 displayEventTime: false,
-                eventColor: '#374f2f'
+                eventColor: '#374f2f',
+                height: 1400,
+                eventLimit: true,
+                initialView: 'dayGridMonth',
+                dayMaxEvents: true, // allow "more" link when too many events
         })
+        $('.fc-event').css('font-size', '12px');
+        $('.fc-event').css('padding', '4px');
     })
 </script>
 </body>
