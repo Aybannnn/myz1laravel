@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{url('style/main.css')}}">
     <link rel="stylesheet" href="{{url('style/animation.css')}}">
     <title>Admin Homepage</title>
+    <link rel="icon" type="image/x-icon" href="{{asset('images/logo-no-bg.png')}}">
 </head>
 <style>
     main{
@@ -140,25 +141,27 @@
                             <h3>{{$question->question_title}}</h3>
                         </button>
                         <div class="collapse" id="collapseInfo{{$loop->iteration}}" style="margin-top: 1rem;">
-                            <h6>{{$question->question_body}}</h6>
+                            <h5>{{$question->question_body}}</h5>
                         </div>
                     </div>
                 @endforeach
                 <h2>Feedbacks</h2>
                 <div class="container" style="background-color: #16392033; padding: 2rem; border-radius: 10px; margin-bottom: 2rem;">
                 @foreach($feedback as $feed)
-                    <div class="row" style="margin-top: 1rem;">
-                        <div class="col-10">
-                            <h2 style="color: #163920; border-bottom: solid 2px #163920; padding-bottom: 0.6rem; display: flex; align-items: center;">
-                                <span class="material-icons-sharp" style="font-size: 32px; margin-right: 0.6rem;">chat_bubble</span>
-                                {{$feed->body_feedback}}
-                            </h2>
-                        </div>
-                        <div class="col justify-content-end" style="display: flex; flex-direction: row; flex-wrap: wrap; align-content: flex-start; gap: 1rem;">
-                            <a href="#" class="btn" style="background-color: #F4FCD2;">Read</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
-                        </div>
+                <div class="row" style="margin-top: 1rem;">
+                    <div class="col-10">
+                        <h2 style="color: #163920; border-bottom: solid 2px #163920; padding-bottom: 0.6rem; display: flex; align-items: center;">
+                            <span class="material-icons-sharp" style="font-size: 32px; margin-right: 0.6rem;">chat_bubble</span>
+                            {{ Illuminate\Support\Str::limit($feed->body_feedback, $limit = 66, $end = '...') }}
+                            <!-- Adjust the $limit parameter to your desired word limit -->
+                        </h2>
                     </div>
+                    <div class="col justify-content-end" style="display: flex; flex-direction: row; flex-wrap: wrap; align-content: flex-start; gap: 1rem;">
+                        <!-- Inside the foreach loop for feedback -->
+                        <a href="#" class="btn btn-primary read-feedback-btn" data-bs-toggle="modal" data-bs-target="#acceptModal" data-feedback-id="{{$feed->id}}" style="background-color: #F4FCD2; color: black; border: solid black 1px;">Read</a>
+                        <a href="{{ url('delete-feedback', $feed->id) }}" class="btn btn-danger" style="border: solid black 1px;">Delete</a>
+                    </div>
+                </div>
                 @endforeach
                 </div>
             </div>
@@ -189,7 +192,25 @@
             </div>
         </div>
         </div>
-
+        <div class="modal fade" id="acceptModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Feedback Details</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="feedback-details-content">
+                            <!-- Specific feedback content will be loaded here dynamically -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <!-- Additional buttons if needed -->
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Right Section -->
         <div class="right-section">
@@ -211,5 +232,31 @@
 
 <script src="script/homepage.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script>
+    // Add a script to handle the dynamic loading of feedback content
+    document.addEventListener('DOMContentLoaded', function () {
+        var readButtons = document.querySelectorAll('.read-feedback-btn');
+
+        readButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                var feedbackId = button.getAttribute('data-feedback-id');
+
+                // Assuming you have a route like 'get-feedback/{id}'
+                var url = "{{ url('get-feedback') }}/" + feedbackId;
+
+                // Use AJAX to fetch the specific feedback content
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Update the modal content with the specific feedback details
+                        var modalContent = document.getElementById('feedback-details-content');
+                        modalContent.innerHTML = '<p style="word-wrap: break-word; font-size: 18px; font-weight: 400;">Sender: ' + data.sender + '</p>' +
+                        '<p style="word-wrap: break-word; font-size: 16px; font-weight: 400;">Body: ' + data.body_feedback + '</p>';
+                    })
+                    .catch(error => console.error('Error:', error));
+            });
+        });
+    });
+</script>
 </body>
 </html>

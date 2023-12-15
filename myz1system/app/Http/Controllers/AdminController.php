@@ -20,7 +20,7 @@ class AdminController extends Controller
 {
     public function adminHomepage()
     {
-        $notification = BookingRequest::where('booking_status', '=', 'Pending')->get();
+        $notification = BookingRequest::where('booking_status', '=', 'Pending')->orderBy('created_at', 'desc')->get();
         $fPost = addPost::where('status_post', '=', 'Feature')->orderBy('created_at', 'desc')->get();
         $nPost = addPost::where('status_post', '=', 'Normal')->orderBy('created_at', 'desc')->get();
 
@@ -123,8 +123,8 @@ class AdminController extends Controller
 
     public function adminNotification()
     {
-        $notificationPending = BookingRequest::where('booking_status', '=', 'Pending')->get();
-        $notificationActive = BookingRequest::where('booking_status', '=', 'Accepted')->get();
+        $notificationPending = BookingRequest::where('booking_status', '=', 'Pending')->orderBy('created_at', 'desc')->get();
+        $notificationActive = BookingRequest::where('booking_status', '=', 'Accepted')->orderBy('created_at', 'desc')->get();
 
         $data = array();
         if(Session::has('loginId'))
@@ -152,11 +152,14 @@ class AdminController extends Controller
     {
         $notificationActive = BookingRequest::find($id);
 
+        $notificationActive->received_by = $request->received_by;
         $notificationActive->requesting_office = $request->requesting_office;
         $notificationActive->contact_person = $request->contact_person;
         $notificationActive->contact_person_no = $request->contact_person_no;
         $notificationActive->contact_person_email = $request->contact_person_email;
         $notificationActive->production_title = $request->production_title;
+        $notificationActive->start_date = $request->start_date;
+        $notificationActive->end_date = $request->end_date;
         $notificationActive->rental_name1 = $request->rental_name1;
         $notificationActive->rental_name1_hours = $request->rental_name1_hours;
         $notificationActive->rental_name2 = $request->rental_name2;
@@ -301,6 +304,22 @@ class AdminController extends Controller
         $feedback = Feedback::all();
 
         return view('admin.adminfeedback', compact('data', 'feedback', 'question'));
+    }
+
+    public function getFeedbackDetails($id)
+    {
+        $specificFeedback = Feedback::find($id);
+
+        return response()->json($specificFeedback);
+    }
+
+    public function adminDeleteFeedback($id)
+    {
+        $feedback = Feedback::find($id);
+
+        $feedback -> delete();
+
+        return redirect()->back();
     }
 
     public function adminAddQuestion(Request $request)

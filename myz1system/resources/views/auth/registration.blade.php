@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{url('style/login.css')}}">
     <link rel="stylesheet" href="{{url('style/animation.css')}}">
     <title>Register</title>
+    <link rel="icon" type="image/x-icon" href="{{asset('images/logo-no-bg.png')}}">
 </head>
 <style>
     center{

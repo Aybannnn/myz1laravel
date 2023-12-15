@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{url('style/main.css')}}">
     <link rel="stylesheet" href="{{url('style/animation.css')}}">
     <title>Booking Form</title>
+    <link rel="icon" type="image/x-icon" href="{{asset('images/logo-no-bg.png')}}">
 </head>
 <style>
     main{
@@ -146,6 +147,12 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-8">
+                                <h6>Received By:</h6>
+                                <input type="text" class="form-control" name="received_by" value="{{$notificationActive->received_by}}">
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col">
                                 <h6>Requesting Office/Unit</h6>
                                 <input type="text" class="form-control" name="requesting_office" value="{{$notificationActive->requesting_office}}">
@@ -175,8 +182,14 @@
                                 <input type="text" class="form-control" name="production_title" value="{{$notificationActive->production_title}}">
                             </div>
                             <div class="col">
-                                <h6>Expected Running Time</h6>
-                                <input type="text" class="form-control" name="running_time" value="{{$notificationActive->running_time}}">
+                                <h6>Expected Start of Running Time</h6>
+                                <input type="datetime-local" class="form-control" name="start_date" value="{{$notificationActive->start_date}}">
+                                <span class="errormsg">@error('start_date') {{$message}} @enderror</span>
+                            </div>
+                            <div class="col">
+                                <h6>Expected End of Running Time</h6>
+                                <input type="datetime-local" class="form-control" name="end_date" value="{{$notificationActive->end_date}}">
+                                <span class="errormsg">@error('end_date') {{$message}} @enderror</span>
                             </div>
                         </div>
                         <div class="add_item">
@@ -506,7 +519,7 @@
                             <button class="btn" type="submit" style="font-size: 24px; background-color: #F4FCD2; margin-bottom: 1rem; padding: 1rem; border: solid black 1px;">Save Changes and Proceess Request</button>
                             </div>
                             <div class="col d-grid">
-                            <a href="{{url('admin-calendar')}}" class="btn" style="font-size: 24px; background-color: #F4FCD2; margin-bottom: 1rem; padding: 1rem; border: solid black 1px;">Go Back</a>
+                            <a href="{{url('admin-calendar')}}" class="btn" style="font-size: 24px; background-color: #F4FCD2; margin-bottom: 1rem; padding: 1rem; border: solid black 1px;">Back to Calendar</a>
                             </div>
                         </div>
                     </div>

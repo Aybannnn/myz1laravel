@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{url('style/main.css')}}">
     <link rel="stylesheet" href="{{url('style/animation.css')}}">
     <title>Booking Form</title>
+    <link rel="icon" type="image/x-icon" href="{{asset('images/logo-no-bg.png')}}">
 </head>
 <style>
     main{
@@ -178,8 +179,14 @@
                                 <input type="text" class="form-control" name="production_title" value="{{$notificationPending->production_title}}" disabled>
                             </div>
                             <div class="col">
-                                <h6>Expected Running Time</h6>
-                                <input type="text" class="form-control" name="running_time" value="{{$notificationPending->running_time}}" disabled>
+                                <h6>Expected Start of Running Time</h6>
+                                <input type="datetime-local" class="form-control" name="start_date" value="{{$notificationPending->start_date}}" disabled>
+                                <span class="errormsg">@error('start_date') {{$message}} @enderror</span>
+                            </div>
+                            <div class="col">
+                                <h6>Expected End of Running Time</h6>
+                                <input type="datetime-local" class="form-control" name="end_date" value="{{$notificationPending->end_date}}" disabled>
+                                <span class="errormsg">@error('end_date') {{$message}} @enderror</span>
                             </div>
                         </div>
                         <div class="add_item">

@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{url('style/main.css')}}">
     <link rel="stylesheet" href="{{url('style/animation.css')}}">
     <title>Admin Homepage</title>
+    <link rel="icon" type="image/x-icon" href="{{asset('images/logo-no-bg.png')}}">
 </head>
 <style>
     main{
@@ -375,6 +376,7 @@ Highcharts.chart('container1', {
             }
         }
     },
+    colors: ['#4a6741', '#3f5a36', '#374f2f', '#304529', '#22311d'],
     series: [{
     enableMouseTracking: false,
     animation: {
@@ -502,6 +504,7 @@ Highcharts.chart('containerPie2', {
             }
         }
     },
+    colors: ['#4a6741', '#3f5a36', '#374f2f', '#304529', '#22311d'],
     series: [{
     enableMouseTracking: false,
     animation: {
@@ -629,6 +632,7 @@ Highcharts.chart('containerPie3', {
             }
         }
     },
+    colors: ['#4a6741', '#3f5a36', '#374f2f', '#304529', '#22311d'],
     series: [{
     enableMouseTracking: false,
     animation: {
@@ -756,6 +760,7 @@ Highcharts.chart('containerPie4', {
             }
         }
     },
+    colors: ['#4a6741', '#3f5a36', '#374f2f', '#304529', '#22311d'],
     series: [{
     enableMouseTracking: false,
     animation: {
@@ -883,6 +888,7 @@ Highcharts.chart('containerPie5', {
             }
         }
     },
+    colors: ['#4a6741', '#3f5a36', '#374f2f', '#304529', '#22311d'],
     series: [{
     enableMouseTracking: false,
     animation: {
@@ -934,6 +940,7 @@ Highcharts.chart('containerPie5', {
         tooltip: {
             pointFormat: 'Requests on {point.name}: <b>{point.y}</b>'
         },
+        colors: ['#4a6741', '#3f5a36', '#374f2f', '#304529', '#22311d'],
         series: [{
             name: 'Booking Requests',
             colorByPoint: true,
@@ -992,6 +999,7 @@ Highcharts.chart('containerPie5', {
         credits: {
             enabled: false
         },
+        colors: ['#4a6741', '#3f5a36', '#374f2f', '#304529', '#22311d'],
         series: [{
             name: 'Booking and Rentals',
             data: userData
@@ -1012,8 +1020,5 @@ Highcharts.chart('containerPie5', {
         }
     });
 </script>
-
-
-
 </body>
 </html>

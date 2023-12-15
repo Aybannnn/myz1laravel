@@ -28,18 +28,24 @@ class CustomAuthController extends Controller
     public function registerUser(Request $request)
     {
         $request->validate([
-            'name'=>'required',
-            'email'=>'required|email|unique:users',
-            'password'=>'required|min:5|max:24'
+            'name' => 'required|regex:/^[a-zA-Z ]+$/',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:5|max:24|regex:/^(?=.*[A-Z])[a-zA-Z0-9_.]+$/',
+        ], [
+            'name.regex' => 'The name should not contain any number or special characters.',
+            'password.regex' => 'The password must be at least 5 characters, with at least one uppercase letter, and must not contain any special characters.',
         ]);
+
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->password;
-        // $user->password = Hash::make($request->password);   If I want the password to be HASHED
+        // $user->password = Hash::make($request->password);   If you want the password to be HASHED
         $user->usertype = 'u';
+
         $res = $user->save();
-        if($res){
+
+        if ($res) {
             return back()->with('success', 'You have been Registered Successfully!');
         } else {
             return back()->with('fail', 'Something went wrong.');
@@ -200,30 +206,42 @@ class CustomAuthController extends Controller
 
         $existingBooking = BookingRequest::where(function($query) use ($request) {
             $rentalNames = [$request->rental_name1, $request->rental_name2, $request->rental_name3, $request->rental_name4, $request->rental_name5];
-    
+        
             foreach ($rentalNames as $rentalName) {
                 $query->orWhere(function($subQuery) use ($request, $rentalName) {
                     $subQuery->where('start_date', '<=', $request->end_date)
                         ->where('end_date', '>=', $request->start_date)
                         ->where('booking_status', '!=', 'Cancelled')
-                        ->where('rental_name1', $rentalName)
-                        ->orWhere('rental_name2', $rentalName)
-                        ->orWhere('rental_name3', $rentalName)
-                        ->orWhere('rental_name4', $rentalName)
-                        ->orWhere('rental_name5', $rentalName);
-                    });
-                }
-            })
-            ->first();
-        
+                        ->where(function($nameQuery) use ($rentalName) {
+                            $nameQuery->where(function($dateQuery) use ($rentalName) {
+                                $dateQuery->where('rental_name1', $rentalName);
+                            })
+                            ->orWhere(function($dateQuery) use ($rentalName) {
+                                $dateQuery->where('rental_name2', $rentalName);
+                            })
+                            ->orWhere(function($dateQuery) use ($rentalName) {
+                                $dateQuery->where('rental_name3', $rentalName);
+                            })
+                            ->orWhere(function($dateQuery) use ($rentalName) {
+                                $dateQuery->where('rental_name4', $rentalName);
+                            })
+                            ->orWhere(function($dateQuery) use ($rentalName) {
+                                $dateQuery->where('rental_name5', $rentalName);
+                            });
+                        });
+                });
+            }
+        })
+        ->first();
+                
         if ($existingBooking) {
             // Set a flag in the session
             session()->flash('service_already_booked', true);
             return back();
         }
     
-    
         $bookingRequest = new BookingRequest(); // Keep the model instance name as 'Request'
+        date_default_timezone_set('Asia/Manila');
         $bookingRequest->user_id = $userId;
         $bookingRequest->requesting_office = $request->requesting_office;
         $bookingRequest->contact_person = $request->contact_person;
@@ -245,6 +263,9 @@ class CustomAuthController extends Controller
         $bookingRequest->booking_status = 'Pending';
         $bookingRequest->received_by = 'TBA';
         $res = $bookingRequest->save();
+
+        date_default_timezone_set(config('app.timezone'));
+
         if ($res) {
             return back()->with('success', 'Your booking have been placed Successfully!');
         } else {
@@ -268,6 +289,7 @@ class CustomAuthController extends Controller
             'sender_email' => 'required'
         ]);
         $reportRequest = new CreateReport();
+        date_default_timezone_set('Asia/Manila');
         $reportRequest->user_id = $userId;
         $reportRequest->edm_request = $request->edm_request;
         $reportRequest->client_office = $request->client_office;
@@ -276,6 +298,9 @@ class CustomAuthController extends Controller
         $reportRequest->sender_email = $request->sender_email;
         $reportRequest->report_status = 'Waiting for Approval';
         $res = $reportRequest->save();
+
+        date_default_timezone_set(config('app.timezone'));
+
         if ($res) {
             return back()->with('success', 'Your report have been placed Successfully!');
         } else {
@@ -346,14 +371,36 @@ class CustomAuthController extends Controller
     }
 
     public function addFeedback(Request $request)
-    {
+{
+    $data = array();
+    if (Session::has('loginId')) {
+        $userId = Session::get('loginId');
+
+        $request->validate([
+            'rate' => 'required',
+            'body_feedback' => 'required'
+        ]);
+
+        // Assuming you have a User model with a name field
+        $user = User::find($userId);
+        $userName = $user->name;
+
         $feedback = new Feedback();
+        date_default_timezone_set('Asia/Manila');
         $feedback->rate = $request->rate;
         $feedback->body_feedback = $request->body_feedback;
-        $feedback->save();
+        $feedback->sender = $userName;
+        $res = $feedback->save();
 
-        return redirect()->back();
+        date_default_timezone_set(config('app.timezone'));
+
+        if ($res) {
+            return back()->with('success', 'Your report has been placed successfully!');
+        } else {
+            return back()->with('fail', 'Something went wrong. Please try again.');
+        }
     }
+}
 
     public function logout()
     {
